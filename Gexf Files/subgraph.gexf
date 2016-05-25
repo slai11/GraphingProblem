@@ -1,0 +1,2410 @@
+<?xml version='1.0' encoding='utf-8'?>
+<gexf version="1.1" xmlns="http://www.gexf.net/1.1draft" xmlns:viz="http://www.gexf.net/1.1draft/viz" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/2001/XMLSchema-instance">
+  <graph defaultedgetype="directed" mode="static">
+    <attributes class="node" mode="static">
+      <attribute id="0" title="latitude" type="double" />
+      <attribute id="1" title="normweightmax" type="double" />
+      <attribute id="2" title="weight" type="double" />
+      <attribute id="3" title="longitude" type="double" />
+      <attribute id="4" title="normweightsum" type="double" />
+    </attributes>
+    <nodes>
+      <node id="Jurong West Central" label="Jurong West Central">
+        <attvalues>
+          <attvalue for="0" value="1.338075" />
+          <attvalue for="1" value="0.019047619" />
+          <attvalue for="2" value="2.0" />
+          <attvalue for="3" value="103.741191" />
+          <attvalue for="4" value="0.002873563" />
+        </attvalues>
+      </node>
+      <node id="Sembawang North" label="Sembawang North">
+        <attvalues>
+          <attvalue for="0" value="1.449111" />
+          <attvalue for="1" value="0.019047619" />
+          <attvalue for="2" value="2.0" />
+          <attvalue for="3" value="103.818495" />
+          <attvalue for="4" value="0.002873563" />
+        </attvalues>
+      </node>
+      <node id="Aljunied" label="Aljunied">
+        <attvalues>
+          <attvalue for="0" value="1.316441" />
+          <attvalue for="1" value="0.428571429" />
+          <attvalue for="2" value="45.0" />
+          <attvalue for="3" value="103.88298" />
+          <attvalue for="4" value="0.064655172" />
+        </attvalues>
+      </node>
+      <node id="Fernvale" label="Fernvale">
+        <attvalues>
+          <attvalue for="0" value="1.391935" />
+          <attvalue for="1" value="0.047619048" />
+          <attvalue for="2" value="5.0" />
+          <attvalue for="3" value="103.876142" />
+          <attvalue for="4" value="0.007183908" />
+        </attvalues>
+      </node>
+      <node id="Hougang West" label="Hougang West">
+        <attvalues>
+          <attvalue for="0" value="1.361218" />
+          <attvalue for="1" value="0.161904762" />
+          <attvalue for="2" value="17.0" />
+          <attvalue for="3" value="103.886253" />
+          <attvalue for="4" value="0.024425287" />
+        </attvalues>
+      </node>
+      <node id="Yishun West" label="Yishun West">
+        <attvalues>
+          <attvalue for="0" value="1.430368" />
+          <attvalue for="1" value="0.447619048" />
+          <attvalue for="2" value="47.0" />
+          <attvalue for="3" value="103.835363" />
+          <attvalue for="4" value="0.067528736" />
+        </attvalues>
+      </node>
+      <node id="Shangri-La" label="Shangri-La">
+        <attvalues>
+          <attvalue for="0" value="1.369787" />
+          <attvalue for="1" value="0.133333333" />
+          <attvalue for="2" value="14.0" />
+          <attvalue for="3" value="103.83305" />
+          <attvalue for="4" value="0.020114943" />
+        </attvalues>
+      </node>
+      <node id="Upper Thomson" label="Upper Thomson">
+        <attvalues>
+          <attvalue for="0" value="1.372933" />
+          <attvalue for="1" value="0.038095238" />
+          <attvalue for="2" value="4.0" />
+          <attvalue for="3" value="103.828509" />
+          <attvalue for="4" value="0.005747126" />
+        </attvalues>
+      </node>
+      <node id="Woodlands East" label="Woodlands East">
+        <attvalues>
+          <attvalue for="0" value="1.438192" />
+          <attvalue for="1" value="0.028571429" />
+          <attvalue for="2" value="3.0" />
+          <attvalue for="3" value="103.78896" />
+          <attvalue for="4" value="0.004310345" />
+        </attvalues>
+      </node>
+      <node id="Sembawang Springs" label="Sembawang Springs">
+        <attvalues>
+          <attvalue for="0" value="1.434525" />
+          <attvalue for="1" value="0.038095238" />
+          <attvalue for="2" value="4.0" />
+          <attvalue for="3" value="103.82334" />
+          <attvalue for="4" value="0.005747126" />
+        </attvalues>
+      </node>
+      <node id="Crawford" label="Crawford">
+        <attvalues>
+          <attvalue for="0" value="1.306287" />
+          <attvalue for="1" value="0.152380952" />
+          <attvalue for="2" value="16.0" />
+          <attvalue for="3" value="103.864965" />
+          <attvalue for="4" value="0.022988506" />
+        </attvalues>
+      </node>
+      <node id="Serangoon Garden" label="Serangoon Garden">
+        <attvalues>
+          <attvalue for="0" value="1.363667" />
+          <attvalue for="1" value="0.257142857" />
+          <attvalue for="2" value="27.0" />
+          <attvalue for="3" value="103.867009" />
+          <attvalue for="4" value="0.038793103" />
+        </attvalues>
+      </node>
+      <node id="Bedok North" label="Bedok North">
+        <attvalues>
+          <attvalue for="0" value="1.323604" />
+          <attvalue for="1" value="0.019047619" />
+          <attvalue for="2" value="2.0" />
+          <attvalue for="3" value="103.927341" />
+          <attvalue for="4" value="0.002873563" />
+        </attvalues>
+      </node>
+      <node id="Sembawang Hills" label="Sembawang Hills">
+        <attvalues>
+          <attvalue for="0" value="1.375948" />
+          <attvalue for="1" value="0.133333333" />
+          <attvalue for="2" value="14.0" />
+          <attvalue for="3" value="103.830428" />
+          <attvalue for="4" value="0.020114943" />
+        </attvalues>
+      </node>
+      <node id="Tampines East" label="Tampines East">
+        <attvalues>
+          <attvalue for="0" value="1.349591" />
+          <attvalue for="1" value="0.676190476" />
+          <attvalue for="2" value="71.0" />
+          <attvalue for="3" value="103.956788" />
+          <attvalue for="4" value="0.102011494" />
+        </attvalues>
+      </node>
+      <node id="Kampong Bugis" label="Kampong Bugis">
+        <attvalues>
+          <attvalue for="0" value="1.307249" />
+          <attvalue for="1" value="0.152380952" />
+          <attvalue for="2" value="16.0" />
+          <attvalue for="3" value="103.866188" />
+          <attvalue for="4" value="0.022988506" />
+        </attvalues>
+      </node>
+      <node id="Frankel" label="Frankel">
+        <attvalues>
+          <attvalue for="0" value="1.31656" />
+          <attvalue for="1" value="1.0" />
+          <attvalue for="2" value="105.0" />
+          <attvalue for="3" value="103.917849" />
+          <attvalue for="4" value="0.150862069" />
+        </attvalues>
+      </node>
+      <node id="Seletar Hills" label="Seletar Hills">
+        <attvalues>
+          <attvalue for="0" value="1.38522" />
+          <attvalue for="1" value="0.047619048" />
+          <attvalue for="2" value="5.0" />
+          <attvalue for="3" value="103.874912" />
+          <attvalue for="4" value="0.007183908" />
+        </attvalues>
+      </node>
+      <node id="Admiralty" label="Admiralty">
+        <attvalues>
+          <attvalue for="0" value="1.44069" />
+          <attvalue for="1" value="0.019047619" />
+          <attvalue for="2" value="2.0" />
+          <attvalue for="3" value="103.800934" />
+          <attvalue for="4" value="0.002873563" />
+        </attvalues>
+      </node>
+      <node id="Trafalgar" label="Trafalgar">
+        <attvalues>
+          <attvalue for="0" value="1.352083" />
+          <attvalue for="1" value="0.047619048" />
+          <attvalue for="2" value="5.0" />
+          <attvalue for="3" value="103.819836" />
+          <attvalue for="4" value="0.007183908" />
+        </attvalues>
+      </node>
+      <node id="Siglap" label="Siglap">
+        <attvalues>
+          <attvalue for="0" value="1.313867" />
+          <attvalue for="1" value="0.095238095" />
+          <attvalue for="2" value="10.0" />
+          <attvalue for="3" value="103.923031" />
+          <attvalue for="4" value="0.014367816" />
+        </attvalues>
+      </node>
+      <node id="Tampines West" label="Tampines West">
+        <attvalues>
+          <attvalue for="0" value="1.349591" />
+          <attvalue for="1" value="0.019047619" />
+          <attvalue for="2" value="2.0" />
+          <attvalue for="3" value="103.956788" />
+          <attvalue for="4" value="0.002873563" />
+        </attvalues>
+      </node>
+      <node id="Simei" label="Simei">
+        <attvalues>
+          <attvalue for="0" value="1.339919" />
+          <attvalue for="1" value="0.019047619" />
+          <attvalue for="2" value="2.0" />
+          <attvalue for="3" value="103.949471" />
+          <attvalue for="4" value="0.002873563" />
+        </attvalues>
+      </node>
+      <node id="Sembawang Central" label="Sembawang Central">
+        <attvalues>
+          <attvalue for="0" value="1.421245" />
+          <attvalue for="1" value="0.057142857" />
+          <attvalue for="2" value="6.0" />
+          <attvalue for="3" value="103.824888" />
+          <attvalue for="4" value="0.00862069" />
+        </attvalues>
+      </node>
+      <node id="Katong" label="Katong">
+        <attvalues>
+          <attvalue for="0" value="1.307786" />
+          <attvalue for="1" value="0.142857143" />
+          <attvalue for="2" value="15.0" />
+          <attvalue for="3" value="103.895483" />
+          <attvalue for="4" value="0.021551724" />
+        </attvalues>
+      </node>
+      <node id="Sengkang Town Centre" label="Sengkang Town Centre">
+        <attvalues>
+          <attvalue for="0" value="1.386812" />
+          <attvalue for="1" value="0.038095238" />
+          <attvalue for="2" value="4.0" />
+          <attvalue for="3" value="103.891443" />
+          <attvalue for="4" value="0.005747126" />
+        </attvalues>
+      </node>
+      <node id="Geylang East" label="Geylang East">
+        <attvalues>
+          <attvalue for="0" value="1.320054" />
+          <attvalue for="1" value="0.19047619" />
+          <attvalue for="2" value="20.0" />
+          <attvalue for="3" value="103.891775" />
+          <attvalue for="4" value="0.028735632" />
+        </attvalues>
+      </node>
+      <node id="Hougang Central" label="Hougang Central">
+        <attvalues>
+          <attvalue for="0" value="1.371227" />
+          <attvalue for="1" value="0.161904762" />
+          <attvalue for="2" value="17.0" />
+          <attvalue for="3" value="103.891751" />
+          <attvalue for="4" value="0.024425287" />
+        </attvalues>
+      </node>
+      <node id="Balestier" label="Balestier">
+        <attvalues>
+          <attvalue for="0" value="1.323004" />
+          <attvalue for="1" value="0.019047619" />
+          <attvalue for="2" value="2.0" />
+          <attvalue for="3" value="103.852305" />
+          <attvalue for="4" value="0.002873563" />
+        </attvalues>
+      </node>
+      <node id="Khatib" label="Khatib">
+        <attvalues>
+          <attvalue for="0" value="1.417366" />
+          <attvalue for="1" value="0.447619048" />
+          <attvalue for="2" value="47.0" />
+          <attvalue for="3" value="103.832945" />
+          <attvalue for="4" value="0.067528736" />
+        </attvalues>
+      </node>
+      <node id="Kampong Glam" label="Kampong Glam">
+        <attvalues>
+          <attvalue for="0" value="1.302974" />
+          <attvalue for="1" value="0.152380952" />
+          <attvalue for="2" value="16.0" />
+          <attvalue for="3" value="103.859875" />
+          <attvalue for="4" value="0.022988506" />
+        </attvalues>
+      </node>
+      <node id="Serangoon Central" label="Serangoon Central">
+        <attvalues>
+          <attvalue for="0" value="1.351049" />
+          <attvalue for="1" value="0.019047619" />
+          <attvalue for="2" value="2.0" />
+          <attvalue for="3" value="103.87306" />
+          <attvalue for="4" value="0.002873563" />
+        </attvalues>
+      </node>
+      <node id="Pasir Ris West" label="Pasir Ris West">
+        <attvalues>
+          <attvalue for="0" value="1.373006" />
+          <attvalue for="1" value="0.123809524" />
+          <attvalue for="2" value="13.0" />
+          <attvalue for="3" value="103.949245" />
+          <attvalue for="4" value="0.018678161" />
+        </attvalues>
+      </node>
+      <node id="Mountbatten" label="Mountbatten">
+        <attvalues>
+          <attvalue for="0" value="1.306306" />
+          <attvalue for="1" value="0.066666667" />
+          <attvalue for="2" value="7.0" />
+          <attvalue for="3" value="103.882531" />
+          <attvalue for="4" value="0.010057471" />
+        </attvalues>
+      </node>
+      <node id="Bedok South" label="Bedok South">
+        <attvalues>
+          <attvalue for="0" value="1.323604" />
+          <attvalue for="1" value="0.019047619" />
+          <attvalue for="2" value="2.0" />
+          <attvalue for="3" value="103.927341" />
+          <attvalue for="4" value="0.002873563" />
+        </attvalues>
+      </node>
+      <node id="Yishun East" label="Yishun East">
+        <attvalues>
+          <attvalue for="0" value="1.430368" />
+          <attvalue for="1" value="0.028571429" />
+          <attvalue for="2" value="3.0" />
+          <attvalue for="3" value="103.835363" />
+          <attvalue for="4" value="0.004310345" />
+        </attvalues>
+      </node>
+      <node id="Geylang Bahru" label="Geylang Bahru">
+        <attvalues>
+          <attvalue for="0" value="1.320865" />
+          <attvalue for="1" value="0.8" />
+          <attvalue for="2" value="84.0" />
+          <attvalue for="3" value="103.871243" />
+          <attvalue for="4" value="0.120689655" />
+        </attvalues>
+      </node>
+      <node id="Compassvale" label="Compassvale">
+        <attvalues>
+          <attvalue for="0" value="1.394564" />
+          <attvalue for="1" value="0.019047619" />
+          <attvalue for="2" value="2.0" />
+          <attvalue for="3" value="103.900156" />
+          <attvalue for="4" value="0.002873563" />
+        </attvalues>
+      </node>
+      <node id="Kembangan" label="Kembangan">
+        <attvalues>
+          <attvalue for="0" value="1.320982" />
+          <attvalue for="1" value="0.028571429" />
+          <attvalue for="2" value="3.0" />
+          <attvalue for="3" value="103.912842" />
+          <attvalue for="4" value="0.004310345" />
+        </attvalues>
+      </node>
+      <node id="Bendemeer" label="Bendemeer">
+        <attvalues>
+          <attvalue for="0" value="1.320128" />
+          <attvalue for="1" value="0.019047619" />
+          <attvalue for="2" value="2.0" />
+          <attvalue for="3" value="103.864913" />
+          <attvalue for="4" value="0.002873563" />
+        </attvalues>
+      </node>
+      <node id="Kebun Bahru" label="Kebun Bahru">
+        <attvalues>
+          <attvalue for="0" value="1.374301" />
+          <attvalue for="1" value="0.133333333" />
+          <attvalue for="2" value="14.0" />
+          <attvalue for="3" value="103.840267" />
+          <attvalue for="4" value="0.020114943" />
+        </attvalues>
+      </node>
+      <node id="Northland" label="Northland">
+        <attvalues>
+          <attvalue for="0" value="1.436491" />
+          <attvalue for="1" value="0.028571429" />
+          <attvalue for="2" value="3.0" />
+          <attvalue for="3" value="103.842121" />
+          <attvalue for="4" value="0.004310345" />
+        </attvalues>
+      </node>
+      <node id="Lorong Chuan" label="Lorong Chuan">
+        <attvalues>
+          <attvalue for="0" value="1.351661" />
+          <attvalue for="1" value="0.019047619" />
+          <attvalue for="2" value="2.0" />
+          <attvalue for="3" value="103.862914" />
+          <attvalue for="4" value="0.002873563" />
+        </attvalues>
+      </node>
+      <node id="Kaki Bukit" label="Kaki Bukit">
+        <attvalues>
+          <attvalue for="0" value="1.336235" />
+          <attvalue for="1" value="0.095238095" />
+          <attvalue for="2" value="10.0" />
+          <attvalue for="3" value="103.907189" />
+          <attvalue for="4" value="0.014367816" />
+        </attvalues>
+      </node>
+      <node id="Kallang Bahru" label="Kallang Bahru">
+        <attvalues>
+          <attvalue for="0" value="1.317974" />
+          <attvalue for="1" value="0.019047619" />
+          <attvalue for="2" value="2.0" />
+          <attvalue for="3" value="103.866587" />
+          <attvalue for="4" value="0.002873563" />
+        </attvalues>
+      </node>
+    </nodes>
+    <edges>
+      <edge id="0" source="Jurong West Central" target="Jurong West Central" weight="103" />
+      <edge id="1" source="Jurong West Central" target="Sembawang North" weight="24" />
+      <edge id="2" source="Jurong West Central" target="Frankel" weight="33" />
+      <edge id="3" source="Jurong West Central" target="Fernvale" weight="10" />
+      <edge id="4" source="Jurong West Central" target="Hougang West" weight="18" />
+      <edge id="5" source="Jurong West Central" target="Yishun West" weight="67" />
+      <edge id="6" source="Jurong West Central" target="Shangri-La" weight="13" />
+      <edge id="7" source="Jurong West Central" target="Upper Thomson" weight="48" />
+      <edge id="8" source="Jurong West Central" target="Woodlands East" weight="100" />
+      <edge id="9" source="Jurong West Central" target="Seletar Hills" weight="5" />
+      <edge id="10" source="Jurong West Central" target="Crawford" weight="16" />
+      <edge id="11" source="Jurong West Central" target="Serangoon Garden" weight="28" />
+      <edge id="12" source="Jurong West Central" target="Bedok North" weight="45" />
+      <edge id="13" source="Jurong West Central" target="Sembawang Hills" weight="2" />
+      <edge id="14" source="Jurong West Central" target="Tampines East" weight="60" />
+      <edge id="15" source="Jurong West Central" target="Kampong Bugis" weight="9" />
+      <edge id="16" source="Jurong West Central" target="Aljunied" weight="141" />
+      <edge id="17" source="Jurong West Central" target="Kembangan" weight="26" />
+      <edge id="18" source="Jurong West Central" target="Admiralty" weight="6" />
+      <edge id="19" source="Jurong West Central" target="Trafalgar" weight="16" />
+      <edge id="20" source="Jurong West Central" target="Siglap" weight="3" />
+      <edge id="21" source="Jurong West Central" target="Tampines West" weight="35" />
+      <edge id="22" source="Jurong West Central" target="Simei" weight="47" />
+      <edge id="23" source="Jurong West Central" target="Sembawang Central" weight="59" />
+      <edge id="24" source="Jurong West Central" target="Sembawang Springs" weight="5" />
+      <edge id="25" source="Jurong West Central" target="Sengkang Town Centre" weight="21" />
+      <edge id="26" source="Jurong West Central" target="Geylang East" weight="81" />
+      <edge id="27" source="Jurong West Central" target="Hougang Central" weight="18" />
+      <edge id="28" source="Jurong West Central" target="Balestier" weight="66" />
+      <edge id="29" source="Jurong West Central" target="Compassvale" weight="11" />
+      <edge id="30" source="Jurong West Central" target="Kampong Glam" weight="2" />
+      <edge id="31" source="Jurong West Central" target="Serangoon Central" weight="26" />
+      <edge id="32" source="Jurong West Central" target="Katong" weight="12" />
+      <edge id="33" source="Jurong West Central" target="Pasir Ris West" weight="11" />
+      <edge id="34" source="Jurong West Central" target="Mountbatten" weight="22" />
+      <edge id="35" source="Jurong West Central" target="Bedok South" weight="37" />
+      <edge id="36" source="Jurong West Central" target="Yishun East" weight="22" />
+      <edge id="37" source="Jurong West Central" target="Geylang Bahru" weight="22" />
+      <edge id="38" source="Jurong West Central" target="Khatib" weight="17" />
+      <edge id="39" source="Jurong West Central" target="Bendemeer" weight="42" />
+      <edge id="40" source="Jurong West Central" target="Kebun Bahru" weight="8" />
+      <edge id="41" source="Jurong West Central" target="Northland" weight="43" />
+      <edge id="42" source="Jurong West Central" target="Lorong Chuan" weight="9" />
+      <edge id="43" source="Jurong West Central" target="Kaki Bukit" weight="33" />
+      <edge id="44" source="Jurong West Central" target="Kallang Bahru" weight="39" />
+      <edge id="45" source="Sembawang North" target="Mountbatten" weight="10" />
+      <edge id="46" source="Sembawang North" target="Jurong West Central" weight="27" />
+      <edge id="47" source="Sembawang North" target="Sembawang North" weight="37" />
+      <edge id="48" source="Sembawang North" target="Aljunied" weight="34" />
+      <edge id="49" source="Sembawang North" target="Fernvale" weight="13" />
+      <edge id="50" source="Sembawang North" target="Hougang West" weight="12" />
+      <edge id="51" source="Sembawang North" target="Yishun West" weight="139" />
+      <edge id="52" source="Sembawang North" target="Shangri-La" weight="10" />
+      <edge id="53" source="Sembawang North" target="Upper Thomson" weight="23" />
+      <edge id="54" source="Sembawang North" target="Woodlands East" weight="134" />
+      <edge id="55" source="Sembawang North" target="Katong" weight="1" />
+      <edge id="56" source="Sembawang North" target="Crawford" weight="9" />
+      <edge id="57" source="Sembawang North" target="Serangoon Garden" weight="17" />
+      <edge id="58" source="Sembawang North" target="Bedok North" weight="21" />
+      <edge id="59" source="Sembawang North" target="Sembawang Hills" weight="4" />
+      <edge id="60" source="Sembawang North" target="Tampines East" weight="34" />
+      <edge id="61" source="Sembawang North" target="Kampong Bugis" weight="3" />
+      <edge id="62" source="Sembawang North" target="Frankel" weight="11" />
+      <edge id="63" source="Sembawang North" target="Seletar Hills" weight="12" />
+      <edge id="64" source="Sembawang North" target="Admiralty" weight="18" />
+      <edge id="65" source="Sembawang North" target="Trafalgar" weight="19" />
+      <edge id="66" source="Sembawang North" target="Tampines West" weight="14" />
+      <edge id="67" source="Sembawang North" target="Pasir Ris West" weight="6" />
+      <edge id="68" source="Sembawang North" target="Sembawang Central" weight="43" />
+      <edge id="69" source="Sembawang North" target="Sembawang Springs" weight="33" />
+      <edge id="70" source="Sembawang North" target="Sengkang Town Centre" weight="23" />
+      <edge id="71" source="Sembawang North" target="Geylang East" weight="20" />
+      <edge id="72" source="Sembawang North" target="Hougang Central" weight="10" />
+      <edge id="73" source="Sembawang North" target="Balestier" weight="32" />
+      <edge id="74" source="Sembawang North" target="Compassvale" weight="6" />
+      <edge id="75" source="Sembawang North" target="Kampong Glam" weight="1" />
+      <edge id="76" source="Sembawang North" target="Serangoon Central" weight="8" />
+      <edge id="77" source="Sembawang North" target="Simei" weight="12" />
+      <edge id="78" source="Sembawang North" target="Kebun Bahru" weight="3" />
+      <edge id="79" source="Sembawang North" target="Bedok South" weight="7" />
+      <edge id="80" source="Sembawang North" target="Yishun East" weight="43" />
+      <edge id="81" source="Sembawang North" target="Geylang Bahru" weight="5" />
+      <edge id="82" source="Sembawang North" target="Khatib" weight="18" />
+      <edge id="83" source="Sembawang North" target="Kembangan" weight="7" />
+      <edge id="84" source="Sembawang North" target="Bendemeer" weight="14" />
+      <edge id="85" source="Sembawang North" target="Northland" weight="87" />
+      <edge id="86" source="Sembawang North" target="Lorong Chuan" weight="2" />
+      <edge id="87" source="Sembawang North" target="Kaki Bukit" weight="29" />
+      <edge id="88" source="Sembawang North" target="Kallang Bahru" weight="15" />
+      <edge id="89" source="Aljunied" target="Jurong West Central" weight="129" />
+      <edge id="90" source="Aljunied" target="Sembawang North" weight="28" />
+      <edge id="91" source="Aljunied" target="Frankel" weight="190" />
+      <edge id="92" source="Aljunied" target="Fernvale" weight="88" />
+      <edge id="93" source="Aljunied" target="Hougang West" weight="110" />
+      <edge id="94" source="Aljunied" target="Yishun West" weight="103" />
+      <edge id="95" source="Aljunied" target="Shangri-La" weight="40" />
+      <edge id="96" source="Aljunied" target="Upper Thomson" weight="112" />
+      <edge id="97" source="Aljunied" target="Woodlands East" weight="134" />
+      <edge id="98" source="Aljunied" target="Katong" weight="152" />
+      <edge id="99" source="Aljunied" target="Crawford" weight="247" />
+      <edge id="100" source="Aljunied" target="Serangoon Garden" weight="158" />
+      <edge id="101" source="Aljunied" target="Bedok North" weight="377" />
+      <edge id="102" source="Aljunied" target="Sembawang Hills" weight="6" />
+      <edge id="103" source="Aljunied" target="Tampines East" weight="490" />
+      <edge id="104" source="Aljunied" target="Kampong Bugis" weight="129" />
+      <edge id="105" source="Aljunied" target="Aljunied" weight="343" />
+      <edge id="106" source="Aljunied" target="Seletar Hills" weight="27" />
+      <edge id="107" source="Aljunied" target="Admiralty" weight="8" />
+      <edge id="108" source="Aljunied" target="Trafalgar" weight="128" />
+      <edge id="109" source="Aljunied" target="Siglap" weight="25" />
+      <edge id="110" source="Aljunied" target="Tampines West" weight="230" />
+      <edge id="111" source="Aljunied" target="Pasir Ris West" weight="64" />
+      <edge id="112" source="Aljunied" target="Sembawang Central" weight="55" />
+      <edge id="113" source="Aljunied" target="Sembawang Springs" weight="14" />
+      <edge id="114" source="Aljunied" target="Sengkang Town Centre" weight="140" />
+      <edge id="115" source="Aljunied" target="Geylang East" weight="475" />
+      <edge id="116" source="Aljunied" target="Hougang Central" weight="79" />
+      <edge id="117" source="Aljunied" target="Balestier" weight="285" />
+      <edge id="118" source="Aljunied" target="Compassvale" weight="88" />
+      <edge id="119" source="Aljunied" target="Kampong Glam" weight="46" />
+      <edge id="120" source="Aljunied" target="Serangoon Central" weight="174" />
+      <edge id="121" source="Aljunied" target="Simei" weight="210" />
+      <edge id="122" source="Aljunied" target="Mountbatten" weight="216" />
+      <edge id="123" source="Aljunied" target="Bedok South" weight="176" />
+      <edge id="124" source="Aljunied" target="Yishun East" weight="76" />
+      <edge id="125" source="Aljunied" target="Geylang Bahru" weight="251" />
+      <edge id="126" source="Aljunied" target="Khatib" weight="54" />
+      <edge id="127" source="Aljunied" target="Kembangan" weight="203" />
+      <edge id="128" source="Aljunied" target="Bendemeer" weight="198" />
+      <edge id="129" source="Aljunied" target="Kebun Bahru" weight="34" />
+      <edge id="130" source="Aljunied" target="Northland" weight="62" />
+      <edge id="131" source="Aljunied" target="Lorong Chuan" weight="52" />
+      <edge id="132" source="Aljunied" target="Kaki Bukit" weight="271" />
+      <edge id="133" source="Aljunied" target="Kallang Bahru" weight="472" />
+      <edge id="134" source="Fernvale" target="Mountbatten" weight="11" />
+      <edge id="135" source="Fernvale" target="Jurong West Central" weight="19" />
+      <edge id="136" source="Fernvale" target="Sembawang North" weight="15" />
+      <edge id="137" source="Fernvale" target="Frankel" weight="31" />
+      <edge id="138" source="Fernvale" target="Fernvale" weight="34" />
+      <edge id="139" source="Fernvale" target="Hougang West" weight="123" />
+      <edge id="140" source="Fernvale" target="Yishun West" weight="56" />
+      <edge id="141" source="Fernvale" target="Shangri-La" weight="10" />
+      <edge id="142" source="Fernvale" target="Upper Thomson" weight="66" />
+      <edge id="143" source="Fernvale" target="Woodlands East" weight="40" />
+      <edge id="144" source="Fernvale" target="Sembawang Springs" weight="9" />
+      <edge id="145" source="Fernvale" target="Crawford" weight="24" />
+      <edge id="146" source="Fernvale" target="Serangoon Garden" weight="83" />
+      <edge id="147" source="Fernvale" target="Bedok North" weight="70" />
+      <edge id="148" source="Fernvale" target="Sembawang Hills" weight="7" />
+      <edge id="149" source="Fernvale" target="Tampines East" weight="141" />
+      <edge id="150" source="Fernvale" target="Kampong Bugis" weight="4" />
+      <edge id="151" source="Fernvale" target="Aljunied" weight="80" />
+      <edge id="152" source="Fernvale" target="Seletar Hills" weight="167" />
+      <edge id="153" source="Fernvale" target="Kebun Bahru" weight="26" />
+      <edge id="154" source="Fernvale" target="Trafalgar" weight="316" />
+      <edge id="155" source="Fernvale" target="Siglap" weight="1" />
+      <edge id="156" source="Fernvale" target="Tampines West" weight="83" />
+      <edge id="157" source="Fernvale" target="Pasir Ris West" weight="28" />
+      <edge id="158" source="Fernvale" target="Sembawang Central" weight="28" />
+      <edge id="159" source="Fernvale" target="Katong" weight="12" />
+      <edge id="160" source="Fernvale" target="Sengkang Town Centre" weight="251" />
+      <edge id="161" source="Fernvale" target="Geylang East" weight="71" />
+      <edge id="162" source="Fernvale" target="Hougang Central" weight="60" />
+      <edge id="163" source="Fernvale" target="Balestier" weight="63" />
+      <edge id="164" source="Fernvale" target="Khatib" weight="25" />
+      <edge id="165" source="Fernvale" target="Kampong Glam" weight="3" />
+      <edge id="166" source="Fernvale" target="Serangoon Central" weight="90" />
+      <edge id="167" source="Fernvale" target="Simei" weight="42" />
+      <edge id="168" source="Fernvale" target="Admiralty" weight="8" />
+      <edge id="169" source="Fernvale" target="Bedok South" weight="24" />
+      <edge id="170" source="Fernvale" target="Yishun East" weight="49" />
+      <edge id="171" source="Fernvale" target="Geylang Bahru" weight="21" />
+      <edge id="172" source="Fernvale" target="Compassvale" weight="149" />
+      <edge id="173" source="Fernvale" target="Kembangan" weight="22" />
+      <edge id="174" source="Fernvale" target="Bendemeer" weight="53" />
+      <edge id="175" source="Fernvale" target="Northland" weight="41" />
+      <edge id="176" source="Fernvale" target="Lorong Chuan" weight="20" />
+      <edge id="177" source="Fernvale" target="Kaki Bukit" weight="90" />
+      <edge id="178" source="Fernvale" target="Kallang Bahru" weight="44" />
+      <edge id="179" source="Hougang West" target="Jurong West Central" weight="13" />
+      <edge id="180" source="Hougang West" target="Sembawang North" weight="9" />
+      <edge id="181" source="Hougang West" target="Frankel" weight="27" />
+      <edge id="182" source="Hougang West" target="Fernvale" weight="122" />
+      <edge id="183" source="Hougang West" target="Hougang West" weight="94" />
+      <edge id="184" source="Hougang West" target="Yishun West" weight="46" />
+      <edge id="185" source="Hougang West" target="Shangri-La" weight="11" />
+      <edge id="186" source="Hougang West" target="Upper Thomson" weight="72" />
+      <edge id="187" source="Hougang West" target="Woodlands East" weight="34" />
+      <edge id="188" source="Hougang West" target="Seletar Hills" weight="41" />
+      <edge id="189" source="Hougang West" target="Crawford" weight="30" />
+      <edge id="190" source="Hougang West" target="Serangoon Garden" weight="146" />
+      <edge id="191" source="Hougang West" target="Bedok North" weight="69" />
+      <edge id="192" source="Hougang West" target="Bendemeer" weight="58" />
+      <edge id="193" source="Hougang West" target="Sembawang Hills" weight="2" />
+      <edge id="194" source="Hougang West" target="Tampines East" weight="129" />
+      <edge id="195" source="Hougang West" target="Kampong Bugis" weight="9" />
+      <edge id="196" source="Hougang West" target="Aljunied" weight="88" />
+      <edge id="197" source="Hougang West" target="Kembangan" weight="42" />
+      <edge id="198" source="Hougang West" target="Kebun Bahru" weight="24" />
+      <edge id="199" source="Hougang West" target="Trafalgar" weight="110" />
+      <edge id="200" source="Hougang West" target="Siglap" weight="8" />
+      <edge id="201" source="Hougang West" target="Tampines West" weight="86" />
+      <edge id="202" source="Hougang West" target="Simei" weight="65" />
+      <edge id="203" source="Hougang West" target="Sembawang Central" weight="20" />
+      <edge id="204" source="Hougang West" target="Sembawang Springs" weight="3" />
+      <edge id="205" source="Hougang West" target="Sengkang Town Centre" weight="104" />
+      <edge id="206" source="Hougang West" target="Geylang East" weight="75" />
+      <edge id="207" source="Hougang West" target="Hougang Central" weight="74" />
+      <edge id="208" source="Hougang West" target="Balestier" weight="91" />
+      <edge id="209" source="Hougang West" target="Khatib" weight="22" />
+      <edge id="210" source="Hougang West" target="Kampong Glam" weight="2" />
+      <edge id="211" source="Hougang West" target="Serangoon Central" weight="163" />
+      <edge id="212" source="Hougang West" target="Katong" weight="9" />
+      <edge id="213" source="Hougang West" target="Pasir Ris West" weight="25" />
+      <edge id="214" source="Hougang West" target="Mountbatten" weight="18" />
+      <edge id="215" source="Hougang West" target="Bedok South" weight="15" />
+      <edge id="216" source="Hougang West" target="Yishun East" weight="31" />
+      <edge id="217" source="Hougang West" target="Geylang Bahru" weight="21" />
+      <edge id="218" source="Hougang West" target="Compassvale" weight="87" />
+      <edge id="219" source="Hougang West" target="Admiralty" weight="2" />
+      <edge id="220" source="Hougang West" target="Northland" weight="36" />
+      <edge id="221" source="Hougang West" target="Lorong Chuan" weight="28" />
+      <edge id="222" source="Hougang West" target="Kaki Bukit" weight="140" />
+      <edge id="223" source="Hougang West" target="Kallang Bahru" weight="69" />
+      <edge id="224" source="Yishun West" target="Jurong West Central" weight="67" />
+      <edge id="225" source="Yishun West" target="Sembawang North" weight="133" />
+      <edge id="226" source="Yishun West" target="Frankel" weight="25" />
+      <edge id="227" source="Yishun West" target="Fernvale" weight="54" />
+      <edge id="228" source="Yishun West" target="Hougang West" weight="49" />
+      <edge id="229" source="Yishun West" target="Yishun West" weight="58" />
+      <edge id="230" source="Yishun West" target="Shangri-La" weight="29" />
+      <edge id="231" source="Yishun West" target="Upper Thomson" weight="102" />
+      <edge id="232" source="Yishun West" target="Woodlands East" weight="508" />
+      <edge id="233" source="Yishun West" target="Katong" weight="6" />
+      <edge id="234" source="Yishun West" target="Crawford" weight="22" />
+      <edge id="235" source="Yishun West" target="Serangoon Garden" weight="82" />
+      <edge id="236" source="Yishun West" target="Bedok North" weight="52" />
+      <edge id="237" source="Yishun West" target="Bendemeer" weight="45" />
+      <edge id="238" source="Yishun West" target="Sembawang Hills" weight="14" />
+      <edge id="239" source="Yishun West" target="Tampines East" weight="154" />
+      <edge id="240" source="Yishun West" target="Kampong Bugis" weight="10" />
+      <edge id="241" source="Yishun West" target="Aljunied" weight="107" />
+      <edge id="242" source="Yishun West" target="Seletar Hills" weight="28" />
+      <edge id="243" source="Yishun West" target="Kebun Bahru" weight="31" />
+      <edge id="244" source="Yishun West" target="Trafalgar" weight="82" />
+      <edge id="245" source="Yishun West" target="Siglap" weight="3" />
+      <edge id="246" source="Yishun West" target="Tampines West" weight="57" />
+      <edge id="247" source="Yishun West" target="Pasir Ris West" weight="27" />
+      <edge id="248" source="Yishun West" target="Sembawang Central" weight="341" />
+      <edge id="249" source="Yishun West" target="Sembawang Springs" weight="139" />
+      <edge id="250" source="Yishun West" target="Sengkang Town Centre" weight="73" />
+      <edge id="251" source="Yishun West" target="Geylang East" weight="89" />
+      <edge id="252" source="Yishun West" target="Hougang Central" weight="22" />
+      <edge id="253" source="Yishun West" target="Balestier" weight="177" />
+      <edge id="254" source="Yishun West" target="Khatib" weight="112" />
+      <edge id="255" source="Yishun West" target="Kampong Glam" weight="1" />
+      <edge id="256" source="Yishun West" target="Serangoon Central" weight="50" />
+      <edge id="257" source="Yishun West" target="Simei" weight="55" />
+      <edge id="258" source="Yishun West" target="Mountbatten" weight="13" />
+      <edge id="259" source="Yishun West" target="Bedok South" weight="21" />
+      <edge id="260" source="Yishun West" target="Yishun East" weight="320" />
+      <edge id="261" source="Yishun West" target="Geylang Bahru" weight="26" />
+      <edge id="262" source="Yishun West" target="Compassvale" weight="24" />
+      <edge id="263" source="Yishun West" target="Kembangan" weight="26" />
+      <edge id="264" source="Yishun West" target="Admiralty" weight="80" />
+      <edge id="265" source="Yishun West" target="Northland" weight="241" />
+      <edge id="266" source="Yishun West" target="Lorong Chuan" weight="24" />
+      <edge id="267" source="Yishun West" target="Kaki Bukit" weight="69" />
+      <edge id="268" source="Yishun West" target="Kallang Bahru" weight="55" />
+      <edge id="269" source="Shangri-La" target="Mountbatten" weight="5" />
+      <edge id="270" source="Shangri-La" target="Jurong West Central" weight="13" />
+      <edge id="271" source="Shangri-La" target="Sembawang North" weight="7" />
+      <edge id="272" source="Shangri-La" target="Aljunied" weight="48" />
+      <edge id="273" source="Shangri-La" target="Fernvale" weight="8" />
+      <edge id="274" source="Shangri-La" target="Hougang West" weight="12" />
+      <edge id="275" source="Shangri-La" target="Yishun West" weight="28" />
+      <edge id="276" source="Shangri-La" target="Shangri-La" weight="5" />
+      <edge id="277" source="Shangri-La" target="Upper Thomson" weight="163" />
+      <edge id="278" source="Shangri-La" target="Woodlands East" weight="26" />
+      <edge id="279" source="Shangri-La" target="Sembawang Springs" weight="1" />
+      <edge id="280" source="Shangri-La" target="Crawford" weight="9" />
+      <edge id="281" source="Shangri-La" target="Serangoon Garden" weight="39" />
+      <edge id="282" source="Shangri-La" target="Bedok North" weight="11" />
+      <edge id="283" source="Shangri-La" target="Sembawang Hills" weight="5" />
+      <edge id="284" source="Shangri-La" target="Tampines East" weight="21" />
+      <edge id="285" source="Shangri-La" target="Kampong Bugis" weight="2" />
+      <edge id="286" source="Shangri-La" target="Frankel" weight="9" />
+      <edge id="287" source="Shangri-La" target="Seletar Hills" weight="8" />
+      <edge id="288" source="Shangri-La" target="Admiralty" weight="2" />
+      <edge id="289" source="Shangri-La" target="Trafalgar" weight="20" />
+      <edge id="290" source="Shangri-La" target="Siglap" weight="1" />
+      <edge id="291" source="Shangri-La" target="Tampines West" weight="16" />
+      <edge id="292" source="Shangri-La" target="Pasir Ris West" weight="1" />
+      <edge id="293" source="Shangri-La" target="Sembawang Central" weight="12" />
+      <edge id="294" source="Shangri-La" target="Katong" weight="2" />
+      <edge id="295" source="Shangri-La" target="Sengkang Town Centre" weight="7" />
+      <edge id="296" source="Shangri-La" target="Geylang East" weight="30" />
+      <edge id="297" source="Shangri-La" target="Hougang Central" weight="7" />
+      <edge id="298" source="Shangri-La" target="Balestier" weight="74" />
+      <edge id="299" source="Shangri-La" target="Khatib" weight="13" />
+      <edge id="300" source="Shangri-La" target="Serangoon Central" weight="26" />
+      <edge id="301" source="Shangri-La" target="Simei" weight="10" />
+      <edge id="302" source="Shangri-La" target="Kebun Bahru" weight="14" />
+      <edge id="303" source="Shangri-La" target="Bedok South" weight="3" />
+      <edge id="304" source="Shangri-La" target="Yishun East" weight="12" />
+      <edge id="305" source="Shangri-La" target="Geylang Bahru" weight="8" />
+      <edge id="306" source="Shangri-La" target="Compassvale" weight="11" />
+      <edge id="307" source="Shangri-La" target="Kembangan" weight="6" />
+      <edge id="308" source="Shangri-La" target="Bendemeer" weight="15" />
+      <edge id="309" source="Shangri-La" target="Northland" weight="17" />
+      <edge id="310" source="Shangri-La" target="Lorong Chuan" weight="15" />
+      <edge id="311" source="Shangri-La" target="Kaki Bukit" weight="20" />
+      <edge id="312" source="Shangri-La" target="Kallang Bahru" weight="23" />
+      <edge id="313" source="Bendemeer" target="Jurong West Central" weight="42" />
+      <edge id="314" source="Bendemeer" target="Sembawang North" weight="25" />
+      <edge id="315" source="Bendemeer" target="Aljunied" weight="199" />
+      <edge id="316" source="Bendemeer" target="Fernvale" weight="57" />
+      <edge id="317" source="Bendemeer" target="Hougang West" weight="80" />
+      <edge id="318" source="Bendemeer" target="Yishun West" weight="65" />
+      <edge id="319" source="Bendemeer" target="Shangri-La" weight="26" />
+      <edge id="320" source="Bendemeer" target="Upper Thomson" weight="72" />
+      <edge id="321" source="Bendemeer" target="Woodlands East" weight="72" />
+      <edge id="322" source="Bendemeer" target="Sembawang Springs" weight="6" />
+      <edge id="323" source="Bendemeer" target="Crawford" weight="41" />
+      <edge id="324" source="Bendemeer" target="Serangoon Garden" weight="110" />
+      <edge id="325" source="Bendemeer" target="Bedok North" weight="96" />
+      <edge id="326" source="Bendemeer" target="Sembawang Hills" weight="4" />
+      <edge id="327" source="Bendemeer" target="Tampines East" weight="184" />
+      <edge id="328" source="Bendemeer" target="Kampong Bugis" weight="15" />
+      <edge id="329" source="Bendemeer" target="Frankel" weight="38" />
+      <edge id="330" source="Bendemeer" target="Seletar Hills" weight="15" />
+      <edge id="331" source="Bendemeer" target="Admiralty" weight="5" />
+      <edge id="332" source="Bendemeer" target="Trafalgar" weight="61" />
+      <edge id="333" source="Bendemeer" target="Siglap" weight="8" />
+      <edge id="334" source="Bendemeer" target="Tampines West" weight="144" />
+      <edge id="335" source="Bendemeer" target="Pasir Ris West" weight="19" />
+      <edge id="336" source="Bendemeer" target="Sembawang Central" weight="35" />
+      <edge id="337" source="Bendemeer" target="Katong" weight="15" />
+      <edge id="338" source="Bendemeer" target="Sengkang Town Centre" weight="82" />
+      <edge id="339" source="Bendemeer" target="Geylang East" weight="106" />
+      <edge id="340" source="Bendemeer" target="Hougang Central" weight="77" />
+      <edge id="341" source="Bendemeer" target="Balestier" weight="222" />
+      <edge id="342" source="Bendemeer" target="Khatib" weight="30" />
+      <edge id="343" source="Bendemeer" target="Kampong Glam" weight="9" />
+      <edge id="344" source="Bendemeer" target="Serangoon Central" weight="169" />
+      <edge id="345" source="Bendemeer" target="Simei" weight="67" />
+      <edge id="346" source="Bendemeer" target="Mountbatten" weight="35" />
+      <edge id="347" source="Bendemeer" target="Bedok South" weight="37" />
+      <edge id="348" source="Bendemeer" target="Yishun East" weight="43" />
+      <edge id="349" source="Bendemeer" target="Geylang Bahru" weight="42" />
+      <edge id="350" source="Bendemeer" target="Compassvale" weight="56" />
+      <edge id="351" source="Bendemeer" target="Kembangan" weight="45" />
+      <edge id="352" source="Bendemeer" target="Bendemeer" weight="36" />
+      <edge id="353" source="Bendemeer" target="Kebun Bahru" weight="20" />
+      <edge id="354" source="Bendemeer" target="Northland" weight="44" />
+      <edge id="355" source="Bendemeer" target="Lorong Chuan" weight="43" />
+      <edge id="356" source="Bendemeer" target="Kaki Bukit" weight="124" />
+      <edge id="357" source="Bendemeer" target="Kallang Bahru" weight="104" />
+      <edge id="358" source="Woodlands East" target="Jurong West Central" weight="116" />
+      <edge id="359" source="Woodlands East" target="Sembawang North" weight="148" />
+      <edge id="360" source="Woodlands East" target="Aljunied" weight="128" />
+      <edge id="361" source="Woodlands East" target="Fernvale" weight="37" />
+      <edge id="362" source="Woodlands East" target="Hougang West" weight="31" />
+      <edge id="363" source="Woodlands East" target="Yishun West" weight="503" />
+      <edge id="364" source="Woodlands East" target="Shangri-La" weight="17" />
+      <edge id="365" source="Woodlands East" target="Upper Thomson" weight="106" />
+      <edge id="366" source="Woodlands East" target="Woodlands East" weight="208" />
+      <edge id="367" source="Woodlands East" target="Katong" weight="10" />
+      <edge id="368" source="Woodlands East" target="Crawford" weight="30" />
+      <edge id="369" source="Woodlands East" target="Serangoon Garden" weight="72" />
+      <edge id="370" source="Woodlands East" target="Bedok North" weight="60" />
+      <edge id="371" source="Woodlands East" target="Bendemeer" weight="55" />
+      <edge id="372" source="Woodlands East" target="Sembawang Hills" weight="7" />
+      <edge id="373" source="Woodlands East" target="Tampines East" weight="137" />
+      <edge id="374" source="Woodlands East" target="Kampong Bugis" weight="8" />
+      <edge id="375" source="Woodlands East" target="Frankel" weight="24" />
+      <edge id="376" source="Woodlands East" target="Seletar Hills" weight="44" />
+      <edge id="377" source="Woodlands East" target="Mountbatten" weight="21" />
+      <edge id="378" source="Woodlands East" target="Trafalgar" weight="76" />
+      <edge id="379" source="Woodlands East" target="Siglap" weight="4" />
+      <edge id="380" source="Woodlands East" target="Tampines West" weight="74" />
+      <edge id="381" source="Woodlands East" target="Pasir Ris West" weight="20" />
+      <edge id="382" source="Woodlands East" target="Sembawang Central" weight="476" />
+      <edge id="383" source="Woodlands East" target="Sembawang Springs" weight="77" />
+      <edge id="384" source="Woodlands East" target="Sengkang Town Centre" weight="74" />
+      <edge id="385" source="Woodlands East" target="Geylang East" weight="125" />
+      <edge id="386" source="Woodlands East" target="Hougang Central" weight="17" />
+      <edge id="387" source="Woodlands East" target="Balestier" weight="177" />
+      <edge id="388" source="Woodlands East" target="Compassvale" weight="14" />
+      <edge id="389" source="Woodlands East" target="Kampong Glam" weight="8" />
+      <edge id="390" source="Woodlands East" target="Serangoon Central" weight="46" />
+      <edge id="391" source="Woodlands East" target="Simei" weight="63" />
+      <edge id="392" source="Woodlands East" target="Kebun Bahru" weight="26" />
+      <edge id="393" source="Woodlands East" target="Bedok South" weight="24" />
+      <edge id="394" source="Woodlands East" target="Yishun East" weight="113" />
+      <edge id="395" source="Woodlands East" target="Geylang Bahru" weight="33" />
+      <edge id="396" source="Woodlands East" target="Khatib" weight="86" />
+      <edge id="397" source="Woodlands East" target="Kembangan" weight="43" />
+      <edge id="398" source="Woodlands East" target="Admiralty" weight="34" />
+      <edge id="399" source="Woodlands East" target="Northland" weight="303" />
+      <edge id="400" source="Woodlands East" target="Lorong Chuan" weight="40" />
+      <edge id="401" source="Woodlands East" target="Kaki Bukit" weight="83" />
+      <edge id="402" source="Woodlands East" target="Kallang Bahru" weight="59" />
+      <edge id="403" source="Upper Thomson" target="Jurong West Central" weight="68" />
+      <edge id="404" source="Upper Thomson" target="Sembawang North" weight="30" />
+      <edge id="405" source="Upper Thomson" target="Aljunied" weight="103" />
+      <edge id="406" source="Upper Thomson" target="Fernvale" weight="65" />
+      <edge id="407" source="Upper Thomson" target="Hougang West" weight="80" />
+      <edge id="408" source="Upper Thomson" target="Yishun West" weight="138" />
+      <edge id="409" source="Upper Thomson" target="Shangri-La" weight="140" />
+      <edge id="410" source="Upper Thomson" target="Upper Thomson" weight="374" />
+      <edge id="411" source="Upper Thomson" target="Woodlands East" weight="108" />
+      <edge id="412" source="Upper Thomson" target="Seletar Hills" weight="29" />
+      <edge id="413" source="Upper Thomson" target="Crawford" weight="24" />
+      <edge id="414" source="Upper Thomson" target="Serangoon Garden" weight="112" />
+      <edge id="415" source="Upper Thomson" target="Bedok North" weight="59" />
+      <edge id="416" source="Upper Thomson" target="Sembawang Hills" weight="93" />
+      <edge id="417" source="Upper Thomson" target="Tampines East" weight="107" />
+      <edge id="418" source="Upper Thomson" target="Kampong Bugis" weight="4" />
+      <edge id="419" source="Upper Thomson" target="Frankel" weight="26" />
+      <edge id="420" source="Upper Thomson" target="Kembangan" weight="15" />
+      <edge id="421" source="Upper Thomson" target="Admiralty" weight="12" />
+      <edge id="422" source="Upper Thomson" target="Trafalgar" weight="62" />
+      <edge id="423" source="Upper Thomson" target="Siglap" weight="2" />
+      <edge id="424" source="Upper Thomson" target="Tampines West" weight="65" />
+      <edge id="425" source="Upper Thomson" target="Simei" weight="43" />
+      <edge id="426" source="Upper Thomson" target="Sembawang Central" weight="58" />
+      <edge id="427" source="Upper Thomson" target="Sembawang Springs" weight="14" />
+      <edge id="428" source="Upper Thomson" target="Sengkang Town Centre" weight="48" />
+      <edge id="429" source="Upper Thomson" target="Geylang East" weight="75" />
+      <edge id="430" source="Upper Thomson" target="Hougang Central" weight="37" />
+      <edge id="431" source="Upper Thomson" target="Balestier" weight="204" />
+      <edge id="432" source="Upper Thomson" target="Khatib" weight="67" />
+      <edge id="433" source="Upper Thomson" target="Kampong Glam" weight="3" />
+      <edge id="434" source="Upper Thomson" target="Serangoon Central" weight="85" />
+      <edge id="435" source="Upper Thomson" target="Katong" weight="15" />
+      <edge id="436" source="Upper Thomson" target="Pasir Ris West" weight="11" />
+      <edge id="437" source="Upper Thomson" target="Mountbatten" weight="25" />
+      <edge id="438" source="Upper Thomson" target="Bedok South" weight="32" />
+      <edge id="439" source="Upper Thomson" target="Yishun East" weight="71" />
+      <edge id="440" source="Upper Thomson" target="Geylang Bahru" weight="20" />
+      <edge id="441" source="Upper Thomson" target="Compassvale" weight="25" />
+      <edge id="442" source="Upper Thomson" target="Bendemeer" weight="70" />
+      <edge id="443" source="Upper Thomson" target="Kebun Bahru" weight="159" />
+      <edge id="444" source="Upper Thomson" target="Northland" weight="77" />
+      <edge id="445" source="Upper Thomson" target="Lorong Chuan" weight="43" />
+      <edge id="446" source="Upper Thomson" target="Kaki Bukit" weight="71" />
+      <edge id="447" source="Upper Thomson" target="Kallang Bahru" weight="65" />
+      <edge id="448" source="Crawford" target="Jurong West Central" weight="26" />
+      <edge id="449" source="Crawford" target="Sembawang North" weight="13" />
+      <edge id="450" source="Crawford" target="Frankel" weight="45" />
+      <edge id="451" source="Crawford" target="Fernvale" weight="23" />
+      <edge id="452" source="Crawford" target="Hougang West" weight="26" />
+      <edge id="453" source="Crawford" target="Yishun West" weight="30" />
+      <edge id="454" source="Crawford" target="Shangri-La" weight="6" />
+      <edge id="455" source="Crawford" target="Upper Thomson" weight="26" />
+      <edge id="456" source="Crawford" target="Woodlands East" weight="28" />
+      <edge id="457" source="Crawford" target="Seletar Hills" weight="4" />
+      <edge id="458" source="Crawford" target="Crawford" weight="16" />
+      <edge id="459" source="Crawford" target="Serangoon Garden" weight="27" />
+      <edge id="460" source="Crawford" target="Bedok North" weight="88" />
+      <edge id="461" source="Crawford" target="Sembawang Hills" weight="3" />
+      <edge id="462" source="Crawford" target="Tampines East" weight="109" />
+      <edge id="463" source="Crawford" target="Kampong Bugis" weight="19" />
+      <edge id="464" source="Crawford" target="Aljunied" weight="263" />
+      <edge id="465" source="Crawford" target="Kembangan" weight="48" />
+      <edge id="466" source="Crawford" target="Admiralty" weight="3" />
+      <edge id="467" source="Crawford" target="Trafalgar" weight="32" />
+      <edge id="468" source="Crawford" target="Siglap" weight="9" />
+      <edge id="469" source="Crawford" target="Tampines West" weight="64" />
+      <edge id="470" source="Crawford" target="Simei" weight="57" />
+      <edge id="471" source="Crawford" target="Sembawang Central" weight="15" />
+      <edge id="472" source="Crawford" target="Sembawang Springs" weight="6" />
+      <edge id="473" source="Crawford" target="Sengkang Town Centre" weight="27" />
+      <edge id="474" source="Crawford" target="Geylang East" weight="105" />
+      <edge id="475" source="Crawford" target="Hougang Central" weight="12" />
+      <edge id="476" source="Crawford" target="Balestier" weight="58" />
+      <edge id="477" source="Crawford" target="Compassvale" weight="30" />
+      <edge id="478" source="Crawford" target="Kampong Glam" weight="3" />
+      <edge id="479" source="Crawford" target="Serangoon Central" weight="54" />
+      <edge id="480" source="Crawford" target="Katong" weight="31" />
+      <edge id="481" source="Crawford" target="Pasir Ris West" weight="27" />
+      <edge id="482" source="Crawford" target="Mountbatten" weight="29" />
+      <edge id="483" source="Crawford" target="Bedok South" weight="54" />
+      <edge id="484" source="Crawford" target="Yishun East" weight="18" />
+      <edge id="485" source="Crawford" target="Geylang Bahru" weight="42" />
+      <edge id="486" source="Crawford" target="Khatib" weight="14" />
+      <edge id="487" source="Crawford" target="Bendemeer" weight="39" />
+      <edge id="488" source="Crawford" target="Kebun Bahru" weight="7" />
+      <edge id="489" source="Crawford" target="Northland" weight="14" />
+      <edge id="490" source="Crawford" target="Lorong Chuan" weight="10" />
+      <edge id="491" source="Crawford" target="Kaki Bukit" weight="54" />
+      <edge id="492" source="Crawford" target="Kallang Bahru" weight="59" />
+      <edge id="493" source="Serangoon Garden" target="Jurong West Central" weight="38" />
+      <edge id="494" source="Serangoon Garden" target="Sembawang North" weight="20" />
+      <edge id="495" source="Serangoon Garden" target="Aljunied" weight="149" />
+      <edge id="496" source="Serangoon Garden" target="Fernvale" weight="96" />
+      <edge id="497" source="Serangoon Garden" target="Hougang West" weight="200" />
+      <edge id="498" source="Serangoon Garden" target="Yishun West" weight="75" />
+      <edge id="499" source="Serangoon Garden" target="Shangri-La" weight="44" />
+      <edge id="500" source="Serangoon Garden" target="Upper Thomson" weight="133" />
+      <edge id="501" source="Serangoon Garden" target="Woodlands East" weight="78" />
+      <edge id="502" source="Serangoon Garden" target="Katong" weight="18" />
+      <edge id="503" source="Serangoon Garden" target="Crawford" weight="25" />
+      <edge id="504" source="Serangoon Garden" target="Serangoon Garden" weight="470" />
+      <edge id="505" source="Serangoon Garden" target="Bedok North" weight="77" />
+      <edge id="506" source="Serangoon Garden" target="Sembawang Hills" weight="2" />
+      <edge id="507" source="Serangoon Garden" target="Tampines East" weight="88" />
+      <edge id="508" source="Serangoon Garden" target="Kampong Bugis" weight="9" />
+      <edge id="509" source="Serangoon Garden" target="Frankel" weight="38" />
+      <edge id="510" source="Serangoon Garden" target="Seletar Hills" weight="62" />
+      <edge id="511" source="Serangoon Garden" target="Admiralty" weight="8" />
+      <edge id="512" source="Serangoon Garden" target="Trafalgar" weight="149" />
+      <edge id="513" source="Serangoon Garden" target="Siglap" weight="6" />
+      <edge id="514" source="Serangoon Garden" target="Tampines West" weight="79" />
+      <edge id="515" source="Serangoon Garden" target="Pasir Ris West" weight="19" />
+      <edge id="516" source="Serangoon Garden" target="Sembawang Central" weight="43" />
+      <edge id="517" source="Serangoon Garden" target="Sembawang Springs" weight="10" />
+      <edge id="518" source="Serangoon Garden" target="Sengkang Town Centre" weight="63" />
+      <edge id="519" source="Serangoon Garden" target="Geylang East" weight="114" />
+      <edge id="520" source="Serangoon Garden" target="Hougang Central" weight="99" />
+      <edge id="521" source="Serangoon Garden" target="Balestier" weight="130" />
+      <edge id="522" source="Serangoon Garden" target="Khatib" weight="44" />
+      <edge id="523" source="Serangoon Garden" target="Kampong Glam" weight="5" />
+      <edge id="524" source="Serangoon Garden" target="Serangoon Central" weight="301" />
+      <edge id="525" source="Serangoon Garden" target="Simei" weight="41" />
+      <edge id="526" source="Serangoon Garden" target="Mountbatten" weight="28" />
+      <edge id="527" source="Serangoon Garden" target="Bedok South" weight="28" />
+      <edge id="528" source="Serangoon Garden" target="Yishun East" weight="57" />
+      <edge id="529" source="Serangoon Garden" target="Geylang Bahru" weight="29" />
+      <edge id="530" source="Serangoon Garden" target="Compassvale" weight="66" />
+      <edge id="531" source="Serangoon Garden" target="Kembangan" weight="39" />
+      <edge id="532" source="Serangoon Garden" target="Bendemeer" weight="83" />
+      <edge id="533" source="Serangoon Garden" target="Kebun Bahru" weight="49" />
+      <edge id="534" source="Serangoon Garden" target="Northland" weight="50" />
+      <edge id="535" source="Serangoon Garden" target="Lorong Chuan" weight="104" />
+      <edge id="536" source="Serangoon Garden" target="Kaki Bukit" weight="97" />
+      <edge id="537" source="Serangoon Garden" target="Kallang Bahru" weight="64" />
+      <edge id="538" source="Bedok North" target="Jurong West Central" weight="58" />
+      <edge id="539" source="Bedok North" target="Sembawang North" weight="17" />
+      <edge id="540" source="Bedok North" target="Frankel" weight="427" />
+      <edge id="541" source="Bedok North" target="Fernvale" weight="72" />
+      <edge id="542" source="Bedok North" target="Hougang West" weight="70" />
+      <edge id="543" source="Bedok North" target="Yishun West" weight="56" />
+      <edge id="544" source="Bedok North" target="Shangri-La" weight="9" />
+      <edge id="545" source="Bedok North" target="Upper Thomson" weight="71" />
+      <edge id="546" source="Bedok North" target="Woodlands East" weight="46" />
+      <edge id="547" source="Bedok North" target="Seletar Hills" weight="17" />
+      <edge id="548" source="Bedok North" target="Crawford" weight="70" />
+      <edge id="549" source="Bedok North" target="Serangoon Garden" weight="72" />
+      <edge id="550" source="Bedok North" target="Bedok North" weight="731" />
+      <edge id="551" source="Bedok North" target="Sembawang Hills" weight="5" />
+      <edge id="552" source="Bedok North" target="Tampines East" weight="1150" />
+      <edge id="553" source="Bedok North" target="Kampong Bugis" weight="23" />
+      <edge id="554" source="Bedok North" target="Aljunied" weight="403" />
+      <edge id="555" source="Bedok North" target="Kembangan" weight="379" />
+      <edge id="556" source="Bedok North" target="Admiralty" weight="4" />
+      <edge id="557" source="Bedok North" target="Trafalgar" weight="71" />
+      <edge id="558" source="Bedok North" target="Siglap" weight="55" />
+      <edge id="559" source="Bedok North" target="Tampines West" weight="691" />
+      <edge id="560" source="Bedok North" target="Simei" weight="652" />
+      <edge id="561" source="Bedok North" target="Sembawang Central" weight="24" />
+      <edge id="562" source="Bedok North" target="Sembawang Springs" weight="9" />
+      <edge id="563" source="Bedok North" target="Sengkang Town Centre" weight="78" />
+      <edge id="564" source="Bedok North" target="Geylang East" weight="511" />
+      <edge id="565" source="Bedok North" target="Hougang Central" weight="28" />
+      <edge id="566" source="Bedok North" target="Balestier" weight="126" />
+      <edge id="567" source="Bedok North" target="Compassvale" weight="39" />
+      <edge id="568" source="Bedok North" target="Kampong Glam" weight="10" />
+      <edge id="569" source="Bedok North" target="Serangoon Central" weight="81" />
+      <edge id="570" source="Bedok North" target="Katong" weight="104" />
+      <edge id="571" source="Bedok North" target="Pasir Ris West" weight="138" />
+      <edge id="572" source="Bedok North" target="Mountbatten" weight="59" />
+      <edge id="573" source="Bedok North" target="Bedok South" weight="498" />
+      <edge id="574" source="Bedok North" target="Yishun East" weight="39" />
+      <edge id="575" source="Bedok North" target="Geylang Bahru" weight="91" />
+      <edge id="576" source="Bedok North" target="Khatib" weight="31" />
+      <edge id="577" source="Bedok North" target="Bendemeer" weight="68" />
+      <edge id="578" source="Bedok North" target="Kebun Bahru" weight="20" />
+      <edge id="579" source="Bedok North" target="Northland" weight="42" />
+      <edge id="580" source="Bedok North" target="Lorong Chuan" weight="29" />
+      <edge id="581" source="Bedok North" target="Kaki Bukit" weight="481" />
+      <edge id="582" source="Bedok North" target="Kallang Bahru" weight="175" />
+      <edge id="583" source="Sembawang Hills" target="Jurong West Central" weight="3" />
+      <edge id="584" source="Sembawang Hills" target="Sembawang North" weight="4" />
+      <edge id="585" source="Sembawang Hills" target="Aljunied" weight="6" />
+      <edge id="586" source="Sembawang Hills" target="Fernvale" weight="6" />
+      <edge id="587" source="Sembawang Hills" target="Hougang West" weight="5" />
+      <edge id="588" source="Sembawang Hills" target="Yishun West" weight="12" />
+      <edge id="589" source="Sembawang Hills" target="Shangri-La" weight="9" />
+      <edge id="590" source="Sembawang Hills" target="Upper Thomson" weight="54" />
+      <edge id="591" source="Sembawang Hills" target="Woodlands East" weight="9" />
+      <edge id="592" source="Sembawang Hills" target="Sembawang Springs" weight="1" />
+      <edge id="593" source="Sembawang Hills" target="Crawford" weight="4" />
+      <edge id="594" source="Sembawang Hills" target="Serangoon Garden" weight="6" />
+      <edge id="595" source="Sembawang Hills" target="Sembawang Hills" weight="1" />
+      <edge id="596" source="Sembawang Hills" target="Tampines East" weight="5" />
+      <edge id="597" source="Sembawang Hills" target="Kampong Bugis" weight="1" />
+      <edge id="598" source="Sembawang Hills" target="Frankel" weight="2" />
+      <edge id="599" source="Sembawang Hills" target="Kembangan" weight="3" />
+      <edge id="600" source="Sembawang Hills" target="Admiralty" weight="1" />
+      <edge id="601" source="Sembawang Hills" target="Trafalgar" weight="8" />
+      <edge id="602" source="Sembawang Hills" target="Tampines West" weight="1" />
+      <edge id="603" source="Sembawang Hills" target="Seletar Hills" weight="4" />
+      <edge id="604" source="Sembawang Hills" target="Sembawang Central" weight="8" />
+      <edge id="605" source="Sembawang Hills" target="Katong" weight="1" />
+      <edge id="606" source="Sembawang Hills" target="Sengkang Town Centre" weight="1" />
+      <edge id="607" source="Sembawang Hills" target="Geylang East" weight="10" />
+      <edge id="608" source="Sembawang Hills" target="Balestier" weight="7" />
+      <edge id="609" source="Sembawang Hills" target="Khatib" weight="9" />
+      <edge id="610" source="Sembawang Hills" target="Serangoon Central" weight="4" />
+      <edge id="611" source="Sembawang Hills" target="Simei" weight="1" />
+      <edge id="612" source="Sembawang Hills" target="Kebun Bahru" weight="7" />
+      <edge id="613" source="Sembawang Hills" target="Bedok South" weight="2" />
+      <edge id="614" source="Sembawang Hills" target="Yishun East" weight="4" />
+      <edge id="615" source="Sembawang Hills" target="Northland" weight="2" />
+      <edge id="616" source="Sembawang Hills" target="Lorong Chuan" weight="4" />
+      <edge id="617" source="Sembawang Hills" target="Kaki Bukit" weight="9" />
+      <edge id="618" source="Sembawang Hills" target="Kallang Bahru" weight="3" />
+      <edge id="619" source="Northland" target="Jurong West Central" weight="68" />
+      <edge id="620" source="Northland" target="Sembawang North" weight="85" />
+      <edge id="621" source="Northland" target="Frankel" weight="21" />
+      <edge id="622" source="Northland" target="Fernvale" weight="38" />
+      <edge id="623" source="Northland" target="Hougang West" weight="39" />
+      <edge id="624" source="Northland" target="Yishun West" weight="250" />
+      <edge id="625" source="Northland" target="Shangri-La" weight="23" />
+      <edge id="626" source="Northland" target="Upper Thomson" weight="75" />
+      <edge id="627" source="Northland" target="Woodlands East" weight="342" />
+      <edge id="628" source="Northland" target="Katong" weight="6" />
+      <edge id="629" source="Northland" target="Crawford" weight="18" />
+      <edge id="630" source="Northland" target="Serangoon Garden" weight="44" />
+      <edge id="631" source="Northland" target="Bedok North" weight="43" />
+      <edge id="632" source="Northland" target="Bendemeer" weight="25" />
+      <edge id="633" source="Northland" target="Sembawang Hills" weight="10" />
+      <edge id="634" source="Northland" target="Tampines East" weight="100" />
+      <edge id="635" source="Northland" target="Kampong Bugis" weight="8" />
+      <edge id="636" source="Northland" target="Aljunied" weight="90" />
+      <edge id="637" source="Northland" target="Seletar Hills" weight="37" />
+      <edge id="638" source="Northland" target="Mountbatten" weight="8" />
+      <edge id="639" source="Northland" target="Trafalgar" weight="69" />
+      <edge id="640" source="Northland" target="Tampines West" weight="37" />
+      <edge id="641" source="Northland" target="Pasir Ris West" weight="10" />
+      <edge id="642" source="Northland" target="Sembawang Central" weight="230" />
+      <edge id="643" source="Northland" target="Sembawang Springs" weight="163" />
+      <edge id="644" source="Northland" target="Sengkang Town Centre" weight="72" />
+      <edge id="645" source="Northland" target="Geylang East" weight="79" />
+      <edge id="646" source="Northland" target="Hougang Central" weight="12" />
+      <edge id="647" source="Northland" target="Balestier" weight="90" />
+      <edge id="648" source="Northland" target="Compassvale" weight="26" />
+      <edge id="649" source="Northland" target="Kampong Glam" weight="4" />
+      <edge id="650" source="Northland" target="Serangoon Central" weight="39" />
+      <edge id="651" source="Northland" target="Simei" weight="33" />
+      <edge id="652" source="Northland" target="Kebun Bahru" weight="29" />
+      <edge id="653" source="Northland" target="Bedok South" weight="17" />
+      <edge id="654" source="Northland" target="Yishun East" weight="235" />
+      <edge id="655" source="Northland" target="Geylang Bahru" weight="25" />
+      <edge id="656" source="Northland" target="Khatib" weight="83" />
+      <edge id="657" source="Northland" target="Kembangan" weight="12" />
+      <edge id="658" source="Northland" target="Admiralty" weight="62" />
+      <edge id="659" source="Northland" target="Northland" weight="65" />
+      <edge id="660" source="Northland" target="Lorong Chuan" weight="15" />
+      <edge id="661" source="Northland" target="Kaki Bukit" weight="39" />
+      <edge id="662" source="Northland" target="Kallang Bahru" weight="40" />
+      <edge id="663" source="Tampines East" target="Jurong West Central" weight="83" />
+      <edge id="664" source="Tampines East" target="Sembawang North" weight="28" />
+      <edge id="665" source="Tampines East" target="Frankel" weight="306" />
+      <edge id="666" source="Tampines East" target="Fernvale" weight="160" />
+      <edge id="667" source="Tampines East" target="Hougang West" weight="102" />
+      <edge id="668" source="Tampines East" target="Yishun West" weight="153" />
+      <edge id="669" source="Tampines East" target="Shangri-La" weight="18" />
+      <edge id="670" source="Tampines East" target="Upper Thomson" weight="101" />
+      <edge id="671" source="Tampines East" target="Woodlands East" weight="129" />
+      <edge id="672" source="Tampines East" target="Katong" weight="80" />
+      <edge id="673" source="Tampines East" target="Crawford" weight="86" />
+      <edge id="674" source="Tampines East" target="Serangoon Garden" weight="69" />
+      <edge id="675" source="Tampines East" target="Bedok North" weight="1144" />
+      <edge id="676" source="Tampines East" target="Sembawang Hills" weight="4" />
+      <edge id="677" source="Tampines East" target="Tampines East" weight="1191" />
+      <edge id="678" source="Tampines East" target="Kampong Bugis" weight="21" />
+      <edge id="679" source="Tampines East" target="Aljunied" weight="410" />
+      <edge id="680" source="Tampines East" target="Seletar Hills" weight="39" />
+      <edge id="681" source="Tampines East" target="Admiralty" weight="6" />
+      <edge id="682" source="Tampines East" target="Trafalgar" weight="118" />
+      <edge id="683" source="Tampines East" target="Siglap" weight="52" />
+      <edge id="684" source="Tampines East" target="Tampines West" weight="1180" />
+      <edge id="685" source="Tampines East" target="Pasir Ris West" weight="364" />
+      <edge id="686" source="Tampines East" target="Sembawang Central" weight="46" />
+      <edge id="687" source="Tampines East" target="Sembawang Springs" weight="9" />
+      <edge id="688" source="Tampines East" target="Sengkang Town Centre" weight="166" />
+      <edge id="689" source="Tampines East" target="Geylang East" weight="539" />
+      <edge id="690" source="Tampines East" target="Hougang Central" weight="63" />
+      <edge id="691" source="Tampines East" target="Balestier" weight="172" />
+      <edge id="692" source="Tampines East" target="Khatib" weight="62" />
+      <edge id="693" source="Tampines East" target="Kampong Glam" weight="14" />
+      <edge id="694" source="Tampines East" target="Serangoon Central" weight="126" />
+      <edge id="695" source="Tampines East" target="Simei" weight="732" />
+      <edge id="696" source="Tampines East" target="Mountbatten" weight="51" />
+      <edge id="697" source="Tampines East" target="Bedok South" weight="339" />
+      <edge id="698" source="Tampines East" target="Yishun East" weight="76" />
+      <edge id="699" source="Tampines East" target="Geylang Bahru" weight="70" />
+      <edge id="700" source="Tampines East" target="Compassvale" weight="50" />
+      <edge id="701" source="Tampines East" target="Kembangan" weight="271" />
+      <edge id="702" source="Tampines East" target="Bendemeer" weight="87" />
+      <edge id="703" source="Tampines East" target="Kebun Bahru" weight="20" />
+      <edge id="704" source="Tampines East" target="Northland" weight="82" />
+      <edge id="705" source="Tampines East" target="Lorong Chuan" weight="36" />
+      <edge id="706" source="Tampines East" target="Kaki Bukit" weight="600" />
+      <edge id="707" source="Tampines East" target="Kallang Bahru" weight="158" />
+      <edge id="708" source="Kampong Bugis" target="Jurong West Central" weight="7" />
+      <edge id="709" source="Kampong Bugis" target="Sembawang North" weight="4" />
+      <edge id="710" source="Kampong Bugis" target="Frankel" weight="10" />
+      <edge id="711" source="Kampong Bugis" target="Fernvale" weight="8" />
+      <edge id="712" source="Kampong Bugis" target="Hougang West" weight="9" />
+      <edge id="713" source="Kampong Bugis" target="Yishun West" weight="6" />
+      <edge id="714" source="Kampong Bugis" target="Upper Thomson" weight="7" />
+      <edge id="715" source="Kampong Bugis" target="Woodlands East" weight="4" />
+      <edge id="716" source="Kampong Bugis" target="Seletar Hills" weight="2" />
+      <edge id="717" source="Kampong Bugis" target="Crawford" weight="23" />
+      <edge id="718" source="Kampong Bugis" target="Serangoon Garden" weight="6" />
+      <edge id="719" source="Kampong Bugis" target="Bedok North" weight="33" />
+      <edge id="720" source="Kampong Bugis" target="Tampines East" weight="36" />
+      <edge id="721" source="Kampong Bugis" target="Kampong Bugis" weight="20" />
+      <edge id="722" source="Kampong Bugis" target="Aljunied" weight="117" />
+      <edge id="723" source="Kampong Bugis" target="Kembangan" weight="10" />
+      <edge id="724" source="Kampong Bugis" target="Admiralty" weight="2" />
+      <edge id="725" source="Kampong Bugis" target="Trafalgar" weight="11" />
+      <edge id="726" source="Kampong Bugis" target="Siglap" weight="3" />
+      <edge id="727" source="Kampong Bugis" target="Tampines West" weight="32" />
+      <edge id="728" source="Kampong Bugis" target="Pasir Ris West" weight="2" />
+      <edge id="729" source="Kampong Bugis" target="Sembawang Central" weight="2" />
+      <edge id="730" source="Kampong Bugis" target="Katong" weight="14" />
+      <edge id="731" source="Kampong Bugis" target="Sengkang Town Centre" weight="10" />
+      <edge id="732" source="Kampong Bugis" target="Geylang East" weight="35" />
+      <edge id="733" source="Kampong Bugis" target="Hougang Central" weight="3" />
+      <edge id="734" source="Kampong Bugis" target="Balestier" weight="19" />
+      <edge id="735" source="Kampong Bugis" target="Khatib" weight="2" />
+      <edge id="736" source="Kampong Bugis" target="Kampong Glam" weight="6" />
+      <edge id="737" source="Kampong Bugis" target="Serangoon Central" weight="13" />
+      <edge id="738" source="Kampong Bugis" target="Simei" weight="12" />
+      <edge id="739" source="Kampong Bugis" target="Mountbatten" weight="15" />
+      <edge id="740" source="Kampong Bugis" target="Bedok South" weight="12" />
+      <edge id="741" source="Kampong Bugis" target="Yishun East" weight="4" />
+      <edge id="742" source="Kampong Bugis" target="Geylang Bahru" weight="19" />
+      <edge id="743" source="Kampong Bugis" target="Compassvale" weight="12" />
+      <edge id="744" source="Kampong Bugis" target="Bendemeer" weight="14" />
+      <edge id="745" source="Kampong Bugis" target="Kebun Bahru" weight="1" />
+      <edge id="746" source="Kampong Bugis" target="Northland" weight="1" />
+      <edge id="747" source="Kampong Bugis" target="Lorong Chuan" weight="2" />
+      <edge id="748" source="Kampong Bugis" target="Kaki Bukit" weight="15" />
+      <edge id="749" source="Kampong Bugis" target="Kallang Bahru" weight="34" />
+      <edge id="750" source="Frankel" target="Jurong West Central" weight="21" />
+      <edge id="751" source="Frankel" target="Sembawang North" weight="5" />
+      <edge id="752" source="Frankel" target="Frankel" weight="522" />
+      <edge id="753" source="Frankel" target="Fernvale" weight="28" />
+      <edge id="754" source="Frankel" target="Hougang West" weight="31" />
+      <edge id="755" source="Frankel" target="Yishun West" weight="31" />
+      <edge id="756" source="Frankel" target="Shangri-La" weight="6" />
+      <edge id="757" source="Frankel" target="Upper Thomson" weight="38" />
+      <edge id="758" source="Frankel" target="Woodlands East" weight="38" />
+      <edge id="759" source="Frankel" target="Seletar Hills" weight="5" />
+      <edge id="760" source="Frankel" target="Crawford" weight="37" />
+      <edge id="761" source="Frankel" target="Serangoon Garden" weight="43" />
+      <edge id="762" source="Frankel" target="Bedok North" weight="469" />
+      <edge id="763" source="Frankel" target="Sembawang Hills" weight="2" />
+      <edge id="764" source="Frankel" target="Tampines East" weight="332" />
+      <edge id="765" source="Frankel" target="Kampong Bugis" weight="14" />
+      <edge id="766" source="Frankel" target="Aljunied" weight="198" />
+      <edge id="767" source="Frankel" target="Kembangan" weight="365" />
+      <edge id="768" source="Frankel" target="Admiralty" weight="2" />
+      <edge id="769" source="Frankel" target="Trafalgar" weight="26" />
+      <edge id="770" source="Frankel" target="Siglap" weight="77" />
+      <edge id="771" source="Frankel" target="Tampines West" weight="189" />
+      <edge id="772" source="Frankel" target="Pasir Ris West" weight="42" />
+      <edge id="773" source="Frankel" target="Sembawang Central" weight="16" />
+      <edge id="774" source="Frankel" target="Sembawang Springs" weight="6" />
+      <edge id="775" source="Frankel" target="Sengkang Town Centre" weight="19" />
+      <edge id="776" source="Frankel" target="Geylang East" weight="395" />
+      <edge id="777" source="Frankel" target="Hougang Central" weight="16" />
+      <edge id="778" source="Frankel" target="Balestier" weight="72" />
+      <edge id="779" source="Frankel" target="Compassvale" weight="24" />
+      <edge id="780" source="Frankel" target="Kampong Glam" weight="7" />
+      <edge id="781" source="Frankel" target="Serangoon Central" weight="52" />
+      <edge id="782" source="Frankel" target="Katong" weight="190" />
+      <edge id="783" source="Frankel" target="Simei" weight="208" />
+      <edge id="784" source="Frankel" target="Mountbatten" weight="116" />
+      <edge id="785" source="Frankel" target="Bedok South" weight="401" />
+      <edge id="786" source="Frankel" target="Yishun East" weight="18" />
+      <edge id="787" source="Frankel" target="Geylang Bahru" weight="36" />
+      <edge id="788" source="Frankel" target="Khatib" weight="17" />
+      <edge id="789" source="Frankel" target="Bendemeer" weight="41" />
+      <edge id="790" source="Frankel" target="Kebun Bahru" weight="6" />
+      <edge id="791" source="Frankel" target="Northland" weight="24" />
+      <edge id="792" source="Frankel" target="Lorong Chuan" weight="14" />
+      <edge id="793" source="Frankel" target="Kaki Bukit" weight="178" />
+      <edge id="794" source="Frankel" target="Kallang Bahru" weight="71" />
+      <edge id="795" source="Kembangan" target="Jurong West Central" weight="31" />
+      <edge id="796" source="Kembangan" target="Sembawang North" weight="10" />
+      <edge id="797" source="Kembangan" target="Frankel" weight="300" />
+      <edge id="798" source="Kembangan" target="Fernvale" weight="28" />
+      <edge id="799" source="Kembangan" target="Hougang West" weight="25" />
+      <edge id="800" source="Kembangan" target="Yishun West" weight="29" />
+      <edge id="801" source="Kembangan" target="Shangri-La" weight="13" />
+      <edge id="802" source="Kembangan" target="Bendemeer" weight="28" />
+      <edge id="803" source="Kembangan" target="Woodlands East" weight="42" />
+      <edge id="804" source="Kembangan" target="Upper Thomson" weight="26" />
+      <edge id="805" source="Kembangan" target="Crawford" weight="33" />
+      <edge id="806" source="Kembangan" target="Serangoon Garden" weight="29" />
+      <edge id="807" source="Kembangan" target="Bedok North" weight="351" />
+      <edge id="808" source="Kembangan" target="Sembawang Hills" weight="3" />
+      <edge id="809" source="Kembangan" target="Tampines East" weight="276" />
+      <edge id="810" source="Kembangan" target="Kampong Bugis" weight="13" />
+      <edge id="811" source="Kembangan" target="Aljunied" weight="177" />
+      <edge id="812" source="Kembangan" target="Seletar Hills" weight="9" />
+      <edge id="813" source="Kembangan" target="Kebun Bahru" weight="13" />
+      <edge id="814" source="Kembangan" target="Trafalgar" weight="26" />
+      <edge id="815" source="Kembangan" target="Siglap" weight="21" />
+      <edge id="816" source="Kembangan" target="Tampines West" weight="165" />
+      <edge id="817" source="Kembangan" target="Pasir Ris West" weight="36" />
+      <edge id="818" source="Kembangan" target="Sembawang Central" weight="19" />
+      <edge id="819" source="Kembangan" target="Sembawang Springs" weight="5" />
+      <edge id="820" source="Kembangan" target="Sengkang Town Centre" weight="33" />
+      <edge id="821" source="Kembangan" target="Geylang East" weight="330" />
+      <edge id="822" source="Kembangan" target="Hougang Central" weight="20" />
+      <edge id="823" source="Kembangan" target="Balestier" weight="55" />
+      <edge id="824" source="Kembangan" target="Khatib" weight="11" />
+      <edge id="825" source="Kembangan" target="Kampong Glam" weight="6" />
+      <edge id="826" source="Kembangan" target="Serangoon Central" weight="37" />
+      <edge id="827" source="Kembangan" target="Katong" weight="105" />
+      <edge id="828" source="Kembangan" target="Simei" weight="183" />
+      <edge id="829" source="Kembangan" target="Mountbatten" weight="33" />
+      <edge id="830" source="Kembangan" target="Bedok South" weight="140" />
+      <edge id="831" source="Kembangan" target="Yishun East" weight="14" />
+      <edge id="832" source="Kembangan" target="Geylang Bahru" weight="46" />
+      <edge id="833" source="Kembangan" target="Compassvale" weight="23" />
+      <edge id="834" source="Kembangan" target="Kembangan" weight="101" />
+      <edge id="835" source="Kembangan" target="Admiralty" weight="2" />
+      <edge id="836" source="Kembangan" target="Northland" weight="20" />
+      <edge id="837" source="Kembangan" target="Lorong Chuan" weight="18" />
+      <edge id="838" source="Kembangan" target="Kaki Bukit" weight="262" />
+      <edge id="839" source="Kembangan" target="Kallang Bahru" weight="77" />
+      <edge id="840" source="Mountbatten" target="Jurong West Central" weight="19" />
+      <edge id="841" source="Mountbatten" target="Sembawang North" weight="3" />
+      <edge id="842" source="Mountbatten" target="Frankel" weight="92" />
+      <edge id="843" source="Mountbatten" target="Fernvale" weight="11" />
+      <edge id="844" source="Mountbatten" target="Hougang West" weight="11" />
+      <edge id="845" source="Mountbatten" target="Yishun West" weight="9" />
+      <edge id="846" source="Mountbatten" target="Shangri-La" weight="3" />
+      <edge id="847" source="Mountbatten" target="Bendemeer" weight="14" />
+      <edge id="848" source="Mountbatten" target="Woodlands East" weight="13" />
+      <edge id="849" source="Mountbatten" target="Upper Thomson" weight="17" />
+      <edge id="850" source="Mountbatten" target="Crawford" weight="38" />
+      <edge id="851" source="Mountbatten" target="Serangoon Garden" weight="13" />
+      <edge id="852" source="Mountbatten" target="Bedok North" weight="69" />
+      <edge id="853" source="Mountbatten" target="Tampines East" weight="57" />
+      <edge id="854" source="Mountbatten" target="Kampong Bugis" weight="14" />
+      <edge id="855" source="Mountbatten" target="Aljunied" weight="195" />
+      <edge id="856" source="Mountbatten" target="Seletar Hills" weight="2" />
+      <edge id="857" source="Mountbatten" target="Admiralty" weight="1" />
+      <edge id="858" source="Mountbatten" target="Trafalgar" weight="12" />
+      <edge id="859" source="Mountbatten" target="Siglap" weight="28" />
+      <edge id="860" source="Mountbatten" target="Tampines West" weight="64" />
+      <edge id="861" source="Mountbatten" target="Pasir Ris West" weight="12" />
+      <edge id="862" source="Mountbatten" target="Sembawang Central" weight="11" />
+      <edge id="863" source="Mountbatten" target="Sembawang Springs" weight="1" />
+      <edge id="864" source="Mountbatten" target="Sengkang Town Centre" weight="12" />
+      <edge id="865" source="Mountbatten" target="Geylang East" weight="181" />
+      <edge id="866" source="Mountbatten" target="Hougang Central" weight="8" />
+      <edge id="867" source="Mountbatten" target="Balestier" weight="33" />
+      <edge id="868" source="Mountbatten" target="Khatib" weight="5" />
+      <edge id="869" source="Mountbatten" target="Kampong Glam" weight="2" />
+      <edge id="870" source="Mountbatten" target="Serangoon Central" weight="31" />
+      <edge id="871" source="Mountbatten" target="Katong" weight="135" />
+      <edge id="872" source="Mountbatten" target="Simei" weight="38" />
+      <edge id="873" source="Mountbatten" target="Mountbatten" weight="100" />
+      <edge id="874" source="Mountbatten" target="Bedok South" weight="49" />
+      <edge id="875" source="Mountbatten" target="Yishun East" weight="12" />
+      <edge id="876" source="Mountbatten" target="Geylang Bahru" weight="28" />
+      <edge id="877" source="Mountbatten" target="Compassvale" weight="11" />
+      <edge id="878" source="Mountbatten" target="Kembangan" weight="36" />
+      <edge id="879" source="Mountbatten" target="Kebun Bahru" weight="2" />
+      <edge id="880" source="Mountbatten" target="Northland" weight="8" />
+      <edge id="881" source="Mountbatten" target="Lorong Chuan" weight="13" />
+      <edge id="882" source="Mountbatten" target="Kaki Bukit" weight="42" />
+      <edge id="883" source="Mountbatten" target="Kallang Bahru" weight="53" />
+      <edge id="884" source="Trafalgar" target="Jurong West Central" weight="24" />
+      <edge id="885" source="Trafalgar" target="Sembawang North" weight="19" />
+      <edge id="886" source="Trafalgar" target="Frankel" weight="30" />
+      <edge id="887" source="Trafalgar" target="Fernvale" weight="309" />
+      <edge id="888" source="Trafalgar" target="Hougang West" weight="104" />
+      <edge id="889" source="Trafalgar" target="Yishun West" weight="64" />
+      <edge id="890" source="Trafalgar" target="Shangri-La" weight="28" />
+      <edge id="891" source="Trafalgar" target="Upper Thomson" weight="59" />
+      <edge id="892" source="Trafalgar" target="Woodlands East" weight="64" />
+      <edge id="893" source="Trafalgar" target="Sembawang Springs" weight="5" />
+      <edge id="894" source="Trafalgar" target="Crawford" weight="24" />
+      <edge id="895" source="Trafalgar" target="Serangoon Garden" weight="140" />
+      <edge id="896" source="Trafalgar" target="Bedok North" weight="62" />
+      <edge id="897" source="Trafalgar" target="Sembawang Hills" weight="8" />
+      <edge id="898" source="Trafalgar" target="Tampines East" weight="126" />
+      <edge id="899" source="Trafalgar" target="Kampong Bugis" weight="11" />
+      <edge id="900" source="Trafalgar" target="Aljunied" weight="109" />
+      <edge id="901" source="Trafalgar" target="Seletar Hills" weight="179" />
+      <edge id="902" source="Trafalgar" target="Admiralty" weight="7" />
+      <edge id="903" source="Trafalgar" target="Trafalgar" weight="137" />
+      <edge id="904" source="Trafalgar" target="Siglap" weight="2" />
+      <edge id="905" source="Trafalgar" target="Tampines West" weight="104" />
+      <edge id="906" source="Trafalgar" target="Pasir Ris West" weight="34" />
+      <edge id="907" source="Trafalgar" target="Sembawang Central" weight="24" />
+      <edge id="908" source="Trafalgar" target="Katong" weight="9" />
+      <edge id="909" source="Trafalgar" target="Sengkang Town Centre" weight="168" />
+      <edge id="910" source="Trafalgar" target="Geylang East" weight="95" />
+      <edge id="911" source="Trafalgar" target="Hougang Central" weight="106" />
+      <edge id="912" source="Trafalgar" target="Balestier" weight="81" />
+      <edge id="913" source="Trafalgar" target="Khatib" weight="38" />
+      <edge id="914" source="Trafalgar" target="Kampong Glam" weight="1" />
+      <edge id="915" source="Trafalgar" target="Serangoon Central" weight="149" />
+      <edge id="916" source="Trafalgar" target="Simei" weight="52" />
+      <edge id="917" source="Trafalgar" target="Mountbatten" weight="19" />
+      <edge id="918" source="Trafalgar" target="Bedok South" weight="23" />
+      <edge id="919" source="Trafalgar" target="Yishun East" weight="50" />
+      <edge id="920" source="Trafalgar" target="Geylang Bahru" weight="22" />
+      <edge id="921" source="Trafalgar" target="Compassvale" weight="298" />
+      <edge id="922" source="Trafalgar" target="Kembangan" weight="33" />
+      <edge id="923" source="Trafalgar" target="Bendemeer" weight="55" />
+      <edge id="924" source="Trafalgar" target="Kebun Bahru" weight="36" />
+      <edge id="925" source="Trafalgar" target="Northland" weight="63" />
+      <edge id="926" source="Trafalgar" target="Lorong Chuan" weight="24" />
+      <edge id="927" source="Trafalgar" target="Kaki Bukit" weight="103" />
+      <edge id="928" source="Trafalgar" target="Kallang Bahru" weight="49" />
+      <edge id="929" source="Siglap" target="Jurong West Central" weight="2" />
+      <edge id="930" source="Siglap" target="Sembawang North" weight="1" />
+      <edge id="931" source="Siglap" target="Frankel" weight="57" />
+      <edge id="932" source="Siglap" target="Fernvale" weight="3" />
+      <edge id="933" source="Siglap" target="Hougang West" weight="2" />
+      <edge id="934" source="Siglap" target="Yishun West" weight="7" />
+      <edge id="935" source="Siglap" target="Shangri-La" weight="2" />
+      <edge id="936" source="Siglap" target="Upper Thomson" weight="5" />
+      <edge id="937" source="Siglap" target="Woodlands East" weight="4" />
+      <edge id="938" source="Siglap" target="Katong" weight="31" />
+      <edge id="939" source="Siglap" target="Crawford" weight="7" />
+      <edge id="940" source="Siglap" target="Serangoon Garden" weight="5" />
+      <edge id="941" source="Siglap" target="Bedok North" weight="58" />
+      <edge id="942" source="Siglap" target="Tampines East" weight="41" />
+      <edge id="943" source="Siglap" target="Kampong Bugis" weight="3" />
+      <edge id="944" source="Siglap" target="Aljunied" weight="20" />
+      <edge id="945" source="Siglap" target="Seletar Hills" weight="3" />
+      <edge id="946" source="Siglap" target="Admiralty" weight="1" />
+      <edge id="947" source="Siglap" target="Trafalgar" weight="5" />
+      <edge id="948" source="Siglap" target="Siglap" weight="28" />
+      <edge id="949" source="Siglap" target="Tampines West" weight="28" />
+      <edge id="950" source="Siglap" target="Simei" weight="30" />
+      <edge id="951" source="Siglap" target="Sembawang Central" weight="2" />
+      <edge id="952" source="Siglap" target="Sembawang Springs" weight="2" />
+      <edge id="953" source="Siglap" target="Sengkang Town Centre" weight="11" />
+      <edge id="954" source="Siglap" target="Geylang East" weight="39" />
+      <edge id="955" source="Siglap" target="Hougang Central" weight="3" />
+      <edge id="956" source="Siglap" target="Balestier" weight="11" />
+      <edge id="957" source="Siglap" target="Khatib" weight="3" />
+      <edge id="958" source="Siglap" target="Kampong Glam" weight="1" />
+      <edge id="959" source="Siglap" target="Serangoon Central" weight="9" />
+      <edge id="960" source="Siglap" target="Pasir Ris West" weight="8" />
+      <edge id="961" source="Siglap" target="Mountbatten" weight="23" />
+      <edge id="962" source="Siglap" target="Bedok South" weight="49" />
+      <edge id="963" source="Siglap" target="Yishun East" weight="4" />
+      <edge id="964" source="Siglap" target="Geylang Bahru" weight="5" />
+      <edge id="965" source="Siglap" target="Compassvale" weight="6" />
+      <edge id="966" source="Siglap" target="Kembangan" weight="22" />
+      <edge id="967" source="Siglap" target="Bendemeer" weight="6" />
+      <edge id="968" source="Siglap" target="Northland" weight="3" />
+      <edge id="969" source="Siglap" target="Kaki Bukit" weight="13" />
+      <edge id="970" source="Siglap" target="Kallang Bahru" weight="11" />
+      <edge id="971" source="Tampines West" target="Jurong West Central" weight="29" />
+      <edge id="972" source="Tampines West" target="Sembawang North" weight="13" />
+      <edge id="973" source="Tampines West" target="Frankel" weight="167" />
+      <edge id="974" source="Tampines West" target="Fernvale" weight="69" />
+      <edge id="975" source="Tampines West" target="Hougang West" weight="61" />
+      <edge id="976" source="Tampines West" target="Yishun West" weight="57" />
+      <edge id="977" source="Tampines West" target="Shangri-La" weight="12" />
+      <edge id="978" source="Tampines West" target="Upper Thomson" weight="50" />
+      <edge id="979" source="Tampines West" target="Woodlands East" weight="61" />
+      <edge id="980" source="Tampines West" target="Seletar Hills" weight="19" />
+      <edge id="981" source="Tampines West" target="Crawford" weight="32" />
+      <edge id="982" source="Tampines West" target="Serangoon Garden" weight="70" />
+      <edge id="983" source="Tampines West" target="Bedok North" weight="678" />
+      <edge id="984" source="Tampines West" target="Sembawang Hills" weight="3" />
+      <edge id="985" source="Tampines West" target="Tampines East" weight="1238" />
+      <edge id="986" source="Tampines West" target="Kampong Bugis" weight="27" />
+      <edge id="987" source="Tampines West" target="Aljunied" weight="202" />
+      <edge id="988" source="Tampines West" target="Kembangan" weight="147" />
+      <edge id="989" source="Tampines West" target="Admiralty" weight="7" />
+      <edge id="990" source="Tampines West" target="Trafalgar" weight="99" />
+      <edge id="991" source="Tampines West" target="Siglap" weight="26" />
+      <edge id="992" source="Tampines West" target="Tampines West" weight="371" />
+      <edge id="993" source="Tampines West" target="Pasir Ris West" weight="146" />
+      <edge id="994" source="Tampines West" target="Sembawang Central" weight="17" />
+      <edge id="995" source="Tampines West" target="Sembawang Springs" weight="7" />
+      <edge id="996" source="Tampines West" target="Sengkang Town Centre" weight="72" />
+      <edge id="997" source="Tampines West" target="Geylang East" weight="287" />
+      <edge id="998" source="Tampines West" target="Hougang Central" weight="31" />
+      <edge id="999" source="Tampines West" target="Balestier" weight="83" />
+      <edge id="1000" source="Tampines West" target="Khatib" weight="30" />
+      <edge id="1001" source="Tampines West" target="Kampong Glam" weight="6" />
+      <edge id="1002" source="Tampines West" target="Serangoon Central" weight="67" />
+      <edge id="1003" source="Tampines West" target="Katong" weight="64" />
+      <edge id="1004" source="Tampines West" target="Simei" weight="353" />
+      <edge id="1005" source="Tampines West" target="Mountbatten" weight="55" />
+      <edge id="1006" source="Tampines West" target="Bedok South" weight="202" />
+      <edge id="1007" source="Tampines West" target="Yishun East" weight="43" />
+      <edge id="1008" source="Tampines West" target="Geylang Bahru" weight="68" />
+      <edge id="1009" source="Tampines West" target="Compassvale" weight="31" />
+      <edge id="1010" source="Tampines West" target="Bendemeer" weight="78" />
+      <edge id="1011" source="Tampines West" target="Kebun Bahru" weight="16" />
+      <edge id="1012" source="Tampines West" target="Northland" weight="29" />
+      <edge id="1013" source="Tampines West" target="Lorong Chuan" weight="21" />
+      <edge id="1014" source="Tampines West" target="Kaki Bukit" weight="434" />
+      <edge id="1015" source="Tampines West" target="Kallang Bahru" weight="101" />
+      <edge id="1016" source="Simei" target="Jurong West Central" weight="40" />
+      <edge id="1017" source="Simei" target="Sembawang North" weight="10" />
+      <edge id="1018" source="Simei" target="Aljunied" weight="190" />
+      <edge id="1019" source="Simei" target="Fernvale" weight="53" />
+      <edge id="1020" source="Simei" target="Hougang West" weight="47" />
+      <edge id="1021" source="Simei" target="Yishun West" weight="45" />
+      <edge id="1022" source="Simei" target="Shangri-La" weight="7" />
+      <edge id="1023" source="Simei" target="Bendemeer" weight="51" />
+      <edge id="1024" source="Simei" target="Woodlands East" weight="64" />
+      <edge id="1025" source="Simei" target="Upper Thomson" weight="42" />
+      <edge id="1026" source="Simei" target="Crawford" weight="34" />
+      <edge id="1027" source="Simei" target="Serangoon Garden" weight="40" />
+      <edge id="1028" source="Simei" target="Bedok North" weight="652" />
+      <edge id="1029" source="Simei" target="Sembawang Hills" weight="3" />
+      <edge id="1030" source="Simei" target="Tampines East" weight="889" />
+      <edge id="1031" source="Simei" target="Kampong Bugis" weight="17" />
+      <edge id="1032" source="Simei" target="Frankel" weight="200" />
+      <edge id="1033" source="Simei" target="Seletar Hills" weight="12" />
+      <edge id="1034" source="Simei" target="Admiralty" weight="5" />
+      <edge id="1035" source="Simei" target="Trafalgar" weight="50" />
+      <edge id="1036" source="Simei" target="Siglap" weight="27" />
+      <edge id="1037" source="Simei" target="Tampines West" weight="387" />
+      <edge id="1038" source="Simei" target="Pasir Ris West" weight="90" />
+      <edge id="1039" source="Simei" target="Sembawang Central" weight="12" />
+      <edge id="1040" source="Simei" target="Sembawang Springs" weight="7" />
+      <edge id="1041" source="Simei" target="Sengkang Town Centre" weight="63" />
+      <edge id="1042" source="Simei" target="Geylang East" weight="246" />
+      <edge id="1043" source="Simei" target="Hougang Central" weight="22" />
+      <edge id="1044" source="Simei" target="Balestier" weight="84" />
+      <edge id="1045" source="Simei" target="Khatib" weight="22" />
+      <edge id="1046" source="Simei" target="Kampong Glam" weight="6" />
+      <edge id="1047" source="Simei" target="Serangoon Central" weight="78" />
+      <edge id="1048" source="Simei" target="Katong" weight="42" />
+      <edge id="1049" source="Simei" target="Simei" weight="228" />
+      <edge id="1050" source="Simei" target="Mountbatten" weight="41" />
+      <edge id="1051" source="Simei" target="Bedok South" weight="307" />
+      <edge id="1052" source="Simei" target="Yishun East" weight="34" />
+      <edge id="1053" source="Simei" target="Geylang Bahru" weight="48" />
+      <edge id="1054" source="Simei" target="Compassvale" weight="14" />
+      <edge id="1055" source="Simei" target="Kembangan" weight="158" />
+      <edge id="1056" source="Simei" target="Kebun Bahru" weight="14" />
+      <edge id="1057" source="Simei" target="Northland" weight="34" />
+      <edge id="1058" source="Simei" target="Lorong Chuan" weight="23" />
+      <edge id="1059" source="Simei" target="Kaki Bukit" weight="208" />
+      <edge id="1060" source="Simei" target="Kallang Bahru" weight="79" />
+      <edge id="1061" source="Sembawang Central" target="Jurong West Central" weight="47" />
+      <edge id="1062" source="Sembawang Central" target="Sembawang North" weight="80" />
+      <edge id="1063" source="Sembawang Central" target="Frankel" weight="13" />
+      <edge id="1064" source="Sembawang Central" target="Fernvale" weight="16" />
+      <edge id="1065" source="Sembawang Central" target="Hougang West" weight="18" />
+      <edge id="1066" source="Sembawang Central" target="Yishun West" weight="312" />
+      <edge id="1067" source="Sembawang Central" target="Shangri-La" weight="16" />
+      <edge id="1068" source="Sembawang Central" target="Upper Thomson" weight="44" />
+      <edge id="1069" source="Sembawang Central" target="Woodlands East" weight="469" />
+      <edge id="1070" source="Sembawang Central" target="Sembawang Springs" weight="53" />
+      <edge id="1071" source="Sembawang Central" target="Crawford" weight="13" />
+      <edge id="1072" source="Sembawang Central" target="Serangoon Garden" weight="32" />
+      <edge id="1073" source="Sembawang Central" target="Bedok North" weight="27" />
+      <edge id="1074" source="Sembawang Central" target="Sembawang Hills" weight="3" />
+      <edge id="1075" source="Sembawang Central" target="Tampines East" weight="35" />
+      <edge id="1076" source="Sembawang Central" target="Kampong Bugis" weight="4" />
+      <edge id="1077" source="Sembawang Central" target="Aljunied" weight="59" />
+      <edge id="1078" source="Sembawang Central" target="Seletar Hills" weight="6" />
+      <edge id="1079" source="Sembawang Central" target="Admiralty" weight="13" />
+      <edge id="1080" source="Sembawang Central" target="Trafalgar" weight="32" />
+      <edge id="1081" source="Sembawang Central" target="Tampines West" weight="31" />
+      <edge id="1082" source="Sembawang Central" target="Pasir Ris West" weight="11" />
+      <edge id="1083" source="Sembawang Central" target="Sembawang Central" weight="26" />
+      <edge id="1084" source="Sembawang Central" target="Katong" weight="10" />
+      <edge id="1085" source="Sembawang Central" target="Sengkang Town Centre" weight="35" />
+      <edge id="1086" source="Sembawang Central" target="Geylang East" weight="44" />
+      <edge id="1087" source="Sembawang Central" target="Hougang Central" weight="10" />
+      <edge id="1088" source="Sembawang Central" target="Balestier" weight="119" />
+      <edge id="1089" source="Sembawang Central" target="Khatib" weight="56" />
+      <edge id="1090" source="Sembawang Central" target="Kampong Glam" weight="2" />
+      <edge id="1091" source="Sembawang Central" target="Serangoon Central" weight="25" />
+      <edge id="1092" source="Sembawang Central" target="Simei" weight="22" />
+      <edge id="1093" source="Sembawang Central" target="Mountbatten" weight="6" />
+      <edge id="1094" source="Sembawang Central" target="Bedok South" weight="13" />
+      <edge id="1095" source="Sembawang Central" target="Yishun East" weight="92" />
+      <edge id="1096" source="Sembawang Central" target="Geylang Bahru" weight="14" />
+      <edge id="1097" source="Sembawang Central" target="Compassvale" weight="4" />
+      <edge id="1098" source="Sembawang Central" target="Kembangan" weight="19" />
+      <edge id="1099" source="Sembawang Central" target="Bendemeer" weight="30" />
+      <edge id="1100" source="Sembawang Central" target="Kebun Bahru" weight="19" />
+      <edge id="1101" source="Sembawang Central" target="Northland" weight="188" />
+      <edge id="1102" source="Sembawang Central" target="Lorong Chuan" weight="13" />
+      <edge id="1103" source="Sembawang Central" target="Kaki Bukit" weight="43" />
+      <edge id="1104" source="Sembawang Central" target="Kallang Bahru" weight="31" />
+      <edge id="1105" source="Sembawang Springs" target="Jurong West Central" weight="7" />
+      <edge id="1106" source="Sembawang Springs" target="Sembawang North" weight="43" />
+      <edge id="1107" source="Sembawang Springs" target="Frankel" weight="6" />
+      <edge id="1108" source="Sembawang Springs" target="Fernvale" weight="7" />
+      <edge id="1109" source="Sembawang Springs" target="Hougang West" weight="4" />
+      <edge id="1110" source="Sembawang Springs" target="Yishun West" weight="129" />
+      <edge id="1111" source="Sembawang Springs" target="Shangri-La" weight="3" />
+      <edge id="1112" source="Sembawang Springs" target="Upper Thomson" weight="19" />
+      <edge id="1113" source="Sembawang Springs" target="Woodlands East" weight="82" />
+      <edge id="1114" source="Sembawang Springs" target="Seletar Hills" weight="7" />
+      <edge id="1115" source="Sembawang Springs" target="Crawford" weight="3" />
+      <edge id="1116" source="Sembawang Springs" target="Serangoon Garden" weight="7" />
+      <edge id="1117" source="Sembawang Springs" target="Bedok North" weight="9" />
+      <edge id="1118" source="Sembawang Springs" target="Tampines East" weight="10" />
+      <edge id="1119" source="Sembawang Springs" target="Sembawang Hills" weight="6" />
+      <edge id="1120" source="Sembawang Springs" target="Aljunied" weight="12" />
+      <edge id="1121" source="Sembawang Springs" target="Kembangan" weight="7" />
+      <edge id="1122" source="Sembawang Springs" target="Admiralty" weight="31" />
+      <edge id="1123" source="Sembawang Springs" target="Trafalgar" weight="3" />
+      <edge id="1124" source="Sembawang Springs" target="Tampines West" weight="7" />
+      <edge id="1125" source="Sembawang Springs" target="Simei" weight="9" />
+      <edge id="1126" source="Sembawang Springs" target="Sembawang Central" weight="46" />
+      <edge id="1127" source="Sembawang Springs" target="Sembawang Springs" weight="3" />
+      <edge id="1128" source="Sembawang Springs" target="Sengkang Town Centre" weight="9" />
+      <edge id="1129" source="Sembawang Springs" target="Geylang East" weight="10" />
+      <edge id="1130" source="Sembawang Springs" target="Hougang Central" weight="2" />
+      <edge id="1131" source="Sembawang Springs" target="Balestier" weight="20" />
+      <edge id="1132" source="Sembawang Springs" target="Compassvale" weight="1" />
+      <edge id="1133" source="Sembawang Springs" target="Kampong Glam" weight="1" />
+      <edge id="1134" source="Sembawang Springs" target="Serangoon Central" weight="4" />
+      <edge id="1135" source="Sembawang Springs" target="Pasir Ris West" weight="2" />
+      <edge id="1136" source="Sembawang Springs" target="Mountbatten" weight="2" />
+      <edge id="1137" source="Sembawang Springs" target="Bedok South" weight="4" />
+      <edge id="1138" source="Sembawang Springs" target="Yishun East" weight="58" />
+      <edge id="1139" source="Sembawang Springs" target="Geylang Bahru" weight="3" />
+      <edge id="1140" source="Sembawang Springs" target="Khatib" weight="31" />
+      <edge id="1141" source="Sembawang Springs" target="Bendemeer" weight="1" />
+      <edge id="1142" source="Sembawang Springs" target="Kebun Bahru" weight="6" />
+      <edge id="1143" source="Sembawang Springs" target="Northland" weight="151" />
+      <edge id="1144" source="Sembawang Springs" target="Lorong Chuan" weight="1" />
+      <edge id="1145" source="Sembawang Springs" target="Kaki Bukit" weight="11" />
+      <edge id="1146" source="Sembawang Springs" target="Kallang Bahru" weight="5" />
+      <edge id="1147" source="Sengkang Town Centre" target="Jurong West Central" weight="25" />
+      <edge id="1148" source="Sengkang Town Centre" target="Sembawang North" weight="13" />
+      <edge id="1149" source="Sengkang Town Centre" target="Aljunied" weight="108" />
+      <edge id="1150" source="Sengkang Town Centre" target="Fernvale" weight="244" />
+      <edge id="1151" source="Sengkang Town Centre" target="Hougang West" weight="91" />
+      <edge id="1152" source="Sengkang Town Centre" target="Yishun West" weight="57" />
+      <edge id="1153" source="Sengkang Town Centre" target="Shangri-La" weight="13" />
+      <edge id="1154" source="Sengkang Town Centre" target="Upper Thomson" weight="41" />
+      <edge id="1155" source="Sengkang Town Centre" target="Woodlands East" weight="46" />
+      <edge id="1156" source="Sengkang Town Centre" target="Katong" weight="12" />
+      <edge id="1157" source="Sengkang Town Centre" target="Crawford" weight="33" />
+      <edge id="1158" source="Sengkang Town Centre" target="Serangoon Garden" weight="59" />
+      <edge id="1159" source="Sengkang Town Centre" target="Bedok North" weight="83" />
+      <edge id="1160" source="Sengkang Town Centre" target="Bendemeer" weight="87" />
+      <edge id="1161" source="Sengkang Town Centre" target="Sembawang Hills" weight="2" />
+      <edge id="1162" source="Sengkang Town Centre" target="Tampines East" weight="175" />
+      <edge id="1163" source="Sengkang Town Centre" target="Kampong Bugis" weight="17" />
+      <edge id="1164" source="Sengkang Town Centre" target="Frankel" weight="21" />
+      <edge id="1165" source="Sengkang Town Centre" target="Seletar Hills" weight="23" />
+      <edge id="1166" source="Sengkang Town Centre" target="Mountbatten" weight="15" />
+      <edge id="1167" source="Sengkang Town Centre" target="Trafalgar" weight="203" />
+      <edge id="1168" source="Sengkang Town Centre" target="Siglap" weight="8" />
+      <edge id="1169" source="Sengkang Town Centre" target="Tampines West" weight="99" />
+      <edge id="1170" source="Sengkang Town Centre" target="Pasir Ris West" weight="38" />
+      <edge id="1171" source="Sengkang Town Centre" target="Sembawang Central" weight="30" />
+      <edge id="1172" source="Sengkang Town Centre" target="Sembawang Springs" weight="4" />
+      <edge id="1173" source="Sengkang Town Centre" target="Sengkang Town Centre" weight="39" />
+      <edge id="1174" source="Sengkang Town Centre" target="Geylang East" weight="95" />
+      <edge id="1175" source="Sengkang Town Centre" target="Hougang Central" weight="79" />
+      <edge id="1176" source="Sengkang Town Centre" target="Balestier" weight="96" />
+      <edge id="1177" source="Sengkang Town Centre" target="Compassvale" weight="50" />
+      <edge id="1178" source="Sengkang Town Centre" target="Kampong Glam" weight="2" />
+      <edge id="1179" source="Sengkang Town Centre" target="Serangoon Central" weight="149" />
+      <edge id="1180" source="Sengkang Town Centre" target="Simei" weight="64" />
+      <edge id="1181" source="Sengkang Town Centre" target="Kebun Bahru" weight="15" />
+      <edge id="1182" source="Sengkang Town Centre" target="Bedok South" weight="29" />
+      <edge id="1183" source="Sengkang Town Centre" target="Yishun East" weight="31" />
+      <edge id="1184" source="Sengkang Town Centre" target="Geylang Bahru" weight="14" />
+      <edge id="1185" source="Sengkang Town Centre" target="Khatib" weight="20" />
+      <edge id="1186" source="Sengkang Town Centre" target="Kembangan" weight="41" />
+      <edge id="1187" source="Sengkang Town Centre" target="Admiralty" weight="5" />
+      <edge id="1188" source="Sengkang Town Centre" target="Northland" weight="54" />
+      <edge id="1189" source="Sengkang Town Centre" target="Lorong Chuan" weight="24" />
+      <edge id="1190" source="Sengkang Town Centre" target="Kaki Bukit" weight="104" />
+      <edge id="1191" source="Sengkang Town Centre" target="Kallang Bahru" weight="59" />
+      <edge id="1192" source="Geylang East" target="Jurong West Central" weight="69" />
+      <edge id="1193" source="Geylang East" target="Sembawang North" weight="20" />
+      <edge id="1194" source="Geylang East" target="Aljunied" weight="472" />
+      <edge id="1195" source="Geylang East" target="Fernvale" weight="83" />
+      <edge id="1196" source="Geylang East" target="Hougang West" weight="89" />
+      <edge id="1197" source="Geylang East" target="Yishun West" weight="80" />
+      <edge id="1198" source="Geylang East" target="Shangri-La" weight="36" />
+      <edge id="1199" source="Geylang East" target="Upper Thomson" weight="71" />
+      <edge id="1200" source="Geylang East" target="Woodlands East" weight="114" />
+      <edge id="1201" source="Geylang East" target="Seletar Hills" weight="16" />
+      <edge id="1202" source="Geylang East" target="Crawford" weight="99" />
+      <edge id="1203" source="Geylang East" target="Serangoon Garden" weight="128" />
+      <edge id="1204" source="Geylang East" target="Bedok North" weight="502" />
+      <edge id="1205" source="Geylang East" target="Sembawang Hills" weight="5" />
+      <edge id="1206" source="Geylang East" target="Tampines East" weight="630" />
+      <edge id="1207" source="Geylang East" target="Kampong Bugis" weight="26" />
+      <edge id="1208" source="Geylang East" target="Frankel" weight="364" />
+      <edge id="1209" source="Geylang East" target="Kembangan" weight="360" />
+      <edge id="1210" source="Geylang East" target="Admiralty" weight="12" />
+      <edge id="1211" source="Geylang East" target="Trafalgar" weight="89" />
+      <edge id="1212" source="Geylang East" target="Siglap" weight="49" />
+      <edge id="1213" source="Geylang East" target="Tampines West" weight="277" />
+      <edge id="1214" source="Geylang East" target="Pasir Ris West" weight="60" />
+      <edge id="1215" source="Geylang East" target="Sembawang Central" weight="63" />
+      <edge id="1216" source="Geylang East" target="Sembawang Springs" weight="8" />
+      <edge id="1217" source="Geylang East" target="Sengkang Town Centre" weight="91" />
+      <edge id="1218" source="Geylang East" target="Geylang East" weight="238" />
+      <edge id="1219" source="Geylang East" target="Hougang Central" weight="69" />
+      <edge id="1220" source="Geylang East" target="Balestier" weight="122" />
+      <edge id="1221" source="Geylang East" target="Khatib" weight="52" />
+      <edge id="1222" source="Geylang East" target="Kampong Glam" weight="17" />
+      <edge id="1223" source="Geylang East" target="Serangoon Central" weight="160" />
+      <edge id="1224" source="Geylang East" target="Katong" weight="218" />
+      <edge id="1225" source="Geylang East" target="Simei" weight="257" />
+      <edge id="1226" source="Geylang East" target="Mountbatten" weight="202" />
+      <edge id="1227" source="Geylang East" target="Bedok South" weight="184" />
+      <edge id="1228" source="Geylang East" target="Yishun East" weight="60" />
+      <edge id="1229" source="Geylang East" target="Geylang Bahru" weight="76" />
+      <edge id="1230" source="Geylang East" target="Compassvale" weight="45" />
+      <edge id="1231" source="Geylang East" target="Bendemeer" weight="68" />
+      <edge id="1232" source="Geylang East" target="Kebun Bahru" weight="24" />
+      <edge id="1233" source="Geylang East" target="Northland" weight="58" />
+      <edge id="1234" source="Geylang East" target="Lorong Chuan" weight="30" />
+      <edge id="1235" source="Geylang East" target="Kaki Bukit" weight="356" />
+      <edge id="1236" source="Geylang East" target="Kallang Bahru" weight="171" />
+      <edge id="1237" source="Hougang Central" target="Jurong West Central" weight="19" />
+      <edge id="1238" source="Hougang Central" target="Sembawang North" weight="10" />
+      <edge id="1239" source="Hougang Central" target="Frankel" weight="13" />
+      <edge id="1240" source="Hougang Central" target="Fernvale" weight="71" />
+      <edge id="1241" source="Hougang Central" target="Hougang West" weight="72" />
+      <edge id="1242" source="Hougang Central" target="Yishun West" weight="20" />
+      <edge id="1243" source="Hougang Central" target="Shangri-La" weight="9" />
+      <edge id="1244" source="Hougang Central" target="Upper Thomson" weight="44" />
+      <edge id="1245" source="Hougang Central" target="Woodlands East" weight="14" />
+      <edge id="1246" source="Hougang Central" target="Katong" weight="6" />
+      <edge id="1247" source="Hougang Central" target="Crawford" weight="14" />
+      <edge id="1248" source="Hougang Central" target="Serangoon Garden" weight="76" />
+      <edge id="1249" source="Hougang Central" target="Bedok North" weight="27" />
+      <edge id="1250" source="Hougang Central" target="Sembawang Hills" weight="1" />
+      <edge id="1251" source="Hougang Central" target="Tampines East" weight="58" />
+      <edge id="1252" source="Hougang Central" target="Kampong Bugis" weight="3" />
+      <edge id="1253" source="Hougang Central" target="Aljunied" weight="75" />
+      <edge id="1254" source="Hougang Central" target="Seletar Hills" weight="18" />
+      <edge id="1255" source="Hougang Central" target="Kebun Bahru" weight="11" />
+      <edge id="1256" source="Hougang Central" target="Trafalgar" weight="130" />
+      <edge id="1257" source="Hougang Central" target="Siglap" weight="5" />
+      <edge id="1258" source="Hougang Central" target="Tampines West" weight="55" />
+      <edge id="1259" source="Hougang Central" target="Simei" weight="26" />
+      <edge id="1260" source="Hougang Central" target="Sembawang Central" weight="10" />
+      <edge id="1261" source="Hougang Central" target="Sembawang Springs" weight="1" />
+      <edge id="1262" source="Hougang Central" target="Sengkang Town Centre" weight="94" />
+      <edge id="1263" source="Hougang Central" target="Geylang East" weight="57" />
+      <edge id="1264" source="Hougang Central" target="Hougang Central" weight="13" />
+      <edge id="1265" source="Hougang Central" target="Balestier" weight="72" />
+      <edge id="1266" source="Hougang Central" target="Compassvale" weight="80" />
+      <edge id="1267" source="Hougang Central" target="Serangoon Central" weight="102" />
+      <edge id="1268" source="Hougang Central" target="Pasir Ris West" weight="6" />
+      <edge id="1269" source="Hougang Central" target="Mountbatten" weight="3" />
+      <edge id="1270" source="Hougang Central" target="Bedok South" weight="10" />
+      <edge id="1271" source="Hougang Central" target="Yishun East" weight="10" />
+      <edge id="1272" source="Hougang Central" target="Geylang Bahru" weight="15" />
+      <edge id="1273" source="Hougang Central" target="Khatib" weight="10" />
+      <edge id="1274" source="Hougang Central" target="Kembangan" weight="22" />
+      <edge id="1275" source="Hougang Central" target="Bendemeer" weight="50" />
+      <edge id="1276" source="Hougang Central" target="Northland" weight="10" />
+      <edge id="1277" source="Hougang Central" target="Lorong Chuan" weight="17" />
+      <edge id="1278" source="Hougang Central" target="Kaki Bukit" weight="46" />
+      <edge id="1279" source="Hougang Central" target="Kallang Bahru" weight="35" />
+      <edge id="1280" source="Balestier" target="Jurong West Central" weight="79" />
+      <edge id="1281" source="Balestier" target="Sembawang North" weight="30" />
+      <edge id="1282" source="Balestier" target="Aljunied" weight="253" />
+      <edge id="1283" source="Balestier" target="Fernvale" weight="76" />
+      <edge id="1284" source="Balestier" target="Hougang West" weight="76" />
+      <edge id="1285" source="Balestier" target="Yishun West" weight="180" />
+      <edge id="1286" source="Balestier" target="Shangri-La" weight="65" />
+      <edge id="1287" source="Balestier" target="Upper Thomson" weight="207" />
+      <edge id="1288" source="Balestier" target="Woodlands East" weight="221" />
+      <edge id="1289" source="Balestier" target="Katong" weight="19" />
+      <edge id="1290" source="Balestier" target="Crawford" weight="70" />
+      <edge id="1291" source="Balestier" target="Serangoon Garden" weight="101" />
+      <edge id="1292" source="Balestier" target="Bedok North" weight="132" />
+      <edge id="1293" source="Balestier" target="Sembawang Hills" weight="11" />
+      <edge id="1294" source="Balestier" target="Tampines East" weight="224" />
+      <edge id="1295" source="Balestier" target="Kampong Bugis" weight="27" />
+      <edge id="1296" source="Balestier" target="Frankel" weight="78" />
+      <edge id="1297" source="Balestier" target="Seletar Hills" weight="20" />
+      <edge id="1298" source="Balestier" target="Admiralty" weight="14" />
+      <edge id="1299" source="Balestier" target="Trafalgar" weight="92" />
+      <edge id="1300" source="Balestier" target="Siglap" weight="12" />
+      <edge id="1301" source="Balestier" target="Tampines West" weight="108" />
+      <edge id="1302" source="Balestier" target="Pasir Ris West" weight="32" />
+      <edge id="1303" source="Balestier" target="Sembawang Central" weight="126" />
+      <edge id="1304" source="Balestier" target="Sembawang Springs" weight="17" />
+      <edge id="1305" source="Balestier" target="Sengkang Town Centre" weight="89" />
+      <edge id="1306" source="Balestier" target="Geylang East" weight="137" />
+      <edge id="1307" source="Balestier" target="Hougang Central" weight="63" />
+      <edge id="1308" source="Balestier" target="Balestier" weight="206" />
+      <edge id="1309" source="Balestier" target="Khatib" weight="100" />
+      <edge id="1310" source="Balestier" target="Kampong Glam" weight="14" />
+      <edge id="1311" source="Balestier" target="Serangoon Central" weight="174" />
+      <edge id="1312" source="Balestier" target="Simei" weight="95" />
+      <edge id="1313" source="Balestier" target="Mountbatten" weight="33" />
+      <edge id="1314" source="Balestier" target="Bedok South" weight="45" />
+      <edge id="1315" source="Balestier" target="Yishun East" weight="85" />
+      <edge id="1316" source="Balestier" target="Geylang Bahru" weight="40" />
+      <edge id="1317" source="Balestier" target="Compassvale" weight="61" />
+      <edge id="1318" source="Balestier" target="Kembangan" weight="60" />
+      <edge id="1319" source="Balestier" target="Bendemeer" weight="158" />
+      <edge id="1320" source="Balestier" target="Kebun Bahru" weight="47" />
+      <edge id="1321" source="Balestier" target="Northland" weight="81" />
+      <edge id="1322" source="Balestier" target="Lorong Chuan" weight="51" />
+      <edge id="1323" source="Balestier" target="Kaki Bukit" weight="119" />
+      <edge id="1324" source="Balestier" target="Kallang Bahru" weight="181" />
+      <edge id="1325" source="Khatib" target="Jurong West Central" weight="23" />
+      <edge id="1326" source="Khatib" target="Sembawang North" weight="22" />
+      <edge id="1327" source="Khatib" target="Frankel" weight="8" />
+      <edge id="1328" source="Khatib" target="Fernvale" weight="22" />
+      <edge id="1329" source="Khatib" target="Hougang West" weight="18" />
+      <edge id="1330" source="Khatib" target="Yishun West" weight="132" />
+      <edge id="1331" source="Khatib" target="Shangri-La" weight="21" />
+      <edge id="1332" source="Khatib" target="Upper Thomson" weight="69" />
+      <edge id="1333" source="Khatib" target="Woodlands East" weight="107" />
+      <edge id="1334" source="Khatib" target="Katong" weight="6" />
+      <edge id="1335" source="Khatib" target="Crawford" weight="12" />
+      <edge id="1336" source="Khatib" target="Serangoon Garden" weight="38" />
+      <edge id="1337" source="Khatib" target="Bedok North" weight="33" />
+      <edge id="1338" source="Khatib" target="Sembawang Hills" weight="5" />
+      <edge id="1339" source="Khatib" target="Tampines East" weight="53" />
+      <edge id="1340" source="Khatib" target="Kampong Bugis" weight="2" />
+      <edge id="1341" source="Khatib" target="Aljunied" weight="44" />
+      <edge id="1342" source="Khatib" target="Seletar Hills" weight="8" />
+      <edge id="1343" source="Khatib" target="Admiralty" weight="15" />
+      <edge id="1344" source="Khatib" target="Trafalgar" weight="39" />
+      <edge id="1345" source="Khatib" target="Siglap" weight="2" />
+      <edge id="1346" source="Khatib" target="Tampines West" weight="31" />
+      <edge id="1347" source="Khatib" target="Pasir Ris West" weight="6" />
+      <edge id="1348" source="Khatib" target="Sembawang Central" weight="80" />
+      <edge id="1349" source="Khatib" target="Sembawang Springs" weight="21" />
+      <edge id="1350" source="Khatib" target="Sengkang Town Centre" weight="24" />
+      <edge id="1351" source="Khatib" target="Geylang East" weight="38" />
+      <edge id="1352" source="Khatib" target="Hougang Central" weight="9" />
+      <edge id="1353" source="Khatib" target="Balestier" weight="84" />
+      <edge id="1354" source="Khatib" target="Khatib" weight="79" />
+      <edge id="1355" source="Khatib" target="Kampong Glam" weight="4" />
+      <edge id="1356" source="Khatib" target="Serangoon Central" weight="24" />
+      <edge id="1357" source="Khatib" target="Simei" weight="15" />
+      <edge id="1358" source="Khatib" target="Mountbatten" weight="3" />
+      <edge id="1359" source="Khatib" target="Bedok South" weight="10" />
+      <edge id="1360" source="Khatib" target="Yishun East" weight="83" />
+      <edge id="1361" source="Khatib" target="Geylang Bahru" weight="12" />
+      <edge id="1362" source="Khatib" target="Compassvale" weight="7" />
+      <edge id="1363" source="Khatib" target="Kembangan" weight="13" />
+      <edge id="1364" source="Khatib" target="Bendemeer" weight="37" />
+      <edge id="1365" source="Khatib" target="Kebun Bahru" weight="16" />
+      <edge id="1366" source="Khatib" target="Northland" weight="87" />
+      <edge id="1367" source="Khatib" target="Lorong Chuan" weight="10" />
+      <edge id="1368" source="Khatib" target="Kaki Bukit" weight="31" />
+      <edge id="1369" source="Khatib" target="Kallang Bahru" weight="33" />
+      <edge id="1370" source="Kampong Glam" target="Jurong West Central" weight="3" />
+      <edge id="1371" source="Kampong Glam" target="Sembawang North" weight="1" />
+      <edge id="1372" source="Kampong Glam" target="Aljunied" weight="54" />
+      <edge id="1373" source="Kampong Glam" target="Fernvale" weight="3" />
+      <edge id="1374" source="Kampong Glam" target="Yishun West" weight="6" />
+      <edge id="1375" source="Kampong Glam" target="Shangri-La" weight="3" />
+      <edge id="1376" source="Kampong Glam" target="Upper Thomson" weight="2" />
+      <edge id="1377" source="Kampong Glam" target="Woodlands East" weight="2" />
+      <edge id="1378" source="Kampong Glam" target="Seletar Hills" weight="1" />
+      <edge id="1379" source="Kampong Glam" target="Serangoon Garden" weight="5" />
+      <edge id="1380" source="Kampong Glam" target="Bedok North" weight="10" />
+      <edge id="1381" source="Kampong Glam" target="Sembawang Hills" weight="1" />
+      <edge id="1382" source="Kampong Glam" target="Tampines East" weight="17" />
+      <edge id="1383" source="Kampong Glam" target="Kampong Bugis" weight="12" />
+      <edge id="1384" source="Kampong Glam" target="Frankel" weight="14" />
+      <edge id="1385" source="Kampong Glam" target="Kembangan" weight="6" />
+      <edge id="1386" source="Kampong Glam" target="Kebun Bahru" weight="1" />
+      <edge id="1387" source="Kampong Glam" target="Trafalgar" weight="3" />
+      <edge id="1388" source="Kampong Glam" target="Siglap" weight="1" />
+      <edge id="1389" source="Kampong Glam" target="Tampines West" weight="10" />
+      <edge id="1390" source="Kampong Glam" target="Pasir Ris West" weight="1" />
+      <edge id="1391" source="Kampong Glam" target="Sembawang Central" weight="3" />
+      <edge id="1392" source="Kampong Glam" target="Katong" weight="5" />
+      <edge id="1393" source="Kampong Glam" target="Sengkang Town Centre" weight="4" />
+      <edge id="1394" source="Kampong Glam" target="Geylang East" weight="23" />
+      <edge id="1395" source="Kampong Glam" target="Hougang Central" weight="3" />
+      <edge id="1396" source="Kampong Glam" target="Balestier" weight="12" />
+      <edge id="1397" source="Kampong Glam" target="Khatib" weight="2" />
+      <edge id="1398" source="Kampong Glam" target="Serangoon Central" weight="5" />
+      <edge id="1399" source="Kampong Glam" target="Simei" weight="10" />
+      <edge id="1400" source="Kampong Glam" target="Mountbatten" weight="13" />
+      <edge id="1401" source="Kampong Glam" target="Bedok South" weight="7" />
+      <edge id="1402" source="Kampong Glam" target="Yishun East" weight="1" />
+      <edge id="1403" source="Kampong Glam" target="Geylang Bahru" weight="23" />
+      <edge id="1404" source="Kampong Glam" target="Compassvale" weight="1" />
+      <edge id="1405" source="Kampong Glam" target="Bendemeer" weight="14" />
+      <edge id="1406" source="Kampong Glam" target="Northland" weight="2" />
+      <edge id="1407" source="Kampong Glam" target="Kaki Bukit" weight="8" />
+      <edge id="1408" source="Kampong Glam" target="Kallang Bahru" weight="26" />
+      <edge id="1409" source="Serangoon Central" target="Jurong West Central" weight="42" />
+      <edge id="1410" source="Serangoon Central" target="Sembawang North" weight="13" />
+      <edge id="1411" source="Serangoon Central" target="Aljunied" weight="152" />
+      <edge id="1412" source="Serangoon Central" target="Fernvale" weight="145" />
+      <edge id="1413" source="Serangoon Central" target="Hougang West" weight="218" />
+      <edge id="1414" source="Serangoon Central" target="Yishun West" weight="62" />
+      <edge id="1415" source="Serangoon Central" target="Shangri-La" weight="19" />
+      <edge id="1416" source="Serangoon Central" target="Upper Thomson" weight="73" />
+      <edge id="1417" source="Serangoon Central" target="Woodlands East" weight="49" />
+      <edge id="1418" source="Serangoon Central" target="Katong" weight="21" />
+      <edge id="1419" source="Serangoon Central" target="Crawford" weight="36" />
+      <edge id="1420" source="Serangoon Central" target="Serangoon Garden" weight="341" />
+      <edge id="1421" source="Serangoon Central" target="Bedok North" weight="87" />
+      <edge id="1422" source="Serangoon Central" target="Sembawang Hills" weight="3" />
+      <edge id="1423" source="Serangoon Central" target="Tampines East" weight="112" />
+      <edge id="1424" source="Serangoon Central" target="Kampong Bugis" weight="7" />
+      <edge id="1425" source="Serangoon Central" target="Frankel" weight="33" />
+      <edge id="1426" source="Serangoon Central" target="Seletar Hills" weight="34" />
+      <edge id="1427" source="Serangoon Central" target="Admiralty" weight="3" />
+      <edge id="1428" source="Serangoon Central" target="Trafalgar" weight="217" />
+      <edge id="1429" source="Serangoon Central" target="Siglap" weight="7" />
+      <edge id="1430" source="Serangoon Central" target="Tampines West" weight="76" />
+      <edge id="1431" source="Serangoon Central" target="Simei" weight="73" />
+      <edge id="1432" source="Serangoon Central" target="Sembawang Central" weight="37" />
+      <edge id="1433" source="Serangoon Central" target="Sembawang Springs" weight="1" />
+      <edge id="1434" source="Serangoon Central" target="Sengkang Town Centre" weight="217" />
+      <edge id="1435" source="Serangoon Central" target="Geylang East" weight="127" />
+      <edge id="1436" source="Serangoon Central" target="Hougang Central" weight="124" />
+      <edge id="1437" source="Serangoon Central" target="Balestier" weight="114" />
+      <edge id="1438" source="Serangoon Central" target="Compassvale" weight="162" />
+      <edge id="1439" source="Serangoon Central" target="Kampong Glam" weight="4" />
+      <edge id="1440" source="Serangoon Central" target="Serangoon Central" weight="34" />
+      <edge id="1441" source="Serangoon Central" target="Pasir Ris West" weight="26" />
+      <edge id="1442" source="Serangoon Central" target="Mountbatten" weight="23" />
+      <edge id="1443" source="Serangoon Central" target="Bedok South" weight="49" />
+      <edge id="1444" source="Serangoon Central" target="Yishun East" weight="48" />
+      <edge id="1445" source="Serangoon Central" target="Geylang Bahru" weight="41" />
+      <edge id="1446" source="Serangoon Central" target="Khatib" weight="26" />
+      <edge id="1447" source="Serangoon Central" target="Kembangan" weight="49" />
+      <edge id="1448" source="Serangoon Central" target="Bendemeer" weight="155" />
+      <edge id="1449" source="Serangoon Central" target="Kebun Bahru" weight="32" />
+      <edge id="1450" source="Serangoon Central" target="Northland" weight="27" />
+      <edge id="1451" source="Serangoon Central" target="Lorong Chuan" weight="39" />
+      <edge id="1452" source="Serangoon Central" target="Kaki Bukit" weight="71" />
+      <edge id="1453" source="Serangoon Central" target="Kallang Bahru" weight="86" />
+      <edge id="1454" source="Katong" target="Mountbatten" weight="158" />
+      <edge id="1455" source="Katong" target="Jurong West Central" weight="4" />
+      <edge id="1456" source="Katong" target="Sembawang North" weight="4" />
+      <edge id="1457" source="Katong" target="Frankel" weight="180" />
+      <edge id="1458" source="Katong" target="Fernvale" weight="12" />
+      <edge id="1459" source="Katong" target="Hougang West" weight="11" />
+      <edge id="1460" source="Katong" target="Yishun West" weight="11" />
+      <edge id="1461" source="Katong" target="Shangri-La" weight="7" />
+      <edge id="1462" source="Katong" target="Upper Thomson" weight="7" />
+      <edge id="1463" source="Katong" target="Woodlands East" weight="15" />
+      <edge id="1464" source="Katong" target="Katong" weight="11" />
+      <edge id="1465" source="Katong" target="Crawford" weight="21" />
+      <edge id="1466" source="Katong" target="Serangoon Garden" weight="20" />
+      <edge id="1467" source="Katong" target="Bedok North" weight="127" />
+      <edge id="1468" source="Katong" target="Tampines East" weight="92" />
+      <edge id="1469" source="Katong" target="Kampong Bugis" weight="8" />
+      <edge id="1470" source="Katong" target="Aljunied" weight="129" />
+      <edge id="1471" source="Katong" target="Seletar Hills" weight="2" />
+      <edge id="1472" source="Katong" target="Admiralty" weight="1" />
+      <edge id="1473" source="Katong" target="Trafalgar" weight="12" />
+      <edge id="1474" source="Katong" target="Siglap" weight="41" />
+      <edge id="1475" source="Katong" target="Tampines West" weight="68" />
+      <edge id="1476" source="Katong" target="Simei" weight="50" />
+      <edge id="1477" source="Katong" target="Sembawang Central" weight="6" />
+      <edge id="1478" source="Katong" target="Sembawang Springs" weight="1" />
+      <edge id="1479" source="Katong" target="Sengkang Town Centre" weight="8" />
+      <edge id="1480" source="Katong" target="Geylang East" weight="208" />
+      <edge id="1481" source="Katong" target="Hougang Central" weight="6" />
+      <edge id="1482" source="Katong" target="Balestier" weight="22" />
+      <edge id="1483" source="Katong" target="Compassvale" weight="8" />
+      <edge id="1484" source="Katong" target="Kampong Glam" weight="4" />
+      <edge id="1485" source="Katong" target="Serangoon Central" weight="17" />
+      <edge id="1486" source="Katong" target="Pasir Ris West" weight="15" />
+      <edge id="1487" source="Katong" target="Kebun Bahru" weight="5" />
+      <edge id="1488" source="Katong" target="Bedok South" weight="109" />
+      <edge id="1489" source="Katong" target="Yishun East" weight="5" />
+      <edge id="1490" source="Katong" target="Geylang Bahru" weight="12" />
+      <edge id="1491" source="Katong" target="Khatib" weight="6" />
+      <edge id="1492" source="Katong" target="Kembangan" weight="124" />
+      <edge id="1493" source="Katong" target="Bendemeer" weight="9" />
+      <edge id="1494" source="Katong" target="Northland" weight="6" />
+      <edge id="1495" source="Katong" target="Lorong Chuan" weight="5" />
+      <edge id="1496" source="Katong" target="Kaki Bukit" weight="106" />
+      <edge id="1497" source="Katong" target="Kallang Bahru" weight="30" />
+      <edge id="1498" source="Pasir Ris West" target="Jurong West Central" weight="9" />
+      <edge id="1499" source="Pasir Ris West" target="Sembawang North" weight="7" />
+      <edge id="1500" source="Pasir Ris West" target="Aljunied" weight="65" />
+      <edge id="1501" source="Pasir Ris West" target="Fernvale" weight="18" />
+      <edge id="1502" source="Pasir Ris West" target="Hougang West" weight="26" />
+      <edge id="1503" source="Pasir Ris West" target="Yishun West" weight="30" />
+      <edge id="1504" source="Pasir Ris West" target="Shangri-La" weight="4" />
+      <edge id="1505" source="Pasir Ris West" target="Upper Thomson" weight="14" />
+      <edge id="1506" source="Pasir Ris West" target="Woodlands East" weight="44" />
+      <edge id="1507" source="Pasir Ris West" target="Katong" weight="14" />
+      <edge id="1508" source="Pasir Ris West" target="Crawford" weight="17" />
+      <edge id="1509" source="Pasir Ris West" target="Serangoon Garden" weight="13" />
+      <edge id="1510" source="Pasir Ris West" target="Bedok North" weight="109" />
+      <edge id="1511" source="Pasir Ris West" target="Sembawang Hills" weight="1" />
+      <edge id="1512" source="Pasir Ris West" target="Tampines East" weight="353" />
+      <edge id="1513" source="Pasir Ris West" target="Kampong Bugis" weight="6" />
+      <edge id="1514" source="Pasir Ris West" target="Frankel" weight="43" />
+      <edge id="1515" source="Pasir Ris West" target="Seletar Hills" weight="9" />
+      <edge id="1516" source="Pasir Ris West" target="Admiralty" weight="3" />
+      <edge id="1517" source="Pasir Ris West" target="Trafalgar" weight="32" />
+      <edge id="1518" source="Pasir Ris West" target="Siglap" weight="16" />
+      <edge id="1519" source="Pasir Ris West" target="Tampines West" weight="157" />
+      <edge id="1520" source="Pasir Ris West" target="Pasir Ris West" weight="27" />
+      <edge id="1521" source="Pasir Ris West" target="Sembawang Central" weight="7" />
+      <edge id="1522" source="Pasir Ris West" target="Sembawang Springs" weight="2" />
+      <edge id="1523" source="Pasir Ris West" target="Sengkang Town Centre" weight="37" />
+      <edge id="1524" source="Pasir Ris West" target="Geylang East" weight="77" />
+      <edge id="1525" source="Pasir Ris West" target="Hougang Central" weight="14" />
+      <edge id="1526" source="Pasir Ris West" target="Balestier" weight="28" />
+      <edge id="1527" source="Pasir Ris West" target="Khatib" weight="18" />
+      <edge id="1528" source="Pasir Ris West" target="Kampong Glam" weight="4" />
+      <edge id="1529" source="Pasir Ris West" target="Serangoon Central" weight="17" />
+      <edge id="1530" source="Pasir Ris West" target="Simei" weight="84" />
+      <edge id="1531" source="Pasir Ris West" target="Mountbatten" weight="19" />
+      <edge id="1532" source="Pasir Ris West" target="Bedok South" weight="40" />
+      <edge id="1533" source="Pasir Ris West" target="Yishun East" weight="11" />
+      <edge id="1534" source="Pasir Ris West" target="Geylang Bahru" weight="10" />
+      <edge id="1535" source="Pasir Ris West" target="Compassvale" weight="11" />
+      <edge id="1536" source="Pasir Ris West" target="Kembangan" weight="37" />
+      <edge id="1537" source="Pasir Ris West" target="Bendemeer" weight="19" />
+      <edge id="1538" source="Pasir Ris West" target="Kebun Bahru" weight="6" />
+      <edge id="1539" source="Pasir Ris West" target="Northland" weight="21" />
+      <edge id="1540" source="Pasir Ris West" target="Lorong Chuan" weight="7" />
+      <edge id="1541" source="Pasir Ris West" target="Kaki Bukit" weight="75" />
+      <edge id="1542" source="Pasir Ris West" target="Kallang Bahru" weight="18" />
+      <edge id="1543" source="Admiralty" target="Jurong West Central" weight="7" />
+      <edge id="1544" source="Admiralty" target="Sembawang North" weight="22" />
+      <edge id="1545" source="Admiralty" target="Frankel" weight="2" />
+      <edge id="1546" source="Admiralty" target="Fernvale" weight="6" />
+      <edge id="1547" source="Admiralty" target="Hougang West" weight="5" />
+      <edge id="1548" source="Admiralty" target="Yishun West" weight="77" />
+      <edge id="1549" source="Admiralty" target="Shangri-La" weight="5" />
+      <edge id="1550" source="Admiralty" target="Upper Thomson" weight="12" />
+      <edge id="1551" source="Admiralty" target="Woodlands East" weight="38" />
+      <edge id="1552" source="Admiralty" target="Seletar Hills" weight="3" />
+      <edge id="1553" source="Admiralty" target="Crawford" weight="3" />
+      <edge id="1554" source="Admiralty" target="Serangoon Garden" weight="8" />
+      <edge id="1555" source="Admiralty" target="Bedok North" weight="7" />
+      <edge id="1556" source="Admiralty" target="Sembawang Hills" weight="2" />
+      <edge id="1557" source="Admiralty" target="Tampines East" weight="10" />
+      <edge id="1558" source="Admiralty" target="Kampong Bugis" weight="1" />
+      <edge id="1559" source="Admiralty" target="Aljunied" weight="7" />
+      <edge id="1560" source="Admiralty" target="Kembangan" weight="5" />
+      <edge id="1561" source="Admiralty" target="Admiralty" weight="3" />
+      <edge id="1562" source="Admiralty" target="Trafalgar" weight="6" />
+      <edge id="1563" source="Admiralty" target="Tampines West" weight="7" />
+      <edge id="1564" source="Admiralty" target="Pasir Ris West" weight="2" />
+      <edge id="1565" source="Admiralty" target="Sembawang Central" weight="9" />
+      <edge id="1566" source="Admiralty" target="Sembawang Springs" weight="26" />
+      <edge id="1567" source="Admiralty" target="Sengkang Town Centre" weight="8" />
+      <edge id="1568" source="Admiralty" target="Geylang East" weight="13" />
+      <edge id="1569" source="Admiralty" target="Hougang Central" weight="2" />
+      <edge id="1570" source="Admiralty" target="Balestier" weight="13" />
+      <edge id="1571" source="Admiralty" target="Khatib" weight="18" />
+      <edge id="1572" source="Admiralty" target="Kampong Glam" weight="1" />
+      <edge id="1573" source="Admiralty" target="Serangoon Central" weight="7" />
+      <edge id="1574" source="Admiralty" target="Katong" weight="1" />
+      <edge id="1575" source="Admiralty" target="Simei" weight="2" />
+      <edge id="1576" source="Admiralty" target="Mountbatten" weight="2" />
+      <edge id="1577" source="Admiralty" target="Bedok South" weight="5" />
+      <edge id="1578" source="Admiralty" target="Yishun East" weight="15" />
+      <edge id="1579" source="Admiralty" target="Compassvale" weight="2" />
+      <edge id="1580" source="Admiralty" target="Bendemeer" weight="6" />
+      <edge id="1581" source="Admiralty" target="Kebun Bahru" weight="3" />
+      <edge id="1582" source="Admiralty" target="Northland" weight="72" />
+      <edge id="1583" source="Admiralty" target="Lorong Chuan" weight="6" />
+      <edge id="1584" source="Admiralty" target="Kaki Bukit" weight="8" />
+      <edge id="1585" source="Admiralty" target="Kallang Bahru" weight="8" />
+      <edge id="1586" source="Bedok South" target="Jurong West Central" weight="53" />
+      <edge id="1587" source="Bedok South" target="Sembawang North" weight="10" />
+      <edge id="1588" source="Bedok South" target="Aljunied" weight="179" />
+      <edge id="1589" source="Bedok South" target="Fernvale" weight="25" />
+      <edge id="1590" source="Bedok South" target="Hougang West" weight="22" />
+      <edge id="1591" source="Bedok South" target="Yishun West" weight="9" />
+      <edge id="1592" source="Bedok South" target="Shangri-La" weight="7" />
+      <edge id="1593" source="Bedok South" target="Upper Thomson" weight="23" />
+      <edge id="1594" source="Bedok South" target="Woodlands East" weight="37" />
+      <edge id="1595" source="Bedok South" target="Katong" weight="92" />
+      <edge id="1596" source="Bedok South" target="Crawford" weight="38" />
+      <edge id="1597" source="Bedok South" target="Serangoon Garden" weight="23" />
+      <edge id="1598" source="Bedok South" target="Bedok North" weight="523" />
+      <edge id="1599" source="Bedok South" target="Bendemeer" weight="23" />
+      <edge id="1600" source="Bedok South" target="Sembawang Hills" weight="1" />
+      <edge id="1601" source="Bedok South" target="Tampines East" weight="361" />
+      <edge id="1602" source="Bedok South" target="Kampong Bugis" weight="12" />
+      <edge id="1603" source="Bedok South" target="Frankel" weight="405" />
+      <edge id="1604" source="Bedok South" target="Seletar Hills" weight="3" />
+      <edge id="1605" source="Bedok South" target="Kebun Bahru" weight="6" />
+      <edge id="1606" source="Bedok South" target="Trafalgar" weight="20" />
+      <edge id="1607" source="Bedok South" target="Siglap" weight="53" />
+      <edge id="1608" source="Bedok South" target="Tampines West" weight="185" />
+      <edge id="1609" source="Bedok South" target="Pasir Ris West" weight="41" />
+      <edge id="1610" source="Bedok South" target="Sembawang Central" weight="17" />
+      <edge id="1611" source="Bedok South" target="Sembawang Springs" weight="2" />
+      <edge id="1612" source="Bedok South" target="Sengkang Town Centre" weight="24" />
+      <edge id="1613" source="Bedok South" target="Geylang East" weight="197" />
+      <edge id="1614" source="Bedok South" target="Hougang Central" weight="13" />
+      <edge id="1615" source="Bedok South" target="Balestier" weight="62" />
+      <edge id="1616" source="Bedok South" target="Khatib" weight="15" />
+      <edge id="1617" source="Bedok South" target="Kampong Glam" weight="2" />
+      <edge id="1618" source="Bedok South" target="Serangoon Central" weight="48" />
+      <edge id="1619" source="Bedok South" target="Simei" weight="349" />
+      <edge id="1620" source="Bedok South" target="Mountbatten" weight="70" />
+      <edge id="1621" source="Bedok South" target="Bedok South" weight="513" />
+      <edge id="1622" source="Bedok South" target="Yishun East" weight="12" />
+      <edge id="1623" source="Bedok South" target="Geylang Bahru" weight="29" />
+      <edge id="1624" source="Bedok South" target="Compassvale" weight="9" />
+      <edge id="1625" source="Bedok South" target="Kembangan" weight="157" />
+      <edge id="1626" source="Bedok South" target="Admiralty" weight="2" />
+      <edge id="1627" source="Bedok South" target="Northland" weight="15" />
+      <edge id="1628" source="Bedok South" target="Lorong Chuan" weight="29" />
+      <edge id="1629" source="Bedok South" target="Kaki Bukit" weight="132" />
+      <edge id="1630" source="Bedok South" target="Kallang Bahru" weight="80" />
+      <edge id="1631" source="Geylang Bahru" target="Jurong West Central" weight="23" />
+      <edge id="1632" source="Geylang Bahru" target="Sembawang North" weight="3" />
+      <edge id="1633" source="Geylang Bahru" target="Frankel" weight="19" />
+      <edge id="1634" source="Geylang Bahru" target="Fernvale" weight="10" />
+      <edge id="1635" source="Geylang Bahru" target="Hougang West" weight="10" />
+      <edge id="1636" source="Geylang Bahru" target="Yishun West" weight="13" />
+      <edge id="1637" source="Geylang Bahru" target="Shangri-La" weight="4" />
+      <edge id="1638" source="Geylang Bahru" target="Upper Thomson" weight="23" />
+      <edge id="1639" source="Geylang Bahru" target="Woodlands East" weight="24" />
+      <edge id="1640" source="Geylang Bahru" target="Seletar Hills" weight="5" />
+      <edge id="1641" source="Geylang Bahru" target="Crawford" weight="26" />
+      <edge id="1642" source="Geylang Bahru" target="Serangoon Garden" weight="17" />
+      <edge id="1643" source="Geylang Bahru" target="Bedok North" weight="55" />
+      <edge id="1644" source="Geylang Bahru" target="Sembawang Hills" weight="2" />
+      <edge id="1645" source="Geylang Bahru" target="Tampines East" weight="87" />
+      <edge id="1646" source="Geylang Bahru" target="Kampong Bugis" weight="13" />
+      <edge id="1647" source="Geylang Bahru" target="Aljunied" weight="175" />
+      <edge id="1648" source="Geylang Bahru" target="Kembangan" weight="28" />
+      <edge id="1649" source="Geylang Bahru" target="Admiralty" weight="1" />
+      <edge id="1650" source="Geylang Bahru" target="Trafalgar" weight="14" />
+      <edge id="1651" source="Geylang Bahru" target="Siglap" weight="5" />
+      <edge id="1652" source="Geylang Bahru" target="Tampines West" weight="52" />
+      <edge id="1653" source="Geylang Bahru" target="Simei" weight="36" />
+      <edge id="1654" source="Geylang Bahru" target="Sembawang Central" weight="8" />
+      <edge id="1655" source="Geylang Bahru" target="Sembawang Springs" weight="2" />
+      <edge id="1656" source="Geylang Bahru" target="Sengkang Town Centre" weight="13" />
+      <edge id="1657" source="Geylang Bahru" target="Geylang East" weight="55" />
+      <edge id="1658" source="Geylang Bahru" target="Hougang Central" weight="7" />
+      <edge id="1659" source="Geylang Bahru" target="Balestier" weight="43" />
+      <edge id="1660" source="Geylang Bahru" target="Khatib" weight="5" />
+      <edge id="1661" source="Geylang Bahru" target="Kampong Glam" weight="9" />
+      <edge id="1662" source="Geylang Bahru" target="Serangoon Central" weight="31" />
+      <edge id="1663" source="Geylang Bahru" target="Katong" weight="7" />
+      <edge id="1664" source="Geylang Bahru" target="Pasir Ris West" weight="8" />
+      <edge id="1665" source="Geylang Bahru" target="Mountbatten" weight="13" />
+      <edge id="1666" source="Geylang Bahru" target="Bedok South" weight="32" />
+      <edge id="1667" source="Geylang Bahru" target="Yishun East" weight="12" />
+      <edge id="1668" source="Geylang Bahru" target="Geylang Bahru" weight="8" />
+      <edge id="1669" source="Geylang Bahru" target="Compassvale" weight="9" />
+      <edge id="1670" source="Geylang Bahru" target="Bendemeer" weight="28" />
+      <edge id="1671" source="Geylang Bahru" target="Kebun Bahru" weight="7" />
+      <edge id="1672" source="Geylang Bahru" target="Northland" weight="6" />
+      <edge id="1673" source="Geylang Bahru" target="Lorong Chuan" weight="12" />
+      <edge id="1674" source="Geylang Bahru" target="Kaki Bukit" weight="47" />
+      <edge id="1675" source="Geylang Bahru" target="Kallang Bahru" weight="88" />
+      <edge id="1676" source="Yishun East" target="Jurong West Central" weight="35" />
+      <edge id="1677" source="Yishun East" target="Sembawang North" weight="58" />
+      <edge id="1678" source="Yishun East" target="Frankel" weight="12" />
+      <edge id="1679" source="Yishun East" target="Fernvale" weight="50" />
+      <edge id="1680" source="Yishun East" target="Hougang West" weight="22" />
+      <edge id="1681" source="Yishun East" target="Yishun West" weight="279" />
+      <edge id="1682" source="Yishun East" target="Shangri-La" weight="17" />
+      <edge id="1683" source="Yishun East" target="Upper Thomson" weight="60" />
+      <edge id="1684" source="Yishun East" target="Woodlands East" weight="113" />
+      <edge id="1685" source="Yishun East" target="Seletar Hills" weight="29" />
+      <edge id="1686" source="Yishun East" target="Crawford" weight="19" />
+      <edge id="1687" source="Yishun East" target="Serangoon Garden" weight="38" />
+      <edge id="1688" source="Yishun East" target="Bedok North" weight="44" />
+      <edge id="1689" source="Yishun East" target="Bendemeer" weight="24" />
+      <edge id="1690" source="Yishun East" target="Sembawang Hills" weight="4" />
+      <edge id="1691" source="Yishun East" target="Tampines East" weight="81" />
+      <edge id="1692" source="Yishun East" target="Kampong Bugis" weight="2" />
+      <edge id="1693" source="Yishun East" target="Aljunied" weight="55" />
+      <edge id="1694" source="Yishun East" target="Kembangan" weight="20" />
+      <edge id="1695" source="Yishun East" target="Mountbatten" weight="9" />
+      <edge id="1696" source="Yishun East" target="Trafalgar" weight="48" />
+      <edge id="1697" source="Yishun East" target="Siglap" weight="1" />
+      <edge id="1698" source="Yishun East" target="Tampines West" weight="29" />
+      <edge id="1699" source="Yishun East" target="Pasir Ris West" weight="14" />
+      <edge id="1700" source="Yishun East" target="Sembawang Central" weight="74" />
+      <edge id="1701" source="Yishun East" target="Sembawang Springs" weight="50" />
+      <edge id="1702" source="Yishun East" target="Sengkang Town Centre" weight="29" />
+      <edge id="1703" source="Yishun East" target="Geylang East" weight="55" />
+      <edge id="1704" source="Yishun East" target="Hougang Central" weight="11" />
+      <edge id="1705" source="Yishun East" target="Balestier" weight="90" />
+      <edge id="1706" source="Yishun East" target="Khatib" weight="75" />
+      <edge id="1707" source="Yishun East" target="Kampong Glam" weight="1" />
+      <edge id="1708" source="Yishun East" target="Serangoon Central" weight="36" />
+      <edge id="1709" source="Yishun East" target="Katong" weight="9" />
+      <edge id="1710" source="Yishun East" target="Simei" weight="27" />
+      <edge id="1711" source="Yishun East" target="Kebun Bahru" weight="24" />
+      <edge id="1712" source="Yishun East" target="Bedok South" weight="18" />
+      <edge id="1713" source="Yishun East" target="Yishun East" weight="106" />
+      <edge id="1714" source="Yishun East" target="Geylang Bahru" weight="17" />
+      <edge id="1715" source="Yishun East" target="Compassvale" weight="18" />
+      <edge id="1716" source="Yishun East" target="Admiralty" weight="12" />
+      <edge id="1717" source="Yishun East" target="Northland" weight="185" />
+      <edge id="1718" source="Yishun East" target="Lorong Chuan" weight="21" />
+      <edge id="1719" source="Yishun East" target="Kaki Bukit" weight="39" />
+      <edge id="1720" source="Yishun East" target="Kallang Bahru" weight="49" />
+      <edge id="1721" source="Compassvale" target="Jurong West Central" weight="11" />
+      <edge id="1722" source="Compassvale" target="Sembawang North" weight="3" />
+      <edge id="1723" source="Compassvale" target="Frankel" weight="19" />
+      <edge id="1724" source="Compassvale" target="Fernvale" weight="146" />
+      <edge id="1725" source="Compassvale" target="Hougang West" weight="75" />
+      <edge id="1726" source="Compassvale" target="Yishun West" weight="20" />
+      <edge id="1727" source="Compassvale" target="Shangri-La" weight="11" />
+      <edge id="1728" source="Compassvale" target="Upper Thomson" weight="36" />
+      <edge id="1729" source="Compassvale" target="Woodlands East" weight="17" />
+      <edge id="1730" source="Compassvale" target="Seletar Hills" weight="41" />
+      <edge id="1731" source="Compassvale" target="Crawford" weight="20" />
+      <edge id="1732" source="Compassvale" target="Serangoon Garden" weight="52" />
+      <edge id="1733" source="Compassvale" target="Bedok North" weight="38" />
+      <edge id="1734" source="Compassvale" target="Sembawang Hills" weight="1" />
+      <edge id="1735" source="Compassvale" target="Tampines East" weight="45" />
+      <edge id="1736" source="Compassvale" target="Kampong Bugis" weight="9" />
+      <edge id="1737" source="Compassvale" target="Aljunied" weight="69" />
+      <edge id="1738" source="Compassvale" target="Kembangan" weight="22" />
+      <edge id="1739" source="Compassvale" target="Mountbatten" weight="5" />
+      <edge id="1740" source="Compassvale" target="Trafalgar" weight="308" />
+      <edge id="1741" source="Compassvale" target="Siglap" weight="5" />
+      <edge id="1742" source="Compassvale" target="Tampines West" weight="34" />
+      <edge id="1743" source="Compassvale" target="Pasir Ris West" weight="8" />
+      <edge id="1744" source="Compassvale" target="Sembawang Central" weight="7" />
+      <edge id="1745" source="Compassvale" target="Sembawang Springs" weight="1" />
+      <edge id="1746" source="Compassvale" target="Sengkang Town Centre" weight="28" />
+      <edge id="1747" source="Compassvale" target="Geylang East" weight="40" />
+      <edge id="1748" source="Compassvale" target="Hougang Central" weight="62" />
+      <edge id="1749" source="Compassvale" target="Balestier" weight="56" />
+      <edge id="1750" source="Compassvale" target="Khatib" weight="11" />
+      <edge id="1751" source="Compassvale" target="Kampong Glam" weight="1" />
+      <edge id="1752" source="Compassvale" target="Serangoon Central" weight="89" />
+      <edge id="1753" source="Compassvale" target="Katong" weight="8" />
+      <edge id="1754" source="Compassvale" target="Simei" weight="32" />
+      <edge id="1755" source="Compassvale" target="Kebun Bahru" weight="7" />
+      <edge id="1756" source="Compassvale" target="Bedok South" weight="5" />
+      <edge id="1757" source="Compassvale" target="Yishun East" weight="18" />
+      <edge id="1758" source="Compassvale" target="Geylang Bahru" weight="15" />
+      <edge id="1759" source="Compassvale" target="Compassvale" weight="29" />
+      <edge id="1760" source="Compassvale" target="Bendemeer" weight="50" />
+      <edge id="1761" source="Compassvale" target="Northland" weight="20" />
+      <edge id="1762" source="Compassvale" target="Lorong Chuan" weight="17" />
+      <edge id="1763" source="Compassvale" target="Kaki Bukit" weight="57" />
+      <edge id="1764" source="Compassvale" target="Kallang Bahru" weight="42" />
+      <edge id="1765" source="Kebun Bahru" target="Jurong West Central" weight="8" />
+      <edge id="1766" source="Kebun Bahru" target="Sembawang North" weight="13" />
+      <edge id="1767" source="Kebun Bahru" target="Aljunied" weight="30" />
+      <edge id="1768" source="Kebun Bahru" target="Fernvale" weight="23" />
+      <edge id="1769" source="Kebun Bahru" target="Hougang West" weight="28" />
+      <edge id="1770" source="Kebun Bahru" target="Yishun West" weight="31" />
+      <edge id="1771" source="Kebun Bahru" target="Shangri-La" weight="10" />
+      <edge id="1772" source="Kebun Bahru" target="Upper Thomson" weight="160" />
+      <edge id="1773" source="Kebun Bahru" target="Woodlands East" weight="23" />
+      <edge id="1774" source="Kebun Bahru" target="Katong" weight="2" />
+      <edge id="1775" source="Kebun Bahru" target="Crawford" weight="9" />
+      <edge id="1776" source="Kebun Bahru" target="Serangoon Garden" weight="46" />
+      <edge id="1777" source="Kebun Bahru" target="Bedok North" weight="24" />
+      <edge id="1778" source="Kebun Bahru" target="Sembawang Hills" weight="5" />
+      <edge id="1779" source="Kebun Bahru" target="Tampines East" weight="30" />
+      <edge id="1780" source="Kebun Bahru" target="Kampong Bugis" weight="2" />
+      <edge id="1781" source="Kebun Bahru" target="Frankel" weight="11" />
+      <edge id="1782" source="Kebun Bahru" target="Seletar Hills" weight="15" />
+      <edge id="1783" source="Kebun Bahru" target="Admiralty" weight="2" />
+      <edge id="1784" source="Kebun Bahru" target="Trafalgar" weight="30" />
+      <edge id="1785" source="Kebun Bahru" target="Siglap" weight="3" />
+      <edge id="1786" source="Kebun Bahru" target="Tampines West" weight="17" />
+      <edge id="1787" source="Kebun Bahru" target="Pasir Ris West" weight="3" />
+      <edge id="1788" source="Kebun Bahru" target="Sembawang Central" weight="14" />
+      <edge id="1789" source="Kebun Bahru" target="Sembawang Springs" weight="4" />
+      <edge id="1790" source="Kebun Bahru" target="Sengkang Town Centre" weight="17" />
+      <edge id="1791" source="Kebun Bahru" target="Geylang East" weight="32" />
+      <edge id="1792" source="Kebun Bahru" target="Hougang Central" weight="10" />
+      <edge id="1793" source="Kebun Bahru" target="Balestier" weight="51" />
+      <edge id="1794" source="Kebun Bahru" target="Khatib" weight="16" />
+      <edge id="1795" source="Kebun Bahru" target="Kampong Glam" weight="1" />
+      <edge id="1796" source="Kebun Bahru" target="Serangoon Central" weight="31" />
+      <edge id="1797" source="Kebun Bahru" target="Simei" weight="15" />
+      <edge id="1798" source="Kebun Bahru" target="Mountbatten" weight="4" />
+      <edge id="1799" source="Kebun Bahru" target="Bedok South" weight="19" />
+      <edge id="1800" source="Kebun Bahru" target="Yishun East" weight="20" />
+      <edge id="1801" source="Kebun Bahru" target="Geylang Bahru" weight="13" />
+      <edge id="1802" source="Kebun Bahru" target="Compassvale" weight="6" />
+      <edge id="1803" source="Kebun Bahru" target="Kembangan" weight="14" />
+      <edge id="1804" source="Kebun Bahru" target="Bendemeer" weight="15" />
+      <edge id="1805" source="Kebun Bahru" target="Kebun Bahru" weight="8" />
+      <edge id="1806" source="Kebun Bahru" target="Northland" weight="27" />
+      <edge id="1807" source="Kebun Bahru" target="Lorong Chuan" weight="11" />
+      <edge id="1808" source="Kebun Bahru" target="Kaki Bukit" weight="26" />
+      <edge id="1809" source="Kebun Bahru" target="Kallang Bahru" weight="21" />
+      <edge id="1810" source="Seletar Hills" target="Jurong West Central" weight="6" />
+      <edge id="1811" source="Seletar Hills" target="Sembawang North" weight="5" />
+      <edge id="1812" source="Seletar Hills" target="Aljunied" weight="25" />
+      <edge id="1813" source="Seletar Hills" target="Fernvale" weight="187" />
+      <edge id="1814" source="Seletar Hills" target="Hougang West" weight="48" />
+      <edge id="1815" source="Seletar Hills" target="Yishun West" weight="25" />
+      <edge id="1816" source="Seletar Hills" target="Shangri-La" weight="8" />
+      <edge id="1817" source="Seletar Hills" target="Upper Thomson" weight="22" />
+      <edge id="1818" source="Seletar Hills" target="Woodlands East" weight="31" />
+      <edge id="1819" source="Seletar Hills" target="Seletar Hills" weight="35" />
+      <edge id="1820" source="Seletar Hills" target="Crawford" weight="7" />
+      <edge id="1821" source="Seletar Hills" target="Serangoon Garden" weight="75" />
+      <edge id="1822" source="Seletar Hills" target="Bedok North" weight="20" />
+      <edge id="1823" source="Seletar Hills" target="Sembawang Hills" weight="2" />
+      <edge id="1824" source="Seletar Hills" target="Tampines East" weight="43" />
+      <edge id="1825" source="Seletar Hills" target="Kampong Bugis" weight="2" />
+      <edge id="1826" source="Seletar Hills" target="Frankel" weight="10" />
+      <edge id="1827" source="Seletar Hills" target="Kembangan" weight="10" />
+      <edge id="1828" source="Seletar Hills" target="Admiralty" weight="4" />
+      <edge id="1829" source="Seletar Hills" target="Trafalgar" weight="188" />
+      <edge id="1830" source="Seletar Hills" target="Siglap" weight="1" />
+      <edge id="1831" source="Seletar Hills" target="Tampines West" weight="29" />
+      <edge id="1832" source="Seletar Hills" target="Simei" weight="15" />
+      <edge id="1833" source="Seletar Hills" target="Sembawang Central" weight="13" />
+      <edge id="1834" source="Seletar Hills" target="Sembawang Springs" weight="3" />
+      <edge id="1835" source="Seletar Hills" target="Sengkang Town Centre" weight="21" />
+      <edge id="1836" source="Seletar Hills" target="Geylang East" weight="17" />
+      <edge id="1837" source="Seletar Hills" target="Hougang Central" weight="17" />
+      <edge id="1838" source="Seletar Hills" target="Balestier" weight="28" />
+      <edge id="1839" source="Seletar Hills" target="Khatib" weight="16" />
+      <edge id="1840" source="Seletar Hills" target="Serangoon Central" weight="30" />
+      <edge id="1841" source="Seletar Hills" target="Katong" weight="5" />
+      <edge id="1842" source="Seletar Hills" target="Pasir Ris West" weight="17" />
+      <edge id="1843" source="Seletar Hills" target="Mountbatten" weight="10" />
+      <edge id="1844" source="Seletar Hills" target="Bedok South" weight="4" />
+      <edge id="1845" source="Seletar Hills" target="Yishun East" weight="15" />
+      <edge id="1846" source="Seletar Hills" target="Geylang Bahru" weight="6" />
+      <edge id="1847" source="Seletar Hills" target="Compassvale" weight="36" />
+      <edge id="1848" source="Seletar Hills" target="Bendemeer" weight="9" />
+      <edge id="1849" source="Seletar Hills" target="Kebun Bahru" weight="11" />
+      <edge id="1850" source="Seletar Hills" target="Northland" weight="21" />
+      <edge id="1851" source="Seletar Hills" target="Lorong Chuan" weight="6" />
+      <edge id="1852" source="Seletar Hills" target="Kaki Bukit" weight="21" />
+      <edge id="1853" source="Seletar Hills" target="Kallang Bahru" weight="16" />
+      <edge id="1854" source="Lorong Chuan" target="Jurong West Central" weight="12" />
+      <edge id="1855" source="Lorong Chuan" target="Sembawang North" weight="4" />
+      <edge id="1856" source="Lorong Chuan" target="Frankel" weight="19" />
+      <edge id="1857" source="Lorong Chuan" target="Fernvale" weight="14" />
+      <edge id="1858" source="Lorong Chuan" target="Hougang West" weight="24" />
+      <edge id="1859" source="Lorong Chuan" target="Yishun West" weight="20" />
+      <edge id="1860" source="Lorong Chuan" target="Shangri-La" weight="16" />
+      <edge id="1861" source="Lorong Chuan" target="Upper Thomson" weight="36" />
+      <edge id="1862" source="Lorong Chuan" target="Woodlands East" weight="29" />
+      <edge id="1863" source="Lorong Chuan" target="Seletar Hills" weight="8" />
+      <edge id="1864" source="Lorong Chuan" target="Crawford" weight="14" />
+      <edge id="1865" source="Lorong Chuan" target="Serangoon Garden" weight="77" />
+      <edge id="1866" source="Lorong Chuan" target="Bedok North" weight="20" />
+      <edge id="1867" source="Lorong Chuan" target="Sembawang Hills" weight="2" />
+      <edge id="1868" source="Lorong Chuan" target="Tampines East" weight="49" />
+      <edge id="1869" source="Lorong Chuan" target="Kampong Bugis" weight="5" />
+      <edge id="1870" source="Lorong Chuan" target="Aljunied" weight="46" />
+      <edge id="1871" source="Lorong Chuan" target="Kembangan" weight="15" />
+      <edge id="1872" source="Lorong Chuan" target="Admiralty" weight="5" />
+      <edge id="1873" source="Lorong Chuan" target="Trafalgar" weight="22" />
+      <edge id="1874" source="Lorong Chuan" target="Siglap" weight="3" />
+      <edge id="1875" source="Lorong Chuan" target="Tampines West" weight="16" />
+      <edge id="1876" source="Lorong Chuan" target="Simei" weight="26" />
+      <edge id="1877" source="Lorong Chuan" target="Sembawang Central" weight="12" />
+      <edge id="1878" source="Lorong Chuan" target="Sembawang Springs" weight="2" />
+      <edge id="1879" source="Lorong Chuan" target="Sengkang Town Centre" weight="20" />
+      <edge id="1880" source="Lorong Chuan" target="Geylang East" weight="51" />
+      <edge id="1881" source="Lorong Chuan" target="Hougang Central" weight="11" />
+      <edge id="1882" source="Lorong Chuan" target="Balestier" weight="49" />
+      <edge id="1883" source="Lorong Chuan" target="Khatib" weight="11" />
+      <edge id="1884" source="Lorong Chuan" target="Kampong Glam" weight="1" />
+      <edge id="1885" source="Lorong Chuan" target="Serangoon Central" weight="39" />
+      <edge id="1886" source="Lorong Chuan" target="Katong" weight="3" />
+      <edge id="1887" source="Lorong Chuan" target="Pasir Ris West" weight="5" />
+      <edge id="1888" source="Lorong Chuan" target="Mountbatten" weight="17" />
+      <edge id="1889" source="Lorong Chuan" target="Bedok South" weight="14" />
+      <edge id="1890" source="Lorong Chuan" target="Yishun East" weight="9" />
+      <edge id="1891" source="Lorong Chuan" target="Geylang Bahru" weight="10" />
+      <edge id="1892" source="Lorong Chuan" target="Compassvale" weight="12" />
+      <edge id="1893" source="Lorong Chuan" target="Bendemeer" weight="32" />
+      <edge id="1894" source="Lorong Chuan" target="Kebun Bahru" weight="11" />
+      <edge id="1895" source="Lorong Chuan" target="Northland" weight="14" />
+      <edge id="1896" source="Lorong Chuan" target="Lorong Chuan" weight="24" />
+      <edge id="1897" source="Lorong Chuan" target="Kaki Bukit" weight="25" />
+      <edge id="1898" source="Lorong Chuan" target="Kallang Bahru" weight="22" />
+      <edge id="1899" source="Kaki Bukit" target="Jurong West Central" weight="52" />
+      <edge id="1900" source="Kaki Bukit" target="Sembawang North" weight="27" />
+      <edge id="1901" source="Kaki Bukit" target="Aljunied" weight="294" />
+      <edge id="1902" source="Kaki Bukit" target="Fernvale" weight="98" />
+      <edge id="1903" source="Kaki Bukit" target="Hougang West" weight="98" />
+      <edge id="1904" source="Kaki Bukit" target="Yishun West" weight="62" />
+      <edge id="1905" source="Kaki Bukit" target="Shangri-La" weight="22" />
+      <edge id="1906" source="Kaki Bukit" target="Bendemeer" weight="71" />
+      <edge id="1907" source="Kaki Bukit" target="Woodlands East" weight="79" />
+      <edge id="1908" source="Kaki Bukit" target="Upper Thomson" weight="61" />
+      <edge id="1909" source="Kaki Bukit" target="Crawford" weight="55" />
+      <edge id="1910" source="Kaki Bukit" target="Serangoon Garden" weight="75" />
+      <edge id="1911" source="Kaki Bukit" target="Bedok North" weight="462" />
+      <edge id="1912" source="Kaki Bukit" target="Sembawang Hills" weight="6" />
+      <edge id="1913" source="Kaki Bukit" target="Tampines East" weight="589" />
+      <edge id="1914" source="Kaki Bukit" target="Kampong Bugis" weight="29" />
+      <edge id="1915" source="Kaki Bukit" target="Frankel" weight="153" />
+      <edge id="1916" source="Kaki Bukit" target="Seletar Hills" weight="20" />
+      <edge id="1917" source="Kaki Bukit" target="Admiralty" weight="18" />
+      <edge id="1918" source="Kaki Bukit" target="Trafalgar" weight="75" />
+      <edge id="1919" source="Kaki Bukit" target="Siglap" weight="13" />
+      <edge id="1920" source="Kaki Bukit" target="Tampines West" weight="463" />
+      <edge id="1921" source="Kaki Bukit" target="Pasir Ris West" weight="68" />
+      <edge id="1922" source="Kaki Bukit" target="Sembawang Central" weight="29" />
+      <edge id="1923" source="Kaki Bukit" target="Sembawang Springs" weight="9" />
+      <edge id="1924" source="Kaki Bukit" target="Sengkang Town Centre" weight="90" />
+      <edge id="1925" source="Kaki Bukit" target="Geylang East" weight="375" />
+      <edge id="1926" source="Kaki Bukit" target="Hougang Central" weight="54" />
+      <edge id="1927" source="Kaki Bukit" target="Balestier" weight="107" />
+      <edge id="1928" source="Kaki Bukit" target="Khatib" weight="43" />
+      <edge id="1929" source="Kaki Bukit" target="Kampong Glam" weight="11" />
+      <edge id="1930" source="Kaki Bukit" target="Serangoon Central" weight="97" />
+      <edge id="1931" source="Kaki Bukit" target="Katong" weight="105" />
+      <edge id="1932" source="Kaki Bukit" target="Simei" weight="189" />
+      <edge id="1933" source="Kaki Bukit" target="Mountbatten" weight="37" />
+      <edge id="1934" source="Kaki Bukit" target="Bedok South" weight="115" />
+      <edge id="1935" source="Kaki Bukit" target="Yishun East" weight="54" />
+      <edge id="1936" source="Kaki Bukit" target="Geylang Bahru" weight="47" />
+      <edge id="1937" source="Kaki Bukit" target="Compassvale" weight="56" />
+      <edge id="1938" source="Kaki Bukit" target="Kembangan" weight="228" />
+      <edge id="1939" source="Kaki Bukit" target="Kebun Bahru" weight="10" />
+      <edge id="1940" source="Kaki Bukit" target="Northland" weight="49" />
+      <edge id="1941" source="Kaki Bukit" target="Lorong Chuan" weight="27" />
+      <edge id="1942" source="Kaki Bukit" target="Kaki Bukit" weight="174" />
+      <edge id="1943" source="Kaki Bukit" target="Kallang Bahru" weight="132" />
+      <edge id="1944" source="Kallang Bahru" target="Jurong West Central" weight="41" />
+      <edge id="1945" source="Kallang Bahru" target="Sembawang North" weight="18" />
+      <edge id="1946" source="Kallang Bahru" target="Frankel" weight="58" />
+      <edge id="1947" source="Kallang Bahru" target="Fernvale" weight="40" />
+      <edge id="1948" source="Kallang Bahru" target="Hougang West" weight="46" />
+      <edge id="1949" source="Kallang Bahru" target="Yishun West" weight="40" />
+      <edge id="1950" source="Kallang Bahru" target="Shangri-La" weight="7" />
+      <edge id="1951" source="Kallang Bahru" target="Upper Thomson" weight="54" />
+      <edge id="1952" source="Kallang Bahru" target="Woodlands East" weight="46" />
+      <edge id="1953" source="Kallang Bahru" target="Seletar Hills" weight="17" />
+      <edge id="1954" source="Kallang Bahru" target="Crawford" weight="55" />
+      <edge id="1955" source="Kallang Bahru" target="Serangoon Garden" weight="54" />
+      <edge id="1956" source="Kallang Bahru" target="Bedok North" weight="127" />
+      <edge id="1957" source="Kallang Bahru" target="Bendemeer" weight="81" />
+      <edge id="1958" source="Kallang Bahru" target="Sembawang Hills" weight="3" />
+      <edge id="1959" source="Kallang Bahru" target="Tampines East" weight="151" />
+      <edge id="1960" source="Kallang Bahru" target="Kampong Bugis" weight="34" />
+      <edge id="1961" source="Kallang Bahru" target="Aljunied" weight="380" />
+      <edge id="1962" source="Kallang Bahru" target="Kembangan" weight="64" />
+      <edge id="1963" source="Kallang Bahru" target="Mountbatten" weight="55" />
+      <edge id="1964" source="Kallang Bahru" target="Trafalgar" weight="48" />
+      <edge id="1965" source="Kallang Bahru" target="Siglap" weight="9" />
+      <edge id="1966" source="Kallang Bahru" target="Tampines West" weight="75" />
+      <edge id="1967" source="Kallang Bahru" target="Pasir Ris West" weight="16" />
+      <edge id="1968" source="Kallang Bahru" target="Sembawang Central" weight="19" />
+      <edge id="1969" source="Kallang Bahru" target="Sembawang Springs" weight="4" />
+      <edge id="1970" source="Kallang Bahru" target="Sengkang Town Centre" weight="53" />
+      <edge id="1971" source="Kallang Bahru" target="Geylang East" weight="153" />
+      <edge id="1972" source="Kallang Bahru" target="Hougang Central" weight="38" />
+      <edge id="1973" source="Kallang Bahru" target="Balestier" weight="197" />
+      <edge id="1974" source="Kallang Bahru" target="Khatib" weight="20" />
+      <edge id="1975" source="Kallang Bahru" target="Kampong Glam" weight="14" />
+      <edge id="1976" source="Kallang Bahru" target="Serangoon Central" weight="77" />
+      <edge id="1977" source="Kallang Bahru" target="Katong" weight="22" />
+      <edge id="1978" source="Kallang Bahru" target="Simei" weight="75" />
+      <edge id="1979" source="Kallang Bahru" target="Kebun Bahru" weight="12" />
+      <edge id="1980" source="Kallang Bahru" target="Bedok South" weight="72" />
+      <edge id="1981" source="Kallang Bahru" target="Yishun East" weight="12" />
+      <edge id="1982" source="Kallang Bahru" target="Geylang Bahru" weight="96" />
+      <edge id="1983" source="Kallang Bahru" target="Compassvale" weight="35" />
+      <edge id="1984" source="Kallang Bahru" target="Admiralty" weight="3" />
+      <edge id="1985" source="Kallang Bahru" target="Northland" weight="35" />
+      <edge id="1986" source="Kallang Bahru" target="Lorong Chuan" weight="12" />
+      <edge id="1987" source="Kallang Bahru" target="Kaki Bukit" weight="72" />
+      <edge id="1988" source="Kallang Bahru" target="Kallang Bahru" weight="17" />
+    </edges>
+  </graph>
+</gexf>

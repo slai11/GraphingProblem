@@ -1,0 +1,28 @@
+# Metadata for Dengue Clusters
+---
+Identifier: 'e7536645-6126-4358-b959-a02b22c6c473'
+Name: 'dengue-clusters'
+Title: 'Dengue Clusters'
+Description: 'Location of dengue cluster'
+Topics:
+  - 'Environment'
+  - 'Health'
+Keywords:
+  - 'Aedes'
+  - 'cluster'
+  - 'dengue'
+  - 'hotspots'
+  - 'mosquito'
+Publisher:
+  Name: 'National Environment Agency'
+Sources:
+  - 'National Environment Agency'
+License: 'https://data.gov.sg/terms'
+Frequency: 'Daily'
+Last Updated: '2016-05-24T03:50:29.054604'
+Resources:
+  Identifier: 'e432ea2f-a1f2-4b63-a4b9-7064f378045b'
+  Title: 'Dengue Clusters (SHP)'
+  Url: 'https://geo.data.gov.sg/dengue-cluster/2016/05/23/shp/dengue-cluster.zip'
+  Format: 'SHP'
+  Last Updated: '2016-05-22T16:00:00'

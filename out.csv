@@ -1,0 +1,316 @@
+,0,1
+0,Central Water Catchment,{}
+1,Sembawang North,{}
+2,Senoko North,{}
+3,Frankel,{}
+4,Braddell,{}
+5,Teck Whye,{}
+6,Marina South,{}
+7,Sembawang Straits,{}
+8,Boulevard,{}
+9,Pulau Punggol Barat,{}
+10,Pasir Ris Wafer Fab Park,{}
+11,Sentosa,{}
+12,Jurong Port,{}
+13,Woodlands East,{}
+14,Selegie,{}
+15,Gul Circle,{}
+16,Pei Chun,{}
+17,Dover,{}
+18,Clarke Quay,{}
+19,Bidadari,{}
+20,Telok Blangah Drive,{}
+21,Tampines East,{}
+22,Sengkang West,{}
+23,Jurong Island and Bukom,{}
+24,Lorong 8 Toa Payoh,{}
+25,Fort Canning,{}
+26,Tiong Bahru,{}
+27,Clementi West,{}
+28,Trafalgar,{}
+29,Siglap,{}
+30,Lorong Halus,{}
+31,Changi Bay,{}
+32,Toh Tuck,{}
+33,Paya Lebar East,{}
+34,Sungei Road,{}
+35,Pasir Panjang 2,{}
+36,Pasir Ris West,{}
+37,Macpherson,{}
+38,Woodlands South,{}
+39,Anchorvale,{}
+40,Phillip,{}
+41,Faber,{}
+42,Hougang East,{}
+43,Tuas Bay,{}
+44,Goodwood Park,{}
+45,Balestier,{}
+46,Clementi Woods,{}
+47,Woodleigh,{}
+48,Wenya,{}
+49,Admiralty,{}
+50,Matilda,{}
+51,Boon Teck,{}
+52,Bukit Batok East,{}
+53,Turf Club,{}
+54,Marina East,{}
+55,Ulu Pandan,{}
+56,Kranji,{}
+57,Senoko South,{}
+58,Lim Chu Kang,{}
+59,Yio Chu Kang West,{}
+60,Singapore General Hospital,{}
+61,Northland,{}
+62,Clementi North,{}
+63,Springleaf,{}
+64,Liu Fang,{}
+65,Gul Basin,{}
+66,Kaki Bukit,{}
+67,Bukit Batok South,{}
+68,Kim Keat,{}
+69,Mountbatten,{}
+70,Shangri-La,{}
+71,Midview,{}
+72,Changi Airport,{}
+73,Toa Payoh West,{}
+74,Guilin,{}
+75,Fernvale,{}
+76,Tagore,{}
+77,Samulun,{}
+78,Jurong River,{}
+79,Changi Point,{}
+80,Clifford Pier,{}
+81,Telok Blangah Rise,{}
+82,Ridout,{}
+83,Somerset,{}
+84,Ghim Moh,{}
+85,Serangoon Garden,{}
+86,Penjuru Crescent,{}
+87,Bedok Reservoir,{}
+88,Yio Chu Kang North,{}
+89,Bishan East,{}
+90,Serangoon North Ind Estate,{}
+91,Pasir Ris Park,{}
+92,Potong Pasir,{}
+93,Tanjong Rhu,{}
+94,Mount Emily,{}
+95,Toa Payoh Central,{}
+96,Shipyard,{}
+97,Yuhua West,{}
+98,Choa Chu Kang North,{}
+99,Seletar Hills,{}
+100,Joo Koon,{}
+101,Pasir Panjang 1,{}
+102,Punggol Field,{}
+103,Seletar,{}
+104,North Coast,{}
+105,Brickworks,{}
+106,Hong Kah,{}
+107,Sembawang Springs,{}
+108,Tengah,{}
+109,Tuas View,{}
+110,National University of S'pore,{}
+111,Mandai Estate,{}
+112,Clementi Central,{}
+113,Bugis,{}
+114,Pasir Ris Drive,{}
+115,Bayfront Subzone,{}
+116,Nature Reserve,{}
+117,Choa Chu Kang Central,{}
+118,Hong Kah North,{}
+119,Kampong Java,{}
+120,Farrer Court,{}
+121,Peng Siang,{}
+122,Flora Drive,{}
+123,Commonwealth,{}
+124,Farrer Park,{}
+125,Lorong Ah Soo,{}
+126,Swiss Club,{}
+127,Geylang Bahru,{}
+128,Compassvale,{}
+129,Oxley,{}
+130,Pearl's Hill,{}
+131,Lavender,{}
+132,Jelebu,{}
+133,Pulau Punggol Timor,{}
+134,Institution Hill,{}
+135,Gali Batu,{}
+136,Joo Seng,{}
+137,Lorong Halus North,{}
+138,West Coast,{}
+139,Pandan,{}
+140,Taman Jurong,{}
+141,Coronation Road,{}
+142,Jurong West Central,{}
+143,Bedok North,{}
+144,Pang Sua,{}
+145,Tai Seng,{}
+146,Tanjong Pagar,{}
+147,Yuhua East,{}
+148,Mount Pleasant,{}
+149,Yishun South,{}
+150,Upper Paya Lebar,{}
+151,Defu Industrial Park,{}
+152,Yishun West,{}
+153,International Business Park,{}
+154,Redhill,{}
+155,Teban Gardens,{}
+156,Kian Teck,{}
+157,Victoria,{}
+158,Loyang West,{}
+159,Kovan,{}
+160,Kampong Bugis,{}
+161,Anak Bukit,{}
+162,Marina East (MP),{}
+163,Cairnhill,{}
+164,Kallang Way,{}
+165,Seletar Aerospace Park,{}
+166,Bangkit,{}
+167,Marina Centre,{}
+168,Loyang East,{}
+169,Anson,{}
+170,Paya Lebar North,{}
+171,Queensway,{}
+172,Kent Ridge,{}
+173,Kembangan,{}
+174,Kebun Bahru,{}
+175,Kallang Bahru,{}
+176,Tuas View Extension,{}
+177,Changi West,{}
+178,Singapore Polytechnic,{}
+179,Sembawang Central,{}
+180,Bras Basah,{}
+181,Tampines North,{}
+182,Bayshore,{}
+183,Tanglin Halt,{}
+184,Kampong Ubi,{}
+185,Katong,{}
+186,Bukit Merah,{}
+187,Benoi Sector,{}
+188,Maritime Square,{}
+189,Bencoolen,{}
+190,Saujana,{}
+191,Yishun Central,{}
+192,Geylang East,{}
+193,Sennett,{}
+194,North-Eastern Islands,{}
+195,Khatib,{}
+196,Dhoby Ghaut,{}
+197,Robertson Quay,{}
+198,Dairy Farm,{}
+199,Kampong Glam,{}
+200,Plab,{}
+201,Serangoon Central,{}
+202,Tyersall,{}
+203,Leonie Hill,{}
+204,Yio Chu Kang East,{}
+205,Bukit Batok West,{}
+206,Straits View,{}
+207,Yew Tee,{}
+208,Yishun East,{}
+209,Little India,{}
+210,Telok Blangah Way,{}
+211,Sunset Way,{}
+212,China Square,{}
+213,Sembawang East,{}
+214,Senja,{}
+215,Holland Road,{}
+216,Simei,{}
+217,Boat Quay,{}
+218,Ang Mo Kio Town Centre,{}
+219,Nee Soon,{}
+220,Cecil,{}
+221,Depot Road,{}
+222,Townsville,{}
+223,Woodgrove,{}
+224,Paya Lebar West,{}
+225,Mackenzie,{}
+226,Chatsworth,{}
+227,City Hall,{}
+228,One North,{}
+229,Hougang West,{}
+230,Newton Circus,{}
+231,Upper Thomson,{}
+232,Boon Keng,{}
+233,Senoko West,{}
+234,Waterway East,{}
+235,Woodlands West,{}
+236,Paterson,{}
+237,Orange Grove,{}
+238,Punggol Town Centre,{}
+239,The Wharves,{}
+240,Central Subzone,{}
+241,East Coast,{}
+242,Leedon Park,{}
+243,Keat Hong,{}
+244,Tuas Promenade,{}
+245,Holland Drive,{}
+246,Chinatown,{}
+247,Western Water Catchment,{}
+248,City Terminals,{}
+249,Tanglin,{}
+250,Lower Seletar,{}
+251,Yio Chu Kang,{}
+252,Crawford,{}
+253,People's Park,{}
+254,Everton Park,{}
+255,Rochor Canal,{}
+256,Sembawang Hills,{}
+257,Tiong Bahru Station,{}
+258,Simpang North,{}
+259,Reservoir View,{}
+260,Tampines West,{}
+261,Mandai East,{}
+262,Monk's Hill,{}
+263,One Tree Hill,{}
+264,Pioneer Sector,{}
+265,Toh Guan,{}
+266,Istana Negara,{}
+267,Aljunied,{}
+268,Tuas North,{}
+269,Jurong Gateway,{}
+270,Sengkang Town Centre,{}
+271,Gombak,{}
+272,Boon Lay Place,{}
+273,Bendemeer,{}
+274,Hougang Central,{}
+275,Alexandra North,{}
+276,Moulmein,{}
+277,Chong Boon,{}
+278,Chin Bee,{}
+279,Raffles Place,{}
+280,Safti,{}
+281,Marymount,{}
+282,Marine Parade,{}
+283,Nassim,{}
+284,Kangkar,{}
+285,Margaret Drive,{}
+286,Cheng San,{}
+287,Hillview,{}
+288,Fajar,{}
+289,Serangoon North,{}
+290,Mandai West,{}
+291,Bukit Batok Central,{}
+292,Yunnan,{}
+293,Dunearn,{}
+294,Rivervale,{}
+295,Woodlands Regional Centre,{}
+296,Xilin,{}
+297,Lakeside,{}
+298,Maxwell,{}
+299,Malcolm,{}
+300,Henderson Hill,{}
+301,Airport Road,{}
+302,Alexandra Hill,{}
+303,Bukit Ho Swee,{}
+304,Tukang,{}
+305,Hillcrest,{}
+306,Greenwood Park,{}
+307,Bedok South,{}
+308,Mei Chin,{}
+309,Lorong Chuan,{}
+310,Pasir Ris Central,{}
+311,Northshore,{}
+312,Kampong Tiong Bahru,{}
+313,Port,{}
+314,Tengeh,{}

@@ -1,0 +1,28 @@
+# Metadata for Dengue Cases
+---
+Identifier: '40c39ea3-ce9f-4c7d-bcd9-fbc2bc9eb320'
+Name: 'dengue-cases'
+Title: 'Dengue Cases'
+Description: 'Dengue Cases in various regions.                   Based on notified
+  dengue cases and mosquito breeding habitats detected in the last 14 days.                   Information
+  on dengue cases is provisional and is subject to changes due to epidemiological
+  investigation findings.'
+Topics:
+  - 'Environment'
+  - 'Health'
+Keywords:
+  - 'dengue'
+  - 'mosquito'
+Publisher:
+  Name: 'National Environment Agency'
+Sources:
+  - 'National Environment Agency'
+License: 'https://data.gov.sg/terms'
+Frequency: 'Daily'
+Last Updated: '2016-05-24T03:50:42.166041'
+Resources:
+  Identifier: 'be562e7d-6275-4df8-b363-ffd292d6ee3b'
+  Title: 'Dengue (Cases) - Central (SHP)'
+  Url: 'https://geo.data.gov.sg/denguecase-central-area/2016/05/23/shp/denguecase-central-area.zip'
+  Format: 'SHP'
+  Last Updated: '2016-05-22T16:00:00'

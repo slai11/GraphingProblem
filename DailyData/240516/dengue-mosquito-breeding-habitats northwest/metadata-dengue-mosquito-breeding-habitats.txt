@@ -1,0 +1,28 @@
+# Metadata for Dengue Mosquito Breeding Habitats
+---
+Identifier: 'bbef5ace-4ac5-494a-a385-07c5acff0ae4'
+Name: 'dengue-mosquito-breeding-habitats'
+Title: 'Dengue Mosquito Breeding Habitats'
+Description: 'Mosquito breeding habitat in various regions.                   Based
+  on notified dengue cases and mosquito breeding habitats detected in the last 14
+  days.                   Information on dengue cases is provisional and is subject
+  to changes due to epidemiological investigation findings.'
+Topics:
+  - 'Environment'
+  - 'Health'
+Keywords:
+  - 'dengue'
+  - 'mosquito'
+Publisher:
+  Name: 'National Environment Agency'
+Sources:
+  - 'National Environment Agency'
+License: 'https://data.gov.sg/terms'
+Frequency: 'Daily'
+Last Updated: '2016-05-24T03:50:41.802808'
+Resources:
+  Identifier: 'bf35867e-f908-4e8b-bf71-d07a3ee63390'
+  Title: 'Dengue (Mosquito Breeding Habitats) - North West (SHP)'
+  Url: 'https://geo.data.gov.sg/breedinghabitat-northwest-area/2016/05/23/shp/breedinghabitat-northwest-area.zip'
+  Format: 'SHP'
+  Last Updated: '2016-05-22T16:00:00'

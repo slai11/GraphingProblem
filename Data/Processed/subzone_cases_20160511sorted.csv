@@ -1,0 +1,324 @@
+subzone,cases,normalize by sum,normalize by max
+Admiralty,2,0.002873563,0.019047619
+Airport Road,0,0,0
+Alexandra Hill,0,0,0
+Alexandra North,0,0,0
+Aljunied,45,0.064655172,0.428571429
+Anak Bukit,0,0,0
+Anchorvale,0,0,0
+Ang Mo Kio Town Centre,0,0,0
+Anson,0,0,0
+Balestier,2,0.002873563,0.019047619
+Bangkit,0,0,0
+Bayfront Subzone,0,0,0
+Bayshore,0,0,0
+Bedok North,2,0.002873563,0.019047619
+Bedok Reservoir,0,0,0
+Bedok South,2,0.002873563,0.019047619
+Bencoolen,0,0,0
+Bendemeer,2,0.002873563,0.019047619
+Benoi Sector,0,0,0
+Bidadari,0,0,0
+Bishan East,0,0,0
+Boat Quay,0,0,0
+Boon Keng,0,0,0
+Boon Lay Place,0,0,0
+Boon Teck,0,0,0
+Boulevard,0,0,0
+Braddell,0,0,0
+Bras Basah,0,0,0
+Brickworks,0,0,0
+Bugis,0,0,0
+Bukit Batok Central,0,0,0
+Bukit Batok East,0,0,0
+Bukit Batok South,0,0,0
+Bukit Batok West,0,0,0
+Bukit Ho Swee,0,0,0
+Bukit Merah,0,0,0
+Cairnhill,0,0,0
+Cecil,0,0,0
+Central Subzone,0,0,0
+Central Water Catchment,0,0,0
+Changi Airport,0,0,0
+Changi Bay,0,0,0
+Changi Point,0,0,0
+Changi West,0,0,0
+Chatsworth,0,0,0
+Cheng San,0,0,0
+Chin Bee,0,0,0
+China Square,0,0,0
+Chinatown,0,0,0
+Choa Chu Kang Central,0,0,0
+Choa Chu Kang North,0,0,0
+Chong Boon,0,0,0
+City Hall,0,0,0
+City Terminals,0,0,0
+Clarke Quay,0,0,0
+Clementi Central,0,0,0
+Clementi North,0,0,0
+Clementi West,0,0,0
+Clementi Woods,0,0,0
+Clifford Pier,0,0,0
+Commonwealth,0,0,0
+Compassvale,2,0.002873563,0.019047619
+Coney Island,0,0,0
+Coronation Road,0,0,0
+Crawford,16,0.022988506,0.152380952
+Dairy Farm,0,0,0
+Defu Industrial Park,0,0,0
+Depot Road,0,0,0
+Dhoby Ghaut,0,0,0
+Dover,0,0,0
+Dunearn,0,0,0
+East Coast,0,0,0
+Everton Park,0,0,0
+Faber,0,0,0
+Fajar,0,0,0
+Farrer Court,0,0,0
+Farrer Park,0,0,0
+Fernvale,5,0.007183908,0.047619048
+Flora Drive,0,0,0
+Fort Canning,0,0,0
+Frankel,105,0.150862069,1
+Gali Batu,0,0,0
+Geylang Bahru,84,0.120689655,0.8
+Geylang East,20,0.028735632,0.19047619
+Ghim Moh,0,0,0
+Gombak,0,0,0
+Goodwood Park,0,0,0
+Greenwood Park,0,0,0
+Guilin,0,0,0
+Gul Basin,0,0,0
+Gul Circle,0,0,0
+Henderson Hill,0,0,0
+Hillcrest,0,0,0
+Hillview,0,0,0
+Holland Drive,0,0,0
+Holland Road,0,0,0
+Hong Kah,0,0,0
+Hong Kah North,0,0,0
+Hougang Central,17,0.024425287,0.161904762
+Hougang East,0,0,0
+Hougang West,17,0.024425287,0.161904762
+Institution Hill,0,0,0
+International Business Park,0,0,0
+Istana Negara,0,0,0
+Jelebu,0,0,0
+Joo Koon,0,0,0
+Joo Seng,0,0,0
+Jurong Gateway,0,0,0
+Jurong Island and Bukom,0,0,0
+Jurong Port,0,0,0
+Jurong River,0,0,0
+Jurong West Central,2,0.002873563,0.019047619
+Kaki Bukit,10,0.014367816,0.095238095
+Kallang Bahru,2,0.002873563,0.019047619
+Kallang Way,0,0,0
+Kampong Bugis,16,0.022988506,0.152380952
+Kampong Glam,16,0.022988506,0.152380952
+Kampong Java,0,0,0
+Kampong Tiong Bahru,0,0,0
+Kampong Ubi,0,0,0
+Kangkar,0,0,0
+Katong,15,0.021551724,0.142857143
+Keat Hong,0,0,0
+Kebun Bahru,14,0.020114943,0.133333333
+Kembangan,3,0.004310345,0.028571429
+Kent Ridge,0,0,0
+Khatib,47,0.067528736,0.447619048
+Kian Teck,0,0,0
+Kim Keat,0,0,0
+Kovan,0,0,0
+Kranji,0,0,0
+Lakeside,0,0,0
+Lavender,0,0,0
+Leedon Park,0,0,0
+Leonie Hill,0,0,0
+Lim Chu Kang,0,0,0
+Little India,0,0,0
+Liu Fang,0,0,0
+Lorong 8 Toa Payoh,0,0,0
+Lorong Ah Soo,0,0,0
+Lorong Chuan,2,0.002873563,0.019047619
+Lorong Halus,0,0,0
+Lorong Halus North,0,0,0
+Lower Seletar,0,0,0
+Loyang East,0,0,0
+Loyang West,0,0,0
+Mackenzie,0,0,0
+Macpherson,0,0,0
+Malcolm,0,0,0
+Mandai East,0,0,0
+Mandai Estate,0,0,0
+Mandai West,0,0,0
+Margaret Drive,0,0,0
+Marina Centre,0,0,0
+Marina East,0,0,0
+Marina East (MP),0,0,0
+Marina South,0,0,0
+Marine Parade,0,0,0
+Maritime Square,0,0,0
+Marymount,0,0,0
+Matilda,0,0,0
+Maxwell,0,0,0
+Mei Chin,0,0,0
+Midview,0,0,0
+Monk's Hill,0,0,0
+Moulmein,0,0,0
+Mount Emily,0,0,0
+Mount Pleasant,0,0,0
+Mountbatten,7,0.010057471,0.066666667
+Nassim,0,0,0
+National University of S'pore,0,0,0
+Nature Reserve,0,0,0
+Nee Soon,0,0,0
+Newton Circus,0,0,0
+North Coast,0,0,0
+North-Eastern Islands,0,0,0
+Northland,3,0.004310345,0.028571429
+Northshore,0,0,0
+One North,0,0,0
+One Tree Hill,0,0,0
+Orange Grove,0,0,0
+Oxley,0,0,0
+Pandan,0,0,0
+Pang Sua,0,0,0
+Pasir Panjang 1,0,0,0
+Pasir Panjang 2,0,0,0
+Pasir Ris Central,0,0,0
+Pasir Ris Drive,0,0,0
+Pasir Ris Park,0,0,0
+Pasir Ris Wafer Fab Park,0,0,0
+Pasir Ris West,13,0.018678161,0.123809524
+Paterson,0,0,0
+Paya Lebar East,0,0,0
+Paya Lebar North,0,0,0
+Paya Lebar West,0,0,0
+Pearl's Hill,0,0,0
+Pei Chun,0,0,0
+Peng Siang,0,0,0
+Penjuru Crescent,0,0,0
+People's Park,0,0,0
+Phillip,0,0,0
+Pioneer Sector,0,0,0
+Plab,0,0,0
+Port,0,0,0
+Potong Pasir,0,0,0
+Pulau Punggol Barat,0,0,0
+Pulau Punggol Timor,0,0,0
+Pulau Seletar,0,0,0
+Punggol Canal,0,0,0
+Punggol Field,0,0,0
+Punggol Town Centre,0,0,0
+Queensway,0,0,0
+Raffles Place,0,0,0
+Redhill,0,0,0
+Reservoir View,0,0,0
+Ridout,0,0,0
+Rivervale,0,0,0
+Robertson Quay,0,0,0
+Rochor Canal,0,0,0
+Safti,0,0,0
+Samulun,0,0,0
+Saujana,0,0,0
+Selegie,0,0,0
+Seletar,0,0,0
+Seletar Aerospace Park,0,0,0
+Seletar Hills,5,0.007183908,0.047619048
+Semakau,0,0,0
+Sembawang Central,6,0.00862069,0.057142857
+Sembawang East,0,0,0
+Sembawang Hills,14,0.020114943,0.133333333
+Sembawang North,2,0.002873563,0.019047619
+Sembawang Springs,4,0.005747126,0.038095238
+Sembawang Straits,0,0,0
+Sengkang Town Centre,4,0.005747126,0.038095238
+Sengkang West,0,0,0
+Senja,0,0,0
+Sennett,0,0,0
+Senoko North,0,0,0
+Senoko South,0,0,0
+Senoko West,0,0,0
+Sentosa,0,0,0
+Serangoon Central,2,0.002873563,0.019047619
+Serangoon Garden,27,0.038793103,0.257142857
+Serangoon North,0,0,0
+Serangoon North Ind Estate,0,0,0
+Shangri-La,14,0.020114943,0.133333333
+Shipyard,0,0,0
+Siglap,10,0.014367816,0.095238095
+Simei,2,0.002873563,0.019047619
+Simpang North,0,0,0
+Simpang South,0,0,0
+Singapore General Hospital,0,0,0
+Singapore Polytechnic,0,0,0
+Somerset,0,0,0
+Southern Group,0,0,0
+Springleaf,0,0,0
+Straits View,0,0,0
+Sudong,0,0,0
+Sungei Road,0,0,0
+Sunset Way,0,0,0
+Swiss Club,0,0,0
+Tagore,0,0,0
+Tai Seng,0,0,0
+Taman Jurong,0,0,0
+Tampines East,71,0.102011494,0.676190476
+Tampines North,0,0,0
+Tampines West,2,0.002873563,0.019047619
+Tanglin,0,0,0
+Tanglin Halt,0,0,0
+Tanjong Irau,0,0,0
+Tanjong Pagar,0,0,0
+Tanjong Rhu,0,0,0
+Teban Gardens,0,0,0
+Teck Whye,0,0,0
+Telok Blangah Drive,0,0,0
+Telok Blangah Rise,0,0,0
+Telok Blangah Way,0,0,0
+Tengah,0,0,0
+Tengeh,0,0,0
+The Wharves,0,0,0
+Tiong Bahru,0,0,0
+Tiong Bahru Station,0,0,0
+Toa Payoh Central,0,0,0
+Toa Payoh West,0,0,0
+Toh Guan,0,0,0
+Toh Tuck,0,0,0
+Townsville,0,0,0
+Trafalgar,5,0.007183908,0.047619048
+Tuas Bay,0,0,0
+Tuas North,0,0,0
+Tuas Promenade,0,0,0
+Tuas View,0,0,0
+Tuas View Extension,0,0,0
+Tukang,0,0,0
+Turf Club,0,0,0
+Tyersall,0,0,0
+Ulu Pandan,0,0,0
+Upper Paya Lebar,0,0,0
+Upper Thomson,4,0.005747126,0.038095238
+Victoria,0,0,0
+Waterway East,0,0,0
+Wenya,0,0,0
+West Coast,0,0,0
+Western Water Catchment,0,0,0
+Woodgrove,0,0,0
+Woodlands East,3,0.004310345,0.028571429
+Woodlands Regional Centre,0,0,0
+Woodlands South,0,0,0
+Woodlands West,0,0,0
+Woodleigh,0,0,0
+Xilin,0,0,0
+Yew Tee,0,0,0
+Yio Chu Kang,0,0,0
+Yio Chu Kang East,0,0,0
+Yio Chu Kang North,0,0,0
+Yio Chu Kang West,0,0,0
+Yishun Central,0,0,0
+Yishun East,3,0.004310345,0.028571429
+Yishun South,0,0,0
+Yishun West,47,0.067528736,0.447619048
+Yuhua East,0,0,0
+Yuhua West,0,0,0
+Yunnan,0,0,0
