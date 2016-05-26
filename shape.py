@@ -1,6 +1,7 @@
 import shapefile
 import csv
 import pandas as pd
+import SVY21
 from coordinatescrape import *
 
 #### Note ####
@@ -9,8 +10,6 @@ Extract subzone ID, central coordinate and area
 
 make a FIND NEAREST SUBZONE function
 """
-
-
 
 def get_midpoint(points):
 	#get max and min of both lat and long

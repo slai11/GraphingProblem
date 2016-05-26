@@ -8,60 +8,56 @@ from sklearn.preprocessing import MinMaxScaler, scale
 from sklearn.neighbors import KNeighborsClassifier
 from sklearn.svm import LinearSVC
 from sklearn.linear_model import LogisticRegression
-from sklearn.ensemble import RandomForestClassifier
 from sklearn.tree import DecisionTreeClassifier
-from sklearn.ensemble import ExtraTreesClassifier
+from sklearn.ensemble import ExtraTreesClassifier, GradientBoostingClassifier, RandomForestClassifier
 from sklearn import metrics, cross_validation
 from sklearn.pipeline import Pipeline
+from sklearn.feature_selection import SelectPercentile, chi2, SelectKBest
 from graph import *
 from features import *
 
-X, y = build_feature()
 
+def log_reg_model():
+	select = SelectPercentile(score_func=chi2, percentile=1)
+	log = LogisticRegression(tol=1e-1, penalty='l1', C=95)
+	scaler = MinMaxScaler()
+	pipeline = Pipeline([('scale', scaler), ('logre', log)])
+	return pipeline
 
-rf = RandomForestClassifier(n_estimators=10, max_depth=None, min_samples_split=1, random_state=0)
-scaler = MinMaxScaler()
-clf3 = Pipeline([('select', scaler), ('randf', rf)])
-scores = cross_validation.cross_val_score(clf3, X, y, cv = 6, scoring = 'accuracy', n_jobs = -1)
-print "Random Forest Classifier"
-print scores
-print "Accuracy: %0.4f (+/- %0.2f)" % (scores.mean(), scores.std() * 2)
+def linear_svc_model():
+	select = SelectPercentile(score_func=chi2, percentile=1)
+	svc = LinearSVC(C=1, penalty='l2', loss = 'squared_hinge')
+	scaler = MinMaxScaler()
+	pipeline = Pipeline([('scale', scaler), ('linsvc', svc)])
+	return pipeline
 
-'''
-svc = LinearSVC()
-scaler = MinMaxScaler()
-clf = Pipeline([('select', scaler), ('linsvc', svc)])
-scores = cross_validation.cross_val_score(clf, X, y, cv = 6, scoring = 'accuracy', n_jobs = -1)
-print "Linear SVC"
-print scores
-print "Accuracy: %0.4f (+/- %0.2f)" % (scores.mean(), scores.std() * 2)
+def random_forest_model():
+	rf = RandomForestClassifier()
+	#n_estimators=10,max_depth=None, min_samples_split=20, max_features = 3
+	select = SelectPercentile(score_func=chi2, percentile=80)
+	scaler = MinMaxScaler()
+	pipeline = Pipeline([('scale', scaler),('select', select), ('randf', rf)])
+	return pipeline
 
-log = LogisticRegression(tol=1e-8, penalty='l2', C=3)
-scaler = MinMaxScaler()
-clf2 = Pipeline([('select', scaler), ('logre', log)])
-scores = cross_validation.cross_val_score(clf2, X, y, cv = 6, scoring = 'accuracy', n_jobs = -1)
-print "Logistic Regression"
-print scores
-print "Accuracy: %0.4f (+/- %0.2f)" % (scores.mean(), scores.std() * 2)
+def extra_trees_model():
+	select = SelectPercentile(score_func=chi2, percentile=50)
+	et = ExtraTreesClassifier(n_estimators=10, max_depth=None, min_samples_split=1, random_state=0)
+	scaler = MinMaxScaler()
+	pipeline = Pipeline([('scale', scaler), ('extra', et)])
+	return pipeline
 
+def k_nearest_model():
+	select = SelectPercentile(score_func=chi2, percentile=50)
+	knc = KNeighborsClassifier()
+	scaler = MinMaxScaler()
+	pipeline = Pipeline([('scale', scaler), ('knear', knc)])
+	return pipeline
 
-
-et = ExtraTreesClassifier(n_estimators=10, max_depth=None, min_samples_split=1, random_state=0)
-scaler = MinMaxScaler()
-clf5 = Pipeline([('select', scaler), ('extra', et)])
-scores = cross_validation.cross_val_score(clf5, X, y, cv = 6, scoring = 'accuracy', n_jobs = -1)
-print "Extra Trees Classifier"
-print scores
-print "Accuracy: %0.4f (+/- %0.2f)" % (scores.mean(), scores.std() * 2)
-
-knc = KNeighborsClassifier()
-scaler = MinMaxScaler()
-clf6 = Pipeline([('select', scaler), ('knear', knc)])
-scores = cross_validation.cross_val_score(clf6, X, y, cv = 6, scoring = 'accuracy', n_jobs = -1)
-print "K-Neighbors Classifier"
-print scores
-print "Accuracy: %0.4f (+/- %0.2f)" % (scores.mean(), scores.std() * 2)
-'''
+def gradient_boost_model():
+	gb = GradientBoostingClassifier(n_estimators=10)
+	scaler = MinMaxScaler()
+	pipeline = Pipeline([('scale', scaler), ('gb', gb)])
+	return pipeline	
 
 '''
 full_graph , subgraph = get_graphs()
