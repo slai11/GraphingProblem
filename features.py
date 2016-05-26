@@ -104,7 +104,6 @@ def bad_neighbour():
 			node_to_node_pressure = 0.0
 			if edge[0] in node:
 				# take data
-				#path_weight = OG[node][edge[1]]['weight'] / sumedge
 				try:
 					in_path_weight = OG[edge[1]][node]['weight'] / sumedgein
 					cases = OG.node[edge[1]]['normweightmax']  # should we be using this?

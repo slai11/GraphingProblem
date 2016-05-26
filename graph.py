@@ -119,8 +119,21 @@ def transform_feature(df, df2, column_name):
 	df2["Target"] = df2["Target"].apply( label_map )
 	return df, df2
 
+def prune_graph():
+	'''
+	remove nodes who are outliers or not contributing
+	1. islands
+	2. low traffic flow (zero) + low cases 
+	'''
+	deg = nx.degree_centrality(DG)
+	for node in DG.nodes():
+		if deg[node] == 0:
+			DG.remove_node(node)
+		
+
 def get_graphs(feature = "weight"):
 	make_graph(subzone_data, network_data)
+	prune_graph()
 	subDG = generate_subgraph(feature)
 
 	breedinghab = pd.read_csv("Data/Processed/breedinghabitat.csv")

@@ -156,4 +156,5 @@ class SVY21:
         lonTerm4 = ((x7 * secLatPrime) / 5040) * (61 + 662 * tPrime2 + 1320 * tPrime4 + 720 * tPrime6)
         lon = (self.oLon * math.pi / 180) + lonTerm1 - lonTerm2 + lonTerm3 - lonTerm4
 
-        return (lat / (math.pi / 180), lon / (math.pi / 180))
+        #return (lat / (math.pi / 180), lon / (math.pi / 180))
+        return (lat / (math.pi / 180)), (lon / (math.pi / 180))

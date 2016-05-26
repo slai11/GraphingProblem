@@ -18,17 +18,17 @@ from features import *
 
 
 def log_reg_model():
-	select = SelectPercentile(score_func=chi2, percentile=1)
-	log = LogisticRegression(tol=1e-1, penalty='l1', C=95)
+	select = SelectPercentile(score_func=chi2, percentile=20) #gridsearched
+	log = LogisticRegression(C=64, penalty='l1', tol=0.1)     #gridsearched
 	scaler = MinMaxScaler()
-	pipeline = Pipeline([('scale', scaler), ('logre', log)])
+	pipeline = Pipeline([('scale', scaler), ('select', select), ('logre', log)])
 	return pipeline
 
 def linear_svc_model():
-	select = SelectPercentile(score_func=chi2, percentile=1)
-	svc = LinearSVC(C=1, penalty='l2', loss = 'squared_hinge')
+	select = SelectPercentile(score_func=chi2, percentile=83) #gridsearched
+	svc = LinearSVC(C=64, penalty='l1', tol=0.1, dual=False)  #gridsearched
 	scaler = MinMaxScaler()
-	pipeline = Pipeline([('scale', scaler), ('linsvc', svc)])
+	pipeline = Pipeline([('scale', scaler), ('select', select),('linsvc', svc)])
 	return pipeline
 
 def random_forest_model():
@@ -47,16 +47,17 @@ def extra_trees_model():
 	return pipeline
 
 def k_nearest_model():
-	select = SelectPercentile(score_func=chi2, percentile=50)
-	knc = KNeighborsClassifier()
+	select = SelectPercentile(score_func=chi2, percentile=67)#gridsearched
+	knc = KNeighborsClassifier(weights='distance', algorithm='auto', n_neighbors=3)#gridsearched
 	scaler = MinMaxScaler()
-	pipeline = Pipeline([('scale', scaler), ('knear', knc)])
+	pipeline = Pipeline([('scale', scaler),('select', select),  ('knear', knc)])
 	return pipeline
 
 def gradient_boost_model():
-	gb = GradientBoostingClassifier(n_estimators=10)
+	gb = GradientBoostingClassifier(learning_rate=64, loss='exponential', max_depth=11, max_features='log2')#gridsearched
+	select = SelectPercentile(score_func=chi2, percentile=91)#gridsearched
 	scaler = MinMaxScaler()
-	pipeline = Pipeline([('scale', scaler), ('gb', gb)])
+	pipeline = Pipeline([('scale', scaler), ('select', select) ,('gb', gb)])
 	return pipeline	
 
 '''
