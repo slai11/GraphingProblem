@@ -10,16 +10,79 @@ from shape import *
 
 # opening files
 network_data = pd.read_csv("Data/network_20160511.csv")
+wkend_network_data = pd.read_csv("Data/Original/20160514_network.csv")
 subzone_data = pd.read_csv("Data/Processed/subzonedatav5.csv")
+
+
+class GraphGenerator():
+	def __init__(self, network, nodes):
+		self.graph = nx.DiGraph()
+		self.networkfile = network
+		self.nodefile = nodes
+
+	def get_graphs(self):
+		self.make_graph()
+		
+		breedinghabitat = pd.read_csv("Data/Processed/breedinghabitat.csv")
+		lon = breedinghabitat['longitude']
+		lat = breedinghabitat['latitude']
+
+		BH = nx.Graph()
+		original = nx.DiGraph(self.graph)
+		for i in range(len(lon)):
+			self.graph.add_node(i, longitude = float(lon[i]), latitude = float(lat[i]),\
+								weight=0.0, normweightmax=0.0, normweightsum=0.0, type=float(1),\
+								area = float(0.5), population = float(1), popdensity = float(1),\
+								hotspot = 0)
+			BH.add_node(i, longitude = float(lon[i]), latitude = float(lat[i]))
+
+		return self.graph, original, BH
+
+	def make_graph(self):
+		self.networkfile = self.networkfile.drop(self.networkfile[self.networkfile.Source == self.networkfile.Target].index)
+		
+		self.networkfile['normweightbymax'] = (self.networkfile['Weight'] - min(self.networkfile['Weight'])) /\
+											(max(self.networkfile['Weight']) - min(self.networkfile['Weight']))
+		subset = self.networkfile[["Source", "Target", "normweightbymax"]] # no longer using weight
+		edge_list = [tuple(x) for x in subset.values]
+		self.graph.add_weighted_edges_from(edge_list)
+
+
+		subset = self.nodefile["subzone"]
+		weight_set = self.nodefile["cases"]
+		normweight_set = self.nodefile["normalize by sum"]
+		normmaxweight_set = self.nodefile["normalize by max"]
+		lon_set = self.nodefile["lon"]
+		lat_set = self.nodefile["lat"]
+		area_set = self.nodefile["area"]
+		pop_set = self.nodefile["population"]
+		popdense_set = self.nodefile["pop_density"]
+		
+		for i, subzone in enumerate(subset):
+			self.graph.add_node(subzone, weight = float(weight_set[i]), \
+						normweightsum = float(normweight_set[i]),\
+						normweightmax = float(normmaxweight_set[i]), \
+						longitude = float(lon_set[i]), latitude = float(lat_set[i]),\
+						type = float(5 + 10*normmaxweight_set[i]), area = float(area_set[i]),\
+						population = float(pop_set[i]), popdensity = float(popdense_set[i]),\
+						hotspot = 1)
+
+
 
 ####################
 # Graph Generation #
 ####################
 DG = nx.DiGraph()
 
+def clean_network_frame(df):
+	#df = df.drop(df[<some boolean condition>].index)
+	df = df.drop(df[df.Source == df.Target].index)
+	return df
+
 def make_graph(nodes, network):
 	# input node and edge data into DiGraph
-	make_edge(network)
+	cleaned_network = pd.DataFrame(clean_network_frame(network))
+	make_edge(cleaned_network)
 	#get_subzone_data(nodes)
 	make_node(nodes)
 
@@ -154,6 +217,11 @@ def get_graphs(feature = "weight"):
 		BH.add_node(i, longitude = float(lon[i]), latitude = float(lat[i]))
 	nx.write_gexf(DG, "fullcombinedgraphv3.gexf")
 	return DG, subDG, BH, originalDG
+
+
+
+if __name__ == '__main__':
+	make_graph(subzone_data,wkend_network_data)
 
 
 
