@@ -41,8 +41,11 @@ class GraphGenerator():
 	def make_graph(self):
 		self.networkfile = self.networkfile.drop(self.networkfile[self.networkfile.Source == self.networkfile.Target].index)
 		
-		self.networkfile['normweightbymax'] = (self.networkfile['Weight'] - min(self.networkfile['Weight'])) /\
+		self.networkfile['Weight'] = self.networkfile['Weight'].astype(float)
+
+		self.networkfile['normweightbymax'] = ((self.networkfile['Weight']) - min(self.networkfile['Weight'])) /\
 											(max(self.networkfile['Weight']) - min(self.networkfile['Weight']))
+		
 		subset = self.networkfile[["Source", "Target", "normweightbymax"]] # no longer using weight
 		edge_list = [tuple(x) for x in subset.values]
 		self.graph.add_weighted_edges_from(edge_list)
@@ -62,10 +65,18 @@ class GraphGenerator():
 			self.graph.add_node(subzone, weight = float(weight_set[i]), \
 						normweightsum = float(normweight_set[i]),\
 						normweightmax = float(normmaxweight_set[i]), \
-						longitude = float(lon_set[i]), latitude = float(lat_set[i]),\
-						type = float(5 + 10*normmaxweight_set[i]), area = float(area_set[i]),\
-						population = float(pop_set[i]), popdensity = float(popdense_set[i]),\
+						longitude = float(lon_set[i]),\
+						latitude = float(lat_set[i]),\
+						type = float(5 + 10*normmaxweight_set[i]),\
+						area = float(area_set[i]),\
+						population = float(pop_set[i]),\
+						popdensity = float(popdense_set[i]),\
 						hotspot = 1)
+
+		deg = nx.degree_centrality(self.graph)
+		for node in self.graph.nodes():
+			if deg[node] == 0:
+				self.graph.remove_node(node)
 
 
 
@@ -111,9 +122,12 @@ def make_node(nodes):
 		DG.add_node(subzone, weight = float(weight_set[i]), \
 					normweightsum = float(normweight_set[i]),\
 					normweightmax = float(normmaxweight_set[i]), \
-					longitude = float(lon_set[i]), latitude = float(lat_set[i]),\
-					type = float(5 + 10*normmaxweight_set[i]), area = float(area_set[i]),\
-					population = float(pop_set[i]), popdensity = float(popdense_set[i]),\
+					longitude = float(lon_set[i]),\
+					latitude = float(lat_set[i]),\
+					type = float(5 + 10*normmaxweight_set[i]),\
+					area = float(area_set[i]),\
+					population = float(pop_set[i]),\
+					popdensity = float(popdense_set[i]),\
 					hotspot = 1)
 
 def get_subzone_data(nodes):

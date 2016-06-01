@@ -5,35 +5,40 @@ from sklearn import metrics, cross_validation
 from sklearn.pipeline import Pipeline
 from sklearn.grid_search import GridSearchCV, RandomizedSearchCV
 from sklearn.cross_validation import train_test_split
-from sklearn.metrics import classification_report, confusion_matrix, make_scorer
+from sklearn.metrics import classification_report, confusion_matrix, make_scorer, f1_score
 from sklearn.preprocessing import MinMaxScaler
 from sklearn.ensemble import ExtraTreesClassifier
 from model import *
 from features import *
 import warnings
+
+
+
+from sklearn.feature_selection import SelectFromModel
+from sklearn.svm import LinearSVC
 warnings.filterwarnings("ignore")
 
 
-def my_custom_loss_func(ground_truth, pred):
-	diff = np.abs(ground_truth - pred).max()
-	return np.log(1 + diff)
 
 def apply_model(X, y):
-	clf0 = dummy()
-	clf1 = log_reg_model()
-	clf2 = linear_svc_model()
-	clf3 = random_forest_model()
-	clf4 = extra_trees_model()
-	clf5 = k_nearest_model()
+	clf1 = dummy()
+	clf2 = log_reg_model()
+	clf3 = linear_svc_model()
+	clf4 = svc_model()
+	clf5 = random_forest_model()
+	clf6 = extra_trees_model()
+	clf7 = k_nearest_model()
+	
 	#clf6 = gradient_boost_model()
 
-	model = [clf0, clf1, clf2, clf3, clf4, clf5]#, clf6]
+	model = [clf1, clf2, clf3, clf5, clf6, clf7]
 
-	score = make_scorer(my_custom_loss_func, greater_is_better=False)
+	
 
-	for i, clf in enumerate(model): # use f1 scoring method for optimal performance (dummy estimator will have a 0.00 score)
-		scores = cross_validation.cross_val_score(clf, X, y, cv = 4, scoring = "f1", n_jobs = -1)
+	for i, clf in enumerate(model): # use f1_macro scoring method for optimal performance (dummy estimator will have a 0.00 score)
+		scores = cross_validation.cross_val_score(clf, X, y, cv = 4, scoring = "f1_macro", n_jobs = -1)
 		print "Model %d " % (i+1) + "Accuracy: %0.4f (+/- %0.2f)" % (scores.mean(), scores.std() * 2)
+		
 		X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=10)
 		clf.fit(X_train, y_train)
 		y_pred = clf.predict(X_test)
@@ -44,10 +49,10 @@ def apply_model(X, y):
 		#print scores
 
 def search_grid():
-	model = random_forest_model()
-	score = make_scorer(my_custom_loss_func, greater_is_better=False)
+	model = svc_model()
+	
 	X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=10)
-	param_grid = dict(select__percentile=np.arange(10,99,10), randf__max_features=["auto", "log2", None], randf__n_estimators=np.arange(1,100,10), randf__min_samples_split=np.arange(1,100,10), randf__max_depth=[None, 1, 10, 20, 30], randf__class_weight=['balanced'])
+	param_grid = dict(select__percentile=np.arange(1,90,10), svc__kernel=['rbf', 'linear', 'poly', 'sigmoid'], svc__gamma=10**np.arange(-3,2,1), svc__tol=[1e-8, 1e-4, 1e-2, 1e-1], svc__C=(2.0**np.arange(-10,20,4)))
 
 	#dict(select__percentile=np.arange(10,99,10), extra__n_estimators=np.arange(1,100,10), extra__max_features=[None, 'auto', 'sqrt', 'log2'])
 	#dict(select__percentile=np.arange(10,99,10), randf__max_features=["auto", "log2", None], randf__n_estimators=np.arange(1,100,10), randf__min_samples_split=np.arange(1,100,10), randf__max_depth=[None, 1, 10, 20, 30])
@@ -56,11 +61,12 @@ def search_grid():
 	#dict(select__percentile=np.arange(1,99,1), linsvc__C=(2.0**np.arange(-10,20,4)), linsvc__penalty=['l1','l2'], linsvc__tol=[1e-8, 1e-4, 1e-2, 1e-1])
 	#dict(select__percentile=np.arange(10,99,10), randf__max_features=["auto", "log2", None], randf__n_estimators=np.arange(1,100,10), randf__min_samples_split=np.arange(1,100,10), randf__max_depth=[None, 1, 10, 20, 30])
 	#dict(select__percentile=np.arange(1,99,1), logre__penalty=['l1', 'l2'], logre__C = (2.0**np.arange(-10, 20, 4)), logre__tol=[1e-8, 1e-4, 1e-1])
-	grid = GridSearchCV(model, cv=4, param_grid=param_grid, scoring='f1', n_jobs=-1, verbose=4)
+	grid = GridSearchCV(model, cv=4, param_grid=param_grid, scoring='f1_macro', n_jobs=-1, verbose=4)
 	grid.fit(X,y)
 
 	for i in grid.grid_scores_:
 		print i
+
 	print "Best params: " + str(grid.best_params_)
 	print "Best score: " + str(grid.best_score_)
 
@@ -94,25 +100,50 @@ def plot_confusion_matrix(cm, y, title='Confusion matrix', cmap=plt.cm.Blues):
     plt.ylabel('True label')
     plt.xlabel('Predicted label')
 
-
-
-if __name__ == '__main__':
+def build_X_y():
+	network_data = pd.read_csv("Data/network_20160511.csv")
+	wkend_network_data = pd.read_csv("Data/Original/20160514_network.csv")
+	subzone_data = pd.read_csv("Data/Processed/subzonedatav5.csv")
 	GG = GraphGenerator(network_data, subzone_data)
 	GG2 = GraphGenerator(wkend_network_data, subzone_data)
 	G, OG, BH = GG.get_graphs()
 	WG, WOG, WBH = GG2.get_graphs()
 	FB = FeatureBuilder(G, OG, BH)
 	FB2 = FeatureBuilder(WG,WOG, WBH)
-	X, y = FB.build_features()
-	X1, y1 = FB2.build_features()
-	
-	FB.output_gexf("compsnormal.gexf")
-	FB2.output_gexf("compsweekend.gexf")
+	FB.set_weekend_change(FB2.OG)
+	#FB.export_gexf("hchange.gexf")
+	X, y = FB.get_features()
+	return X, y
 
-	#apply_model(X,y)
+if __name__ == '__main__':
+	X, y = build_X_y()
+	#X1, y1 = FB2.build_features()
+	#FB.export_gexf("compsnormalv1.gexf")
+	#FB2.export_gexf("compsweekendv1.gexf")	
+
+	'''
+	lsvc = LinearSVC(C=0.01, penalty='l1', dual = False).fit(X,y)
+	model = SelectFromModel(lsvc,prefit=True)
+	X_new = model.transform(X)
+
+
+	logreg = lm.LogisticRegression()
+	rfecv = RFECV(estimator = logreg, step = 1, cv = StratifiedKFold(y,3), scoring='roc_auc')
+
+	rfecv.fit(X,y)
+	X_new = rfecv.transform(X)
+	plt.figure()
+	plt.xlabel("Number of features selected")
+	plt.ylabel("Cross validation score (nb of correct classifications)")
+	plt.plot(range(1, len(rfecv.grid_scores_) + 1), rfecv.grid_scores_)
+	plt.show()
+	'''
+	apply_model(X,y)
 	#apply_model(X1,y1)
 	#search_grid()
 	#feature_rank(X, y)
+
+
 
 
 	'''

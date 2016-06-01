@@ -213,15 +213,21 @@ def build_feature():
 
 	return X, y
 
+
+
+
+
 class FeatureBuilder():
+
 	def __init__(self, maingraph, originalgraph, breedinghabitat):
 		self.G = maingraph
 		self.OG = originalgraph
 		self.BH = breedinghabitat
+		self.dl = self.distance_to_all()
+		self.build()
 
 
 	def export_gexf(self, filename):
-		self.build()
 		nx.write_gexf(self.OG, filename)
 
 
@@ -230,14 +236,16 @@ class FeatureBuilder():
 		self.link_analysis()
 		self.bh_proximity_density()
 		self.bad_neighbour()
+		self.distance_to_all()
+		#add in weekday-weekend H change & A change -> gives insights to the nature of the place (residential, work)
+		
 
-	def build_features(self):
-		self.build()
-
+	def get_features(self):
 		self.generate_binary()
 		#self.generate_tier()
 
 		x_list = []
+		dist_list = []
 		for area in self.OG.nodes():
 			x_list.append((self.OG.node[area]['eigen_centrality'],\
 						self.OG.node[area]['betweenness_centrality'],\
@@ -249,9 +257,14 @@ class FeatureBuilder():
 						self.OG.node[area]['bad_neighbour_in'],\
 						self.OG.node[area]['bh_density'],\
 						self.OG.node[area]['inverse_dist'],\
-						self.OG.node[area]['bad_neighbour_out']))
-		
-		X = np.array(x_list)
+						self.OG.node[area]['bad_neighbour_out'],\
+						self.OG.node[area]['hub_change'],\
+						self.OG.node[area]['aut_change']))
+
+			#dist_list = [tuple(x) for x in self.dist_graph.node]
+
+		x1 = np.array(x_list)
+		X = np.hstack((x1, self.dl))
 		
 		y_list = []
 		for area in self.OG.nodes():
@@ -259,6 +272,13 @@ class FeatureBuilder():
 		y = np.array(y_list)
 
 		return X, y
+
+	def set_weekend_change(self, weekend):
+		changelist = []
+		for node in self.OG.nodes():
+			self.OG.node[node]['hub_change']  = weekend.node[node]['hub'] - self.OG.node[node]['hub']
+			self.OG.node[node]['aut_change']  = weekend.node[node]['authority'] - self.OG.node[node]['authority']
+			
 
 	def generate_binary(self):
 		for node in self.OG.nodes():
@@ -272,7 +292,7 @@ class FeatureBuilder():
 				self.OG.node[node]['passive_hotspot'] = 0
 				self.OG.node[node]['active_hotspot'] = 1
 
-	def generate_tier():
+	def generate_tier(self):
 		for node in self.OG.nodes():
 			if self.OG.node[node]['weight'] == 0:
 				self.OG.node[node]['active_hotspot'] = 0
@@ -393,11 +413,25 @@ class FeatureBuilder():
 
 			self.OG.node[node]['bad_neighbour_in'] = total_in_pressure
 			self.OG.node[node]['bad_neighbour_out'] = total_out_pressure
+	
+	def distance_to_all(self):
+		def get_distance(source, target):
+			x = self.OG.node[source]['longitude'] - self.OG.node[target]['longitude']
+			y = self.OG.node[source]['latitude'] - self.OG.node[target]['latitude']
+			return math.hypot(x,y) * 111.2
+		dist_graph = nx.Graph()
+		for source in self.OG.nodes():
+			#self.dist_graph.add_node(source)
+			for target in self.OG.nodes():
+				dist = get_distance(source, target)
+				dist_graph.add_edge(source,target,weight=dist)
+		return nx.to_numpy_matrix(dist_graph, weight = 'weight')
+		
+
 
 
 
 if __name__ == '__main__':
-	'''
 	network_data = pd.read_csv("Data/network_20160511.csv")
 	wkend_network_data = pd.read_csv("Data/Original/20160514_network.csv")
 	subzone_data = pd.read_csv("Data/Processed/subzonedatav5.csv")
@@ -406,10 +440,39 @@ if __name__ == '__main__':
 	GG2 = GraphGenerator(wkend_network_data, subzone_data)
 	G, OG, BH = GG.get_graphs()
 	WG, WOG, WBH = GG2.get_graphs()
+	
 	FB = FeatureBuilder(G, OG, BH)
 	FB2 = FeatureBuilder(WG,WOG, WBH)
-	X, y = FB.build_features()
-	X1, y1 = FB2.build_features()
-	
-	print np.bincount(y)
+	FB.set_weekend_change(FB2.OG)
+	X, y = FB.get_features()
+
+	print len(X)
 	'''
+	X1, y1 = FB2.get_features()
+	
+	changelist = []
+	for node in FB.OG.nodes():
+		hubdiff = FB2.OG.node[node]['hub'] - FB.OG.node[node]['hub']
+		autdiff = FB2.OG.node[node]['authority'] - FB.OG.node[node]['authority']
+		changelist.append((node,hubdiff, autdiff))
+	
+	df = pd.DataFrame(changelist)
+	
+
+	edgechangelist = []
+	for n, nbrs in OG.adjacency_iter():
+		for nbr, eattr in nbrs.items():
+			change = 0.0
+			try:
+				change = WOG[n][nbr]['weight'] - OG[n][nbr]['weight']
+			except:
+				pass
+			edgechangelist.append((n, nbr, change))
+
+	df2 = pd.DataFrame(edgechangelist)
+	print df2.sort_values(2)
+	'''
+
+
+	#print df
+	

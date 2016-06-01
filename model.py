@@ -5,7 +5,7 @@ import networkx as nx
 import pandas as pd
 from sklearn.preprocessing import MinMaxScaler, scale
 from sklearn.neighbors import KNeighborsClassifier
-from sklearn.svm import LinearSVC
+from sklearn.svm import LinearSVC, SVC
 from sklearn.linear_model import LogisticRegression
 from sklearn.ensemble import ExtraTreesClassifier, GradientBoostingClassifier, RandomForestClassifier
 from sklearn import metrics, cross_validation
@@ -21,8 +21,8 @@ def dummy():
 	return pipeline	
 
 def log_reg_model():
-	select = SelectPercentile(score_func=chi2, percentile=20) #gridsearched
-	log = LogisticRegression(C=64, penalty='l1', tol=0.1, class_weight='balanced')     #gridsearched
+	select = SelectPercentile(score_func=chi2, percentile=64) #gridsearched
+	log = LogisticRegression(tol=1e-8, penalty='l1', C=16384.0, class_weight='balanced')     #gridsearched
 	scaler = MinMaxScaler()
 	pipeline = Pipeline([('scale', scaler), ('select', select), ('logre', log)])
 	return pipeline
@@ -32,6 +32,13 @@ def linear_svc_model():
 	svc = LinearSVC(dual=False, class_weight='balanced', penalty='l2', C=0.015625, tol=1e-8)  #gridsearched
 	scaler = MinMaxScaler()
 	pipeline = Pipeline([('scale', scaler), ('select', select),('linsvc', svc)])
+	return pipeline
+
+def svc_model():
+	select = SelectPercentile(score_func=chi2, percentile=11) #gridsearched
+	svc = SVC(class_weight='balanced')  #gridsearched
+	scaler = MinMaxScaler()
+	pipeline = Pipeline([('scale', scaler), ('select', select),('svc', svc)])
 	return pipeline
 
 def random_forest_model():
@@ -67,22 +74,3 @@ def gradient_boost_model():
 	pipeline = Pipeline([('scale', scaler), ('select', select) ,('gb', gb)])
 	return pipeline	
 
-'''
-full_graph , subgraph = get_graphs()
-nodelist = sorted(full_graph.nodes())
-#output = nx.to_numpy_matrix(subgraph, weight = 'weight')
-mylist = []
-for node in full_graph.nodes():
-	print node
-	mylist.append((full_graph.node[node]['longitude'], full_graph.node[node]['latitude']))
-X = np.array(mylist)
-
-km = KMeans(n_clusters = 4)  # this is by proximity only
-y_pred=km.fit_predict(X)
-
-plt.scatter(X[:, 0], X[:, 1], c = y_pred)
-plt.show()
-
-#print nx.info(full_graph)
-#cluster differently??
-'''
