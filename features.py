@@ -3,6 +3,7 @@ import numpy as np
 import pandas as pd 
 import networkx as nx
 import matplotlib.pyplot as plt
+from sklearn.base import BaseEstimator
 from graph import *
 
 """
@@ -22,8 +23,9 @@ add in own feature
 """
 
 
-class BadNeighbours():
 
+
+class BadNeighbours(BaseEstimator):
 
 	def __init__(self, originalgraph, breedinghabitat, second_degree=True):
 		self.second_degree = second_degree
@@ -168,7 +170,7 @@ class BadNeighbours():
 			self.OG.node[node]['2nd_bad_neighbour_out'] = total_out_pressure
 
 
-class HitsChange():
+class HitsChange(BaseEstimator):
 	'''
 	Only includes change in hub and authority score (represents flow rate)
 	'''
@@ -210,7 +212,7 @@ class HitsChange():
 			self.OG.node[node]['aut_change']  = self.WOG.node[node]['authority'] - self.OG.node[node]['authority']
 
 
-class GeospatialEffect():
+class GeospatialEffect(BaseEstimator):
 
 	def __init__(self, graph):
 		self.OG = graph
@@ -238,7 +240,7 @@ class GeospatialEffect():
 
 
 #G, SG, BH, OG = get_graphs()
-class FeatureBuilder():
+class BasicFeatureBuilder():
 	def __init__(self, maingraph, originalgraph, breedinghabitat):
 		self.G = maingraph
 		self.OG = originalgraph
@@ -299,8 +301,7 @@ class FeatureBuilder():
 		changelist = []
 		for node in self.OG.nodes():
 			self.OG.node[node]['hub_change']  = weekend.node[node]['hub'] - self.OG.node[node]['hub']
-			self.OG.node[node]['aut_change']  = weekend.node[node]['authority'] - self.OG.node[node]['authority']
-			
+			self.OG.node[node]['aut_change']  = weekend.node[node]['authority'] - self.OG.node[node]['authority']			
 
 	def __generate_binary(self):
 		for node in self.OG.nodes():
@@ -496,8 +497,8 @@ if __name__ == '__main__':
 	G, OG, BH = GG.get_graphs()
 	WG, WOG, WBH = GG2.get_graphs()
 	
-	FB = FeatureBuilder(G, OG, BH)
-	FB2 = FeatureBuilder(WG,WOG, WBH)
+	FB = BasicFeatureBuilder(G, OG, BH)
+	FB2 = BasicFeatureBuilder(WG,WOG, WBH)
 	FB.set_weekend_change(FB2.OG)
 	X, y = FB.get_features()
 
