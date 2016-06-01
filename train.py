@@ -31,12 +31,10 @@ def apply_model(X, y):
 	
 	#clf6 = gradient_boost_model()
 
-	model = [clf1, clf2, clf3, clf5, clf6, clf7]
-
-	
+	model = [clf1, clf2]#, clf3, clf5, clf6, clf7]
 
 	for i, clf in enumerate(model): # use f1_macro scoring method for optimal performance (dummy estimator will have a 0.00 score)
-		scores = cross_validation.cross_val_score(clf, X, y, cv = 4, scoring = "f1_macro", n_jobs = -1)
+		scores = cross_validation.cross_val_score(clf, X, y, cv = 4, scoring = "f1_macro", n_jobs = 2)
 		print "Model %d " % (i+1) + "Accuracy: %0.4f (+/- %0.2f)" % (scores.mean(), scores.std() * 2)
 		
 		X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=10)
@@ -111,12 +109,14 @@ def build_X_y():
 	FB = FeatureBuilder(G, OG, BH)
 	FB2 = FeatureBuilder(WG,WOG, WBH)
 	FB.set_weekend_change(FB2.OG)
-	#FB.export_gexf("hchange.gexf")
 	X, y = FB.get_features()
 	return X, y
 
 if __name__ == '__main__':
 	X, y = build_X_y()
+	df = pd.DataFrame(X)
+	df.to_csv("hello.csv")
+	print len(X)
 	#X1, y1 = FB2.build_features()
 	#FB.export_gexf("compsnormalv1.gexf")
 	#FB2.export_gexf("compsweekendv1.gexf")	

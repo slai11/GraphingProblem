@@ -24,7 +24,7 @@ def log_reg_model():
 	select = SelectPercentile(score_func=chi2, percentile=64) #gridsearched
 	log = LogisticRegression(tol=1e-8, penalty='l1', C=16384.0, class_weight='balanced')     #gridsearched
 	scaler = MinMaxScaler()
-	pipeline = Pipeline([('scale', scaler), ('select', select), ('logre', log)])
+	pipeline = Pipeline([('scale', scaler), ('logre', log)])
 	return pipeline
 
 def linear_svc_model():
