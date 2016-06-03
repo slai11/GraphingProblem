@@ -5,7 +5,7 @@ import numpy as np
 import pandas as pd 
 import networkx as nx
 import matplotlib.pyplot as plt
-from sklearn.base_estimator import BaseEstimator
+from sklearn.base import BaseEstimator
 from graph import *
 
 """
@@ -554,15 +554,10 @@ if __name__ == '__main__':
 	GG2 = GraphGenerator(wkend_network_data, subzone_data)
 	G, OG, BH = GG.get_graphs()
 	WG, WOG, WBH = GG2.get_graphs()
-<<<<<<< HEAD
-
-	FB = FeatureBuilder(G, OG, BH)
-	FB2 = FeatureBuilder(WG,WOG, WBH)
-=======
 	
 	FB = BasicFeatureBuilder(G, OG, BH)
 	FB2 = BasicFeatureBuilder(WG,WOG, WBH)
->>>>>>> 10cb3ee9f02f38e16a682058acb91280c2849c03
+
 	FB.set_weekend_change(FB2.OG)
 	X, y = FB.get_features()
 

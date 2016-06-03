@@ -92,7 +92,7 @@ def feature_rank(X, y):
 	for f in range(X.shape[1]):
 		print "%d. Feature %d (%f)" % (f+1, indices[f], importances[indices[f]])
 
-	plt.figure()
+	
 	plt.title("Feature Importance")
 	plt.bar(range(X.shape[1]), importances[indices], color = "r", yerr=std[indices], align="center")
 	plt.xticks(range(X.shape[1]), indices)
@@ -140,7 +140,7 @@ if __name__ == '__main__':
 	#FB.export_gexf("compsnormalv1.gexf")
 	#FB2.export_gexf("compsweekendv1.gexf")
 
-	apply_model(X,y)
+	#apply_model(X,y)
 
 	clf = svc_model()
 	X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=10)
@@ -151,7 +151,7 @@ if __name__ == '__main__':
 	print y_test
 
 	#search_grid()
-	#feature_rank(X, y)
+	feature_rank(X, y)
 
 
 	'''
