@@ -1,3 +1,4 @@
+# _*_ coding: utf-8 _*_
 import csv
 import numpy as np
 import matplotlib.pyplot as plt
@@ -28,37 +29,38 @@ def log_reg_model():
 	return pipeline
 
 def linear_svc_model():
-	select = SelectPercentile(score_func=chi2, percentile=11) #gridsearched
-	svc = LinearSVC(dual=False, class_weight='balanced', penalty='l2', C=0.015625, tol=1e-8)  #gridsearched
+	select = SelectPercentile(score_func=chi2, percentile=87) #gridsearched
+	svc = LinearSVC(dual=False, class_weight='balanced', C=1024, penalty='l2', tol=0.1)  #gridsearched
 	scaler = MinMaxScaler()
 	pipeline = Pipeline([('scale', scaler), ('select', select),('linsvc', svc)])
 	return pipeline
 
 def svc_model():
-	select = SelectPercentile(score_func=chi2, percentile=11) #gridsearched
-	svc = SVC(class_weight='balanced')  #gridsearched
+	select = SelectPercentile(score_func=chi2, percentile=21) #gridsearched
+	svc = SVC(class_weight='balanced', gamma=0, kernel='rbf', C=0.25, tol=0.1)  #gridsearched
 	scaler = MinMaxScaler()
 	pipeline = Pipeline([('scale', scaler), ('select', select),('svc', svc)])
 	return pipeline
 
 def random_forest_model():
-	rf = RandomForestClassifier(n_estimators=31, min_samples_split=11, max_features='auto', max_depth=20, class_weight='balanced')#gridsearched
-	select = SelectPercentile(score_func=chi2, percentile=60)#gridsearched
+	rf = RandomForestClassifier(max_features='log2', min_samples_split=11, n_estimators=71, max_depth=30, class_weight='balanced')#gridsearched
+	select = SelectPercentile(score_func=chi2, percentile=20)#gridsearched
 	scaler = MinMaxScaler()
 	pipeline = Pipeline([('scale', scaler),('select', select), ('randf', rf)])
 	return pipeline
 
 def extra_trees_model():
-	select = SelectPercentile(score_func=chi2, percentile=60)
-	et = ExtraTreesClassifier(n_estimators=51, max_features='auto', class_weight='balanced')
+	select = SelectPercentile(score_func=chi2, percentile=90)
+	et = ExtraTreesClassifier(n_estimators=11, max_features='log2', class_weight='balanced')
 	#n_estimators=10, max_depth=None, min_samples_split=1, random_state=0
 	scaler = MinMaxScaler()
 	pipeline = Pipeline([('scale', scaler), ('select', select), ('extra', et)])
 	return pipeline
 
 def k_nearest_model():
-	select = SelectPercentile(score_func=chi2, percentile=61)#gridsearched macro
-	knc = KNeighborsClassifier(weights='distance', algorithm='auto', n_neighbors=6)#gridsearched macro
+	select = SelectPercentile(score_func=chi2, percentile=45)
+	knc = KNeighborsClassifier(weights='uniform', algorithm='auto', n_neighbors=3)
+	#weights='distance', algorithm='auto', n_neighbors=6
 	#knear__weights': 'uniform', 'knear__algorithm': 'auto', 'knear__n_neighbors': 4, 'select__percentile': 11
 	#knear__weights': 'uniform', 'knear__algorithm': 'auto', 'knear__n_neighbors': 1, 'select__percentile': 1
 	#(weights='distance', algorithm='auto', n_neighbors=3)#gridsearched perc 67
@@ -67,9 +69,9 @@ def k_nearest_model():
 	return pipeline
 
 def gradient_boost_model():
-	gb = GradientBoostingClassifier(learning_rate=64, loss='exponential',\
-									max_depth=11, max_features='log2', random_state=10)#gridsearched
-	select = SelectPercentile(score_func=chi2, percentile=91)#gridsearched
+	gb = GradientBoostingClassifier(learning_rate=4, loss='exponential',\
+									max_depth=3, max_features='sqrt', random_state=1)#gridsearched
+	select = SelectPercentile(score_func=chi2, percentile=26)#gridsearched
 	scaler = MinMaxScaler()
 	pipeline = Pipeline([('scale', scaler), ('select', select) ,('gb', gb)])
 	return pipeline	

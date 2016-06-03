@@ -1,3 +1,5 @@
+# _*_ coding: utf-8 _*_
+
 import csv
 import numpy as np
 import pandas as pd
@@ -22,7 +24,8 @@ class GraphGenerator():
 
 	def get_graphs(self):
 		self.make_graph()
-		
+
+		# add breeding habitat data
 		breedinghabitat = pd.read_csv("Data/Processed/breedinghabitat.csv")
 		lon = breedinghabitat['longitude']
 		lat = breedinghabitat['latitude']

@@ -1,3 +1,5 @@
+# _*_ coding: utf-8 _*_
+
 import math
 import numpy as np 
 import pandas as pd 
@@ -6,21 +8,8 @@ import matplotlib.pyplot as plt
 from graph import *
 
 """
-normalize by max -> population density
 
-add in own feature
-1. infection pressure?
-	- score of surrounding case weight and weighted flow rate
-	- relative distance to breeding habitats and density of surrounding breeding habitats
-2. degree?
-3. eigenvector centrality
-4. traffic flow (HITS)
-5. pagerank
-6. relative danger (10 nearest)
-7. population
-8. population density
 """
-
 
 class BadNeighbours():
 
@@ -91,7 +80,7 @@ class BadNeighbours():
 				edge_weight = OG[to][start]['weight']
 				sum_edge_weight += float(edge_weight)
 			except:
-				pass
+				sum_edge_weight += 0
 		return sum_edge_weight
 
 	def __get_sum_of_edge_out(self, edgelist):
@@ -129,9 +118,10 @@ class BadNeighbours():
 						cases = self.OG.node[edge[1]]['normweightmax']  # should we be using this?
 						dist = get_distance(edge)
 						popden = self.OG.node[edge[1]]['popdensity']
-						node_to_node_pressure = in_path_weight * cases * math.exp(-dist)
 					except:
 						pass
+						print "passed"
+					node_to_node_pressure = in_path_weight * cases * math.exp(-dist)
 					out_path_weight = self.OG[node][edge[1]]['weight'] / sumedgeout
 					bhpdi = self.OG.node[edge[1]]['BHPDI']
 					out_pressure = out_path_weight * math.exp(bhpdi)
@@ -243,12 +233,13 @@ class FeatureBuilder():
 		self.G = maingraph
 		self.OG = originalgraph
 		self.BH = breedinghabitat
-		self.dl = self.__distance_to_all()
+		#self.dl = self.__distance_to_all()
 		self.__build()
 
 
 	def export_gexf(self, filename):
 		nx.write_gexf(self.OG, filename)
+
 
 
 	def __build(self):
@@ -276,7 +267,7 @@ class FeatureBuilder():
 						self.OG.node[area]['popdensity'],\
 						self.OG.node[area]['bh_density'],\
 						self.OG.node[area]['inverse_dist'],\
-						#can remove from here on aft OOP-ing 
+						# can remove from here on aft OOP-ing
 						self.OG.node[area]['bad_neighbour_in'],\
 						self.OG.node[area]['bad_neighbour_out'],\
 						self.OG.node[area]['2nd_bad_neighbour_in'],\
@@ -295,11 +286,43 @@ class FeatureBuilder():
 
 		return X, y
 
+	def get_features_wo_change(self):
+		self.__generate_binary()
+		#self.__generate_tier()
+
+		x_list = []
+		dist_list = []
+		for area in self.OG.nodes():
+			x_list.append((self.OG.node[area]['eigen_centrality'],\
+						self.OG.node[area]['betweenness_centrality'],\
+						self.OG.node[area]['pagerank'],\
+						self.OG.node[area]['hub'],\
+						self.OG.node[area]['authority'],\
+						self.OG.node[area]['population'],\
+						self.OG.node[area]['popdensity'],\
+						self.OG.node[area]['bh_density'],\
+						self.OG.node[area]['inverse_dist'],\
+						#can remove from here on aft OOP-ing 
+						self.OG.node[area]['bad_neighbour_in'],\
+						self.OG.node[area]['bad_neighbour_out'],\
+						self.OG.node[area]['2nd_bad_neighbour_in'],\
+						self.OG.node[area]['2nd_bad_neighbour_out']\
+						))
+
+		X = np.array(x_list)
+		
+		y_list = []
+		for area in self.OG.nodes():
+			y_list.append(self.OG.node[area]['active_hotspot'])
+		y = np.array(y_list)
+
+		return X, y
+
 	def set_weekend_change(self, weekend):
 		changelist = []
 		for node in self.OG.nodes():
-			self.OG.node[node]['hub_change']  = weekend.node[node]['hub'] - self.OG.node[node]['hub']
-			self.OG.node[node]['aut_change']  = weekend.node[node]['authority'] - self.OG.node[node]['authority']
+			self.OG.node[node]['hub_change']  = (weekend.node[node]['hub'] - self.OG.node[node]['hub']) / self.OG.node[node]['hub']
+			self.OG.node[node]['aut_change']  = (weekend.node[node]['authority'] - self.OG.node[node]['authority']) / self.OG.node[node]['authority']
 			
 
 	def __generate_binary(self):
@@ -324,7 +347,7 @@ class FeatureBuilder():
 				self.OG.node[node]['active_hotspot'] = 2
 
 	def __centrality_analysis(self):
-		eigen_centrality = nx.eigenvector_centrality(self.OG)
+		eigen_centrality = nx.eigenvector_centrality(self.OG, weight = 'weighted')
 		btw_centrality = nx.betweenness_centrality(self.OG, weight = 'weight')
 		for node in self.OG.nodes():
 			self.OG.node[node]['eigen_centrality'] = eigen_centrality[node]
@@ -375,17 +398,23 @@ class FeatureBuilder():
 			self.OG.node[node]['bh_density'] = density
 			self.OG.node[node]['inverse_dist'] = math.exp(-distsum)
 
+
+
+
+
 	def __get_sum_of_edge_in(self, edgelist):
 		sum_edge_weight = 0.0
 		for edge in edgelist:
 			start = edge[0]
 			to = edge[1]
-			#edge_weight = OG[start][to]['weight']
+			# edge_weight = OG[start][to]['weight']
+			#edge_weight = self.OG[to][start]['weight']
+			#sum_edge_weight += float(edge_weight)
 			try:
-				edge_weight = OG[to][start]['weight']
+				edge_weight = self.OG[to][start]['weight']
 				sum_edge_weight += float(edge_weight)
 			except:
-				pass
+				sum_edge_weight += 0
 		return sum_edge_weight
 
 	def __get_sum_of_edge_out(self, edgelist):
@@ -412,7 +441,12 @@ class FeatureBuilder():
 			# get sum of edge
 			sumedgein = self.__get_sum_of_edge_in(bfs_edge_list)
 			sumedgeout = self.__get_sum_of_edge_out(bfs_edge_list)
-			total_in_pressure =0.0
+
+			#store sumedge data
+			self.OG.node[node]['sum_edge_in'] = sumedgein
+			self.OG.node[node]['sum_edge_out'] = sumedgeout
+
+			total_in_pressure = 0.0
 			total_out_pressure = 0.0
 			
 			for edge in bfs_edge_list:
@@ -426,7 +460,8 @@ class FeatureBuilder():
 						popden = self.OG.node[edge[1]]['popdensity']
 						node_to_node_pressure = in_path_weight * cases * math.exp(-dist)
 					except:
-						pass
+						node_to_node_pressure = 0
+						
 					out_path_weight = self.OG[node][edge[1]]['weight'] / sumedgeout
 					bhpdi = self.OG.node[edge[1]]['BHPDI']
 					out_pressure = out_path_weight * math.exp(bhpdi)
@@ -437,8 +472,10 @@ class FeatureBuilder():
 			self.OG.node[node]['bad_neighbour_in'] = total_in_pressure
 			self.OG.node[node]['bad_neighbour_out'] = total_out_pressure
 	
-	def __second_order_bad_neighbour(self):
+	def __second_order_bad_neighbour(self):  
+		
 		for node in self.OG.nodes():
+			
 			#calculate the weighted sum of "bad neighbour in" score
 			bfs_edge_list = list(nx.bfs_edges(self.OG, node))
 			sumedgein = self.__get_sum_of_edge_in(bfs_edge_list)
@@ -450,17 +487,38 @@ class FeatureBuilder():
 				# weight * bni-score 
 				# ignore if from node
 				try:
+					# put a test here??
 					bni_score = self.OG.node[edge[1]]['bad_neighbour_in']
-					bno_score = self.OG.node[edge[1]]['bad_neighbour_out']
 					in_weight = self.OG[edge[1]][node]['weight'] / sumedgein
-					out_weight = self.OG[node][edge[1]]['weight'] / sumedgeout
+					# get correct sumedge (bfs tree again)
+					bni_score = self.__clean_bni(bni_score, node, edge[1])
 					total_in_pressure += in_weight * bni_score
+					
+
+					bno_score = self.OG.node[edge[1]]['bad_neighbour_out']
+					out_weight = self.OG[node][edge[1]]['weight'] / sumedgeout
 					total_out_pressure += out_weight * bno_score
 				except:
-					pass
+					total_out_pressure += 0
+				
 
 			self.OG.node[node]['2nd_bad_neighbour_in'] = total_in_pressure
 			self.OG.node[node]['2nd_bad_neighbour_out'] = total_out_pressure
+
+	def __clean_bni(self,score, source, target):
+		def get_distance(source, target):
+			x = self.OG.node[source]['longitude'] - self.OG.node[target]['longitude']
+			y = self.OG.node[source]['latitude'] - self.OG.node[target]['latitude']
+			return math.hypot(x,y) * 111.2
+		
+		edge = self.OG[source][target]['weight']
+		# Original formula node_to_node_pressure = in_path_weight * cases * math.exp(-dist)
+		dist = get_distance(source, target)
+		target_sum_edge_in = self.OG.node[target]['sum_edge_in']
+		source_contribution =  (edge/target_sum_edge_in) * self.OG.node[source]['normweightmax'] * math.exp(-dist)
+		correct = score - source_contribution
+		return correct
+
 
 
 
@@ -490,12 +548,12 @@ if __name__ == '__main__':
 	network_data = pd.read_csv("Data/network_20160511.csv")
 	wkend_network_data = pd.read_csv("Data/Original/20160514_network.csv")
 	subzone_data = pd.read_csv("Data/Processed/subzonedatav5.csv")
-	
+
 	GG = GraphGenerator(network_data, subzone_data)
 	GG2 = GraphGenerator(wkend_network_data, subzone_data)
 	G, OG, BH = GG.get_graphs()
 	WG, WOG, WBH = GG2.get_graphs()
-	
+
 	FB = FeatureBuilder(G, OG, BH)
 	FB2 = FeatureBuilder(WG,WOG, WBH)
 	FB.set_weekend_change(FB2.OG)

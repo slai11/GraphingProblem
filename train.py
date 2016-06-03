@@ -1,3 +1,5 @@
+# _*_ coding: utf-8 _*_
+
 import numpy as np
 import matplotlib.pyplot as plt
 from scipy import stats
@@ -28,29 +30,38 @@ def apply_model(X, y):
 	clf5 = random_forest_model()
 	clf6 = extra_trees_model()
 	clf7 = k_nearest_model()
-	
-	#clf6 = gradient_boost_model()
+	clf8 = gradient_boost_model()
 
-	model = [clf1, clf2]#, clf3, clf5, clf6, clf7]
+	model_name = ["Dummy", "LogisticRegression", "LinearSVC", "SVC w rbf",\
+					"RandomForestClassifier", "ExtraTreesClassifier", "KNearestClassifier",\
+					"GradientBoostingClassifier"]
 
+	model = [clf1, clf2, clf3, clf4 ,clf5, clf6, clf7, clf8]
+	print "===================================================="
 	for i, clf in enumerate(model): # use f1_macro scoring method for optimal performance (dummy estimator will have a 0.00 score)
-		scores = cross_validation.cross_val_score(clf, X, y, cv = 4, scoring = "f1_macro", n_jobs = 2)
-		print "Model %d " % (i+1) + "Accuracy: %0.4f (+/- %0.2f)" % (scores.mean(), scores.std() * 2)
+		scores = cross_validation.cross_val_score(clf, X, y, cv = 4, scoring = "f1_macro", n_jobs = -1)
+		print model_name[i]
+		print "CV score(f1_macro): %0.4f (+/- %0.2f)" % (scores.mean(), scores.std() * 2)
 		
 		X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=10)
 		clf.fit(X_train, y_train)
 		y_pred = clf.predict(X_test)
+		print "Classification Report:"
 		print metrics.classification_report(y_test, y_pred)
 		cm = confusion_matrix(y_test, y_pred)
+		print "Confusion Matrix:"
 		print cm
+		print " "
+		print "===================================================="
+		print " "
 
 		#print scores
 
 def search_grid():
-	model = svc_model()
+	model = gradient_boost_model()
 	
 	X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=10)
-	param_grid = dict(select__percentile=np.arange(1,90,10), svc__kernel=['rbf', 'linear', 'poly', 'sigmoid'], svc__gamma=10**np.arange(-3,2,1), svc__tol=[1e-8, 1e-4, 1e-2, 1e-1], svc__C=(2.0**np.arange(-10,20,4)))
+	param_grid = dict(select__percentile=np.arange(1,90,5), gb__loss=['deviance', 'exponential'], gb__learning_rate = (2.0**np.arange(-10,10,2)), gb__max_depth= np.arange(1,20,2), gb__max_features=[None, "auto", "sqrt", "log2"], gb__n_estimators=np.arange(1,50,1), gb__subsample=[0.8])
 
 	#dict(select__percentile=np.arange(10,99,10), extra__n_estimators=np.arange(1,100,10), extra__max_features=[None, 'auto', 'sqrt', 'log2'])
 	#dict(select__percentile=np.arange(10,99,10), randf__max_features=["auto", "log2", None], randf__n_estimators=np.arange(1,100,10), randf__min_samples_split=np.arange(1,100,10), randf__max_depth=[None, 1, 10, 20, 30])
@@ -79,9 +90,10 @@ def feature_rank(X, y):
 	indices = np.argsort(importances)[:: -1]
 
 	for f in range(X.shape[1]):
-		print "%d. feature %d (%f)" % (f+1, indices[f], importances[indices[f]])
+		print "%d. Feature %d (%f)" % (f+1, indices[f], importances[indices[f]])
 
 	plt.figure()
+	plt.title("Feature Importance")
 	plt.bar(range(X.shape[1]), importances[indices], color = "r", yerr=std[indices], align="center")
 	plt.xticks(range(X.shape[1]), indices)
 	plt.xlim([-1, X.shape[1]])
@@ -110,48 +122,39 @@ def build_X_y():
 	FB2 = FeatureBuilder(WG,WOG, WBH)
 	FB.set_weekend_change(FB2.OG)
 	X, y = FB.get_features()
+
+
+	FB.export_gexf("projectgraphv1.gexf")
+
 	return X, y
+
+#def collate_results():
+	# runs test using various random states and collate test scores
 
 if __name__ == '__main__':
 	X, y = build_X_y()
 	df = pd.DataFrame(X)
-	df.to_csv("hello.csv")
-	print len(X)
+	print df
+	#df.to_csv("hello.csv")
 	#X1, y1 = FB2.build_features()
 	#FB.export_gexf("compsnormalv1.gexf")
-	#FB2.export_gexf("compsweekendv1.gexf")	
+	#FB2.export_gexf("compsweekendv1.gexf")
 
-	'''
-	lsvc = LinearSVC(C=0.01, penalty='l1', dual = False).fit(X,y)
-	model = SelectFromModel(lsvc,prefit=True)
-	X_new = model.transform(X)
-
-
-	logreg = lm.LogisticRegression()
-	rfecv = RFECV(estimator = logreg, step = 1, cv = StratifiedKFold(y,3), scoring='roc_auc')
-
-	rfecv.fit(X,y)
-	X_new = rfecv.transform(X)
-	plt.figure()
-	plt.xlabel("Number of features selected")
-	plt.ylabel("Cross validation score (nb of correct classifications)")
-	plt.plot(range(1, len(rfecv.grid_scores_) + 1), rfecv.grid_scores_)
-	plt.show()
-	'''
 	apply_model(X,y)
-	#apply_model(X1,y1)
+
+	clf = svc_model()
+	X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=10)
+	clf.fit(X_train, y_train)
+	y_pred = clf.predict(X_test)
+	
+	print y_pred
+	print y_test
+
 	#search_grid()
 	#feature_rank(X, y)
 
 
-
-
 	'''
-	clf = k_nearest_model()
-	X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=10)
-	clf.fit(X_train, y_train)
-	pred = clf.predict(X_test)
-
 	target_names = ['passive', 'low', 'medium', 'high']
 	#target_names = ['passive', 'active']
 

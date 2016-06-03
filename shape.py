@@ -1,3 +1,5 @@
+# _*_ coding: utf-8 _*_
+
 import math
 import shapefile
 import csv
@@ -74,7 +76,7 @@ def open_scrap(filename):
 		case_number = shapeRec[i].record[2]
 		idnum = shapeRec[i].record[1]
 		extract.append((idnum, lon, lat, case_number))
-	return extract
+	return extractex
 
 
 
@@ -83,6 +85,13 @@ def open_scrap(filename):
 # Data.gov shp files#
 #####################
 def load_breeding_habitats(habfilelist, subzonefile):
+	'''
+	Opens list of breeding habitat file (5 zones) and does 2 tasks
+		- get centroid coordinates of each BH
+		- finds the subzone it belongs to and makes frequency list
+
+	@returns list of subzone + # breeding habitats
+	'''
 	sub = shapefile.Reader(subzonefile)
 	subzone = sub.shapeRecords()
 	extract = []
@@ -103,6 +112,12 @@ def load_breeding_habitats(habfilelist, subzonefile):
 	return collate_cases(extract)
 
 def load_cluster_data(filename, subzonefile):
+	'''
+	Opens a cluster shapefile and calculates list of cluster with their case number
+
+	@returns list of subzone with # of cases
+	'''
+
 	sf = shapefile.Reader(filename)
 	sub = shapefile.Reader(subzonefile)
 	subzoneshapes = sub.shapeRecords()
