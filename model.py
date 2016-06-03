@@ -10,9 +10,11 @@ from sklearn.svm import LinearSVC, SVC
 from sklearn.linear_model import LogisticRegression
 from sklearn.ensemble import ExtraTreesClassifier, GradientBoostingClassifier, RandomForestClassifier
 from sklearn import metrics, cross_validation
-from sklearn.pipeline import Pipeline
+from sklearn.pipeline import Pipeline, FeatureUnion
 from sklearn.feature_selection import SelectPercentile, chi2
 from sklearn.dummy import DummyClassifier
+
+from features import BasicFeatureBuilder, GeospatialEffect, HitsChange, BadNeighbours
 
 
 def dummy():
@@ -25,6 +27,7 @@ def log_reg_model():
 	select = SelectPercentile(score_func=chi2, percentile=64) #gridsearched
 	log = LogisticRegression(tol=1e-8, penalty='l1', C=16384.0, class_weight='balanced')     #gridsearched
 	scaler = MinMaxScaler()
+
 	pipeline = Pipeline([('scale', scaler), ('logre', log)])
 	return pipeline
 

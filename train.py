@@ -118,8 +118,8 @@ def build_X_y():
 	GG2 = GraphGenerator(wkend_network_data, subzone_data)
 	G, OG, BH = GG.get_graphs()
 	WG, WOG, WBH = GG2.get_graphs()
-	FB = FeatureBuilder(G, OG, BH)
-	FB2 = FeatureBuilder(WG,WOG, WBH)
+	FB = BasicFeatureBuilder(G, OG, BH)
+	FB2 = BasicFeatureBuilder(WG,WOG, WBH)
 	FB.set_weekend_change(FB2.OG)
 	X, y = FB.get_features()
 
