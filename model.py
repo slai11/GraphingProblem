@@ -14,7 +14,20 @@ from sklearn.pipeline import Pipeline, FeatureUnion
 from sklearn.feature_selection import SelectPercentile, chi2
 from sklearn.dummy import DummyClassifier
 
+from graph import *
+
 from features import BasicFeatureBuilder, GeospatialEffect, HitsChange, BadNeighbours
+
+network_data = pd.read_csv("Data/network_20160511.csv")
+wkend_network_data = pd.read_csv("Data/Original/20160514_network.csv")
+subzone_data = pd.read_csv("Data/Processed/subzonedatav5.csv")
+GG = GraphGenerator(network_data, subzone_data)
+GG2 = GraphGenerator(wkend_network_data, subzone_data)
+G, OG, BH = GG.get_graphs()
+WG, WOG, WBH = GG2.get_graphs()
+X = []
+
+
 
 
 def dummy():
@@ -42,8 +55,17 @@ def svc_model():
 	select = SelectPercentile(score_func=chi2, percentile=21) #gridsearched
 	svc = SVC(class_weight='balanced', gamma=0, kernel='rbf', C=0.25, tol=0.1)  #gridsearched
 	scaler = MinMaxScaler()
+
+	BFB = BasicFeatureBuilder(G, OG, BH)
+	BN = BadNeighbours(OG, BH)
+	HC = HitsChange(OG, WOG)
+	y = BFB.get_y()
+
+	FU = FeatureUnion([('fb', BFB), ('bn',BN), ('hc',HC)])
+	F = FU.fit_transform(X,y)
+	
 	pipeline = Pipeline([('scale', scaler), ('select', select),('svc', svc)])
-	return pipeline
+	return (F, y, pipeline)
 
 def random_forest_model():
 	rf = RandomForestClassifier(max_features='log2', min_samples_split=11, n_estimators=71, max_depth=30, class_weight='balanced')#gridsearched
@@ -63,10 +85,6 @@ def extra_trees_model():
 def k_nearest_model():
 	select = SelectPercentile(score_func=chi2, percentile=45)
 	knc = KNeighborsClassifier(weights='uniform', algorithm='auto', n_neighbors=3)
-	#weights='distance', algorithm='auto', n_neighbors=6
-	#knear__weights': 'uniform', 'knear__algorithm': 'auto', 'knear__n_neighbors': 4, 'select__percentile': 11
-	#knear__weights': 'uniform', 'knear__algorithm': 'auto', 'knear__n_neighbors': 1, 'select__percentile': 1
-	#(weights='distance', algorithm='auto', n_neighbors=3)#gridsearched perc 67
 	scaler = MinMaxScaler()
 	pipeline = Pipeline([('scale', scaler),('select', select),  ('knear', knc)])
 	return pipeline

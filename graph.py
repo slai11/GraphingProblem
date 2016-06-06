@@ -15,7 +15,6 @@ network_data = pd.read_csv("Data/network_20160511.csv")
 wkend_network_data = pd.read_csv("Data/Original/20160514_network.csv")
 subzone_data = pd.read_csv("Data/Processed/subzonedatav5.csv")
 
-
 class GraphGenerator():
 	def __init__(self, network, nodes):
 		self.graph = nx.DiGraph()
@@ -76,10 +75,29 @@ class GraphGenerator():
 						popdensity = float(popdense_set[i]),\
 						hotspot = 1)
 
+		# prune graph with zero degree centrality
 		deg = nx.degree_centrality(self.graph)
 		for node in self.graph.nodes():
 			if deg[node] == 0:
 				self.graph.remove_node(node)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -240,37 +258,3 @@ def get_graphs(feature = "weight"):
 if __name__ == '__main__':
 	make_graph(subzone_data,wkend_network_data)
 
-
-
-'''
-########
-# Main #
-########
-
-#transform_feature(subzone_data, network_data, "subzone")
-make_graph(subzone_data, network_data)
-subDG = generate_subgraph("weight") #only places with cases
-
-print nx.info(subDG)
-
-############################
-# mapping breeding habitat #
-############################
-breedinghab = pd.read_csv("Data/Processed/breedinghabitat.csv")
-lon = breedinghab['longitude']
-lat = breedinghab['latitude']
-
-for i in range(len(lon)):
-	DG.add_node(i, longitude = float(lon[i]), latitude = float(lat[i]),\
-				weight=0.0, normweightmax=0.0, normweightsum=0.0, type=float(1),\
-				area = float(0.5), population = float(1), popdensity = float(1))
-	subDG.add_node(i, longitude = float(lon[i]), latitude = float(lat[i]),\
-				weight=0.0, normweightmax=0.0, normweightsum=0.0, type=float(1))
-
-print nx.info(subDG)
-
-#d = nx.degree(subDG)
-#nx.draw_networkx(subDG, nodelist = d.keys(), node_size = [v for v in d.values()],cmap = plt.cm.Blues, edge_cmap = plt.cm.Reds, width = 0.5)
-#plt.show()
-nx.write_gexf(DG, "fullcombinedgraphv2.gexf")
-'''

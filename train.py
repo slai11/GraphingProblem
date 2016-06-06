@@ -1,4 +1,4 @@
-# _*_ coding: utf-8 _*_
+	# _*_ coding: utf-8 _*_
 
 import numpy as np
 import matplotlib.pyplot as plt
@@ -132,33 +132,32 @@ def build_X_y():
 	# runs test using various random states and collate test scores
 
 if __name__ == '__main__':
-	X, y = build_X_y()
-	df = pd.DataFrame(X)
-	print df
+	#X, y = build_X_y()
+	#df = pd.DataFrame(X)
+	#print df
 	#df.to_csv("hello.csv")
-	#X1, y1 = FB2.build_features()
-	#FB.export_gexf("compsnormalv1.gexf")
-	#FB2.export_gexf("compsweekendv1.gexf")
 
 	#apply_model(X,y)
 
 	clf = svc_model()
-	X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=10)
-	clf.fit(X_train, y_train)
-	y_pred = clf.predict(X_test)
+	X_train, X_test, y_train, y_test = train_test_split(clf[0], clf[1], test_size=0.2, random_state=10)
+	clf[2].fit(X_train, y_train)
+	y_pred = clf[2].predict(X_test)
 	
 	print y_pred
 	print y_test
 
+	target_names = ['passive', 'active']
+	print classification_report(y_test, y_pred, target_names=target_names)
 	#search_grid()
-	feature_rank(X, y)
+	#feature_rank(X, y)
 
 
 	'''
 	target_names = ['passive', 'low', 'medium', 'high']
-	#target_names = ['passive', 'active']
+	#
 
-	print classification_report(y_test, pred, target_names=target_names)
+	
 
 	
 	cm = confusion_matrix(y_test, pred)

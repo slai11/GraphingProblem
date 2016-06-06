@@ -6,19 +6,19 @@ import pandas as pd
 import networkx as nx
 import matplotlib.pyplot as plt
 from sklearn.base import BaseEstimator
+from sklearn.pipeline import FeatureUnion
 from graph import *
 
 """
 
 """
 
-
-
 class BadNeighbours(BaseEstimator):
 
 	def __init__(self, originalgraph, breedinghabitat, second_degree=True):
 		self.second_degree = second_degree
 		self.OG = originalgraph
+		self.BH = breedinghabitat
 
 	def fit(self, X, y=None):
 		return self
@@ -32,19 +32,18 @@ class BadNeighbours(BaseEstimator):
 		if self.second_degree:
 			self.__second_order_bad_neighbour()
 			for node in self.OG.nodes():
-				featurelist.append((self.OG.node[area]['bad_neighbour_in'],\
-									self.OG.node[area]['bad_neighbour_out'],\
-									self.OG.node[area]['2nd_bad_neighbour_in'],\
-									self.OG.node[area]['2nd_bad_neighbour_out']))
+				featurelist.append((self.OG.node[node]['bad_neighbour_in'],\
+									self.OG.node[node]['bad_neighbour_out'],\
+									self.OG.node[node]['2nd_bad_neighbour_in'],\
+									self.OG.node[node]['2nd_bad_neighbour_out']))
 		else:
 			for node in self.OG.nodes():
-				featurelist.append((self.OG.node[area]['bad_neighbour_in'],\
-									self.OG.node[area]['bad_neighbour_out']))
+				featurelist.append((self.OG.node[node]['bad_neighbour_in'],\
+									self.OG.node[node]['bad_neighbour_out']))
 		
 		return np.array(featurelist)
-
-
 	def __bh_proximity_density(self):
+
 		def dist(i, node):
 			x = self.BH.node[i]['longitude'] - self.OG.node[node]['longitude']
 			y = self.BH.node[i]['latitude'] - self.OG.node[node]['latitude']
@@ -70,16 +69,22 @@ class BadNeighbours(BaseEstimator):
 			distsum = distsum / 10
 
 			index = density / distsum 
+			#index = density * math.exp(distsum)
 			self.OG.node[node]['BHPDI'] = index
+			self.OG.node[node]['bh_density'] = density
+			self.OG.node[node]['inverse_dist'] = math.exp(-distsum)
+
 
 	def __get_sum_of_edge_in(self, edgelist):
 		sum_edge_weight = 0.0
 		for edge in edgelist:
 			start = edge[0]
 			to = edge[1]
-			#edge_weight = OG[start][to]['weight']
+			# edge_weight = OG[start][to]['weight']
+			#edge_weight = self.OG[to][start]['weight']
+			#sum_edge_weight += float(edge_weight)
 			try:
-				edge_weight = OG[to][start]['weight']
+				edge_weight = self.OG[to][start]['weight']
 				sum_edge_weight += float(edge_weight)
 			except:
 				sum_edge_weight += 0
@@ -96,6 +101,7 @@ class BadNeighbours(BaseEstimator):
 		pressure felt by receiving high volume of flow from active hotspots
 		is the summation of product of weighted hotspot cases and bhpdi
 		'''
+
 		def get_distance(edge):
 			x = self.OG.node[edge[0]]['longitude'] - self.OG.node[edge[1]]['longitude']
 			y = self.OG.node[edge[0]]['latitude'] - self.OG.node[edge[1]]['latitude']
@@ -108,7 +114,12 @@ class BadNeighbours(BaseEstimator):
 			# get sum of edge
 			sumedgein = self.__get_sum_of_edge_in(bfs_edge_list)
 			sumedgeout = self.__get_sum_of_edge_out(bfs_edge_list)
-			total_in_pressure =0.0
+
+			#store sumedge data
+			self.OG.node[node]['sum_edge_in'] = sumedgein
+			self.OG.node[node]['sum_edge_out'] = sumedgeout
+
+			total_in_pressure = 0.0
 			total_out_pressure = 0.0
 			
 			for edge in bfs_edge_list:
@@ -120,10 +131,10 @@ class BadNeighbours(BaseEstimator):
 						cases = self.OG.node[edge[1]]['normweightmax']  # should we be using this?
 						dist = get_distance(edge)
 						popden = self.OG.node[edge[1]]['popdensity']
+						node_to_node_pressure = in_path_weight * cases * math.exp(-dist)
 					except:
-						pass
-						print "passed"
-					node_to_node_pressure = in_path_weight * cases * math.exp(-dist)
+						node_to_node_pressure = 0
+						
 					out_path_weight = self.OG[node][edge[1]]['weight'] / sumedgeout
 					bhpdi = self.OG.node[edge[1]]['BHPDI']
 					out_pressure = out_path_weight * math.exp(bhpdi)
@@ -134,8 +145,10 @@ class BadNeighbours(BaseEstimator):
 			self.OG.node[node]['bad_neighbour_in'] = total_in_pressure
 			self.OG.node[node]['bad_neighbour_out'] = total_out_pressure
 	
-	def __second_order_bad_neighbour(self):
+	def __second_order_bad_neighbour(self):  
+		
 		for node in self.OG.nodes():
+			
 			#calculate the weighted sum of "bad neighbour in" score
 			bfs_edge_list = list(nx.bfs_edges(self.OG, node))
 			sumedgein = self.__get_sum_of_edge_in(bfs_edge_list)
@@ -147,17 +160,40 @@ class BadNeighbours(BaseEstimator):
 				# weight * bni-score 
 				# ignore if from node
 				try:
+					# put a test here??
 					bni_score = self.OG.node[edge[1]]['bad_neighbour_in']
-					bno_score = self.OG.node[edge[1]]['bad_neighbour_out']
 					in_weight = self.OG[edge[1]][node]['weight'] / sumedgein
-					out_weight = self.OG[node][edge[1]]['weight'] / sumedgeout
+					# get correct sumedge (bfs tree again)
+					bni_score = self.__clean_bni(bni_score, node, edge[1])
 					total_in_pressure += in_weight * bni_score
+					
+
+					bno_score = self.OG.node[edge[1]]['bad_neighbour_out']
+					out_weight = self.OG[node][edge[1]]['weight'] / sumedgeout
 					total_out_pressure += out_weight * bno_score
 				except:
-					pass
+					total_out_pressure += 0
+				
 
 			self.OG.node[node]['2nd_bad_neighbour_in'] = total_in_pressure
 			self.OG.node[node]['2nd_bad_neighbour_out'] = total_out_pressure
+
+	def __clean_bni(self,score, source, target):
+		def get_distance(source, target):
+			x = self.OG.node[source]['longitude'] - self.OG.node[target]['longitude']
+			y = self.OG.node[source]['latitude'] - self.OG.node[target]['latitude']
+			return math.hypot(x,y) * 111.2
+		
+		edge = self.OG[source][target]['weight']
+		# Original formula node_to_node_pressure = in_path_weight * cases * math.exp(-dist)
+		dist = get_distance(source, target)
+		target_sum_edge_in = self.OG.node[target]['sum_edge_in']
+		source_contribution =  (edge/target_sum_edge_in) * self.OG.node[source]['normweightmax'] * math.exp(-dist)
+		correct = score - source_contribution
+		return correct
+
+
+
 
 
 class HitsChange(BaseEstimator):
@@ -169,40 +205,54 @@ class HitsChange(BaseEstimator):
 		self.OG = normal
 		self.WOG = weekend
 
-	def fit(self, X, y=None):
+	def fit(self, X=None, y=None):
 		return self
 
-	def transform(self, X):
+	def transform(self, X=None):
 		self.__link_analysis()
 		self.__set_weekend_change()
 
 		featurelist = []
 
 		for node in self.OG.nodes():
-			featurelist.append((self.OG.node[area]['hub_change'],\
-								self.OG.node[area]['aut_change']))
+			featurelist.append((self.OG.node[node]['hub_change'],\
+								self.OG.node[node]['aut_change']))
 
 		return np.array(featurelist)
 
-	def __link_analysis(self):
+	def __link_analysis(self): # recalculates hub and authority rate
+
+		# insert check for existing hub? reduce computational time
 		nstart = {}
 		for name in nx.nodes(self.OG):
 			nstart[name] = self.OG.node[name]['normweightmax']
 		
 		h, a = nx.hits(self.OG, max_iter = 30)
-
 		for node in self.OG.nodes():
 			self.OG.node[node]['hub'] = h[node]
 			self.OG.node[node]['authority'] = a[node]
 
-	def __set_weekend_change(self, weekend):
+		#for WOG
+		nstart2 = {}
+		for name in nx.nodes(self.WOG):
+			nstart2[name] = self.WOG.node[name]['normweightmax']
+		
+		h2, a2 = nx.hits(self.WOG, max_iter = 30)
+		for node in self.WOG.nodes():
+			self.WOG.node[node]['hub'] = h2[node]
+			self.WOG.node[node]['authority'] = a2[node]
+
+	def __set_weekend_change(self):
 		changelist = []
 		for node in self.OG.nodes():
-			self.OG.node[node]['hub_change']  = self.WOG.node[node]['hub'] - self.OG.node[node]['hub']
-			self.OG.node[node]['aut_change']  = self.WOG.node[node]['authority'] - self.OG.node[node]['authority']
+			self.OG.node[node]['hub_change']  = (self.WOG.node[node]['hub'] - self.OG.node[node]['hub']) / self.OG.node[node]['hub']
+			self.OG.node[node]['aut_change']  = (self.WOG.node[node]['authority'] - self.OG.node[node]['authority']) / self.OG.node[node]['authority']
 
 
 class GeospatialEffect(BaseEstimator):
+	'''
+	n x n matrix of distance for each node to every other node
+	'''
 
 	def __init__(self, graph):
 		self.OG = graph
@@ -235,7 +285,7 @@ class BasicFeatureBuilder():
 		self.G = maingraph
 		self.OG = originalgraph
 		self.BH = breedinghabitat
-		#self.dl = self.__distance_to_all()
+		self.__generate_binary()
 		self.__build()
 
 
@@ -248,13 +298,15 @@ class BasicFeatureBuilder():
 		self.__centrality_analysis()
 		self.__link_analysis()
 		self.__bh_proximity_density()
-		self.__bad_neighbour()
-		self.__second_order_bad_neighbour()
+		#self.__bad_neighbour()
+		#self.__second_order_bad_neighbour()
 		#add in weekday-weekend H change & A change -> gives insights to the nature of the place (residential, work)
 		
+	def fit(self, X, y=None):
+		return self
 
-	def get_features(self):
-		self.__generate_binary()
+	def transform(self, X):
+		
 		#self.__generate_tier()
 
 		x_list = []
@@ -268,25 +320,29 @@ class BasicFeatureBuilder():
 						self.OG.node[area]['population'],\
 						self.OG.node[area]['popdensity'],\
 						self.OG.node[area]['bh_density'],\
-						self.OG.node[area]['inverse_dist'],\
+						self.OG.node[area]['inverse_dist']))
 						# can remove from here on aft OOP-ing
-						self.OG.node[area]['bad_neighbour_in'],\
-						self.OG.node[area]['bad_neighbour_out'],\
-						self.OG.node[area]['2nd_bad_neighbour_in'],\
-						self.OG.node[area]['2nd_bad_neighbour_out'],\
-						self.OG.node[area]['hub_change'],\
-						self.OG.node[area]['aut_change']))
+						#self.OG.node[area]['bad_neighbour_in'],\
+						#self.OG.node[area]['bad_neighbour_out'],\
+						#self.OG.node[area]['2nd_bad_neighbour_in'],\
+						#self.OG.node[area]['2nd_bad_neighbour_out'],\
+						#self.OG.node[area]['hub_change'],\
+						#self.OG.node[area]['aut_change']))
 
 		X = np.array(x_list)
 		#X = self.dl
 		#X = np.hstack((x1, self.dl))
 		
+		
+
+		return X
+
+	def get_y(self):
 		y_list = []
 		for area in self.OG.nodes():
 			y_list.append(self.OG.node[area]['active_hotspot'])
 		y = np.array(y_list)
-
-		return X, y
+		return y
 
 	def get_features_wo_change(self):
 		self.__generate_binary()
@@ -302,13 +358,13 @@ class BasicFeatureBuilder():
 						self.OG.node[area]['authority'],\
 						self.OG.node[area]['population'],\
 						self.OG.node[area]['popdensity'],\
-						self.OG.node[area]['bh_density'],\
-						self.OG.node[area]['inverse_dist'],\
+						#self.OG.node[area]['bh_density'],\
+						#self.OG.node[area]['inverse_dist'],\
 						#can remove from here on aft OOP-ing 
-						self.OG.node[area]['bad_neighbour_in'],\
-						self.OG.node[area]['bad_neighbour_out'],\
-						self.OG.node[area]['2nd_bad_neighbour_in'],\
-						self.OG.node[area]['2nd_bad_neighbour_out']\
+						#self.OG.node[area]['bad_neighbour_in'],\
+						#self.OG.node[area]['bad_neighbour_out'],\
+						#self.OG.node[area]['2nd_bad_neighbour_in'],\
+						#self.OG.node[area]['2nd_bad_neighbour_out']\
 						))
 
 		X = np.array(x_list)
@@ -554,6 +610,35 @@ if __name__ == '__main__':
 	GG2 = GraphGenerator(wkend_network_data, subzone_data)
 	G, OG, BH = GG.get_graphs()
 	WG, WOG, WBH = GG2.get_graphs()
+	x = []
+
+	BFB = BasicFeatureBuilder(G, OG, BH)
+	BN = BadNeighbours(OG, BH)
+	#X = BN.fit(x).transform(x)
+	#FB = BasicFeatureBuilder(G, OG, BH)
+	#FB2 = BasicFeatureBuilder(WG, WOG, WBH)
+
+	HC = HitsChange(OG, WOG)
+	#X1 = HC.fit(x).transform(x)
+
+	y=[]
+
+	FU = FeatureUnion([('fb', BFB), ('bn',BN),('hc',HC)])
+	F = FU.fit_transform(x,y)
+
+	print F
+	print len(F)
+	print F.shape()
+	
+
+
+
+	
+
+
+
+	'''
+	
 	
 	FB = BasicFeatureBuilder(G, OG, BH)
 	FB2 = BasicFeatureBuilder(WG,WOG, WBH)
@@ -562,6 +647,7 @@ if __name__ == '__main__':
 	X, y = FB.get_features()
 
 	print len(X)
+	'''
 	'''
 	X1, y1 = FB2.get_features()
 	
