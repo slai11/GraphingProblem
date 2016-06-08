@@ -16,16 +16,6 @@ from sklearn.dummy import DummyClassifier
 
 from graph import *
 
-from features import BasicFeatureBuilder, GeospatialEffect, HitsChange, BadNeighbours
-
-network_data = pd.read_csv("Data/network_20160511.csv")
-wkend_network_data = pd.read_csv("Data/Original/20160514_network.csv")
-subzone_data = pd.read_csv("Data/Processed/subzonedatav5.csv")
-GG = GraphGenerator(network_data, subzone_data)
-GG2 = GraphGenerator(wkend_network_data, subzone_data)
-G, OG, BH = GG.get_graphs()
-WG, WOG, WBH = GG2.get_graphs()
-X = []
 
 
 
@@ -34,21 +24,22 @@ def dummy():
 	scaler = MinMaxScaler()
 	du = DummyClassifier(strategy='most_frequent', random_state=0)
 	pipeline = Pipeline([('scale', scaler), ('dummy', du)])
-	return pipeline	
+	return pipeline
 
 def log_reg_model():
-	select = SelectPercentile(score_func=chi2, percentile=64) #gridsearched
-	log = LogisticRegression(tol=1e-8, penalty='l1', C=16384.0, class_weight='balanced')     #gridsearched
+	select = SelectPercentile(score_func=chi2, percentile=66) #gridsearched
+	log = LogisticRegression(class_weight='balanced',C=262144.0, tol=0.1, penalty='l1')     #gridsearched
 	scaler = MinMaxScaler()
 
-	pipeline = Pipeline([('scale', scaler), ('logre', log)])
+	pipeline = Pipeline([('scale', scaler), ('select', select), ('logre', log)])
 	return pipeline
 
 def linear_svc_model():
-	select = SelectPercentile(score_func=chi2, percentile=87) #gridsearched
-	svc = LinearSVC(dual=False, class_weight='balanced', C=1024, penalty='l2', tol=0.1)  #gridsearched
+	select = SelectPercentile(score_func=chi2, percentile=66) #gridsearched
+	svc = LinearSVC(dual=False, class_weight='balanced', penalty='l1', C=1024, tol=0.1)  #gridsearched
+	#(dual=False, class_weight='balanced', C=1024, penalty='l2', tol=0.1)  #gridsearched
 	scaler = MinMaxScaler()
-	pipeline = Pipeline([('scale', scaler), ('select', select),('linsvc', svc)])
+	pipeline = Pipeline([('scale', scaler), ('select', select), ('linsvc', svc)])
 	return pipeline
 
 def svc_model():
@@ -56,22 +47,14 @@ def svc_model():
 	svc = SVC(class_weight='balanced', gamma=0, kernel='rbf', C=0.25, tol=0.1)  #gridsearched
 	scaler = MinMaxScaler()
 
-	BFB = BasicFeatureBuilder(G, OG, BH)
-	BN = BadNeighbours(OG, BH)
-	HC = HitsChange(OG, WOG)
-	y = BFB.get_y()
-
-	FU = FeatureUnion([('fb', BFB), ('bn',BN), ('hc',HC)])
-	F = FU.fit_transform(X,y)
-	
-	pipeline = Pipeline([('scale', scaler), ('select', select),('svc', svc)])
-	return (F, y, pipeline)
+	pipeline = Pipeline([('scale', scaler), ('select', select), ('svc', svc)])
+	return pipeline
 
 def random_forest_model():
 	rf = RandomForestClassifier(max_features='log2', min_samples_split=11, n_estimators=71, max_depth=30, class_weight='balanced')#gridsearched
 	select = SelectPercentile(score_func=chi2, percentile=20)#gridsearched
 	scaler = MinMaxScaler()
-	pipeline = Pipeline([('scale', scaler),('select', select), ('randf', rf)])
+	pipeline = Pipeline([('scale', scaler),('randf', rf)])
 	return pipeline
 
 def extra_trees_model():
@@ -79,14 +62,14 @@ def extra_trees_model():
 	et = ExtraTreesClassifier(n_estimators=11, max_features='log2', class_weight='balanced')
 	#n_estimators=10, max_depth=None, min_samples_split=1, random_state=0
 	scaler = MinMaxScaler()
-	pipeline = Pipeline([('scale', scaler), ('select', select), ('extra', et)])
+	pipeline = Pipeline([('scale', scaler), ('extra', et)])
 	return pipeline
 
 def k_nearest_model():
 	select = SelectPercentile(score_func=chi2, percentile=45)
 	knc = KNeighborsClassifier(weights='uniform', algorithm='auto', n_neighbors=3)
 	scaler = MinMaxScaler()
-	pipeline = Pipeline([('scale', scaler),('select', select),  ('knear', knc)])
+	pipeline = Pipeline([('scale', scaler),  ('knear', knc)])
 	return pipeline
 
 def gradient_boost_model():
@@ -94,6 +77,6 @@ def gradient_boost_model():
 									max_depth=3, max_features='sqrt', random_state=1)#gridsearched
 	select = SelectPercentile(score_func=chi2, percentile=26)#gridsearched
 	scaler = MinMaxScaler()
-	pipeline = Pipeline([('scale', scaler), ('select', select) ,('gb', gb)])
-	return pipeline	
+	pipeline = Pipeline([('scale', scaler), ('select', select), ('gb', gb)])
+	return pipeline
 

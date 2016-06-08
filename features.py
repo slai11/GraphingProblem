@@ -9,16 +9,23 @@ from sklearn.base import BaseEstimator
 from sklearn.pipeline import FeatureUnion
 from graph import *
 
-"""
-
-"""
 
 class BadNeighbours(BaseEstimator):
+	"""
+	Bad Neighbour calculates the 2 variations of effects which a neighbouring node can have on a node. 
+	IN : weighted sum of the active cases and exp(-dist) for neighbouring nodes (weighted by inflow)
+	OUT: weighted sum of the breedinghabitat-proximity divded by density for neighbouring nodes (weighted by outflow)
+	"""
 
 	def __init__(self, originalgraph, breedinghabitat, second_degree=True):
 		self.second_degree = second_degree
 		self.OG = originalgraph
 		self.BH = breedinghabitat
+
+		#self.__bh_proximity_density()
+		self.__bad_neighbour()
+		if self.second_degree:
+			self.__second_order_bad_neighbour()
 
 	def fit(self, X, y=None):
 		return self
@@ -30,7 +37,6 @@ class BadNeighbours(BaseEstimator):
 		featurelist = []
 
 		if self.second_degree:
-			self.__second_order_bad_neighbour()
 			for node in self.OG.nodes():
 				featurelist.append((self.OG.node[node]['bad_neighbour_in'],\
 									self.OG.node[node]['bad_neighbour_out'],\
@@ -42,8 +48,8 @@ class BadNeighbours(BaseEstimator):
 									self.OG.node[node]['bad_neighbour_out']))
 		
 		return np.array(featurelist)
-	def __bh_proximity_density(self):
 
+	def __bh_proximity_density(self):
 		def dist(i, node):
 			x = self.BH.node[i]['longitude'] - self.OG.node[node]['longitude']
 			y = self.BH.node[i]['latitude'] - self.OG.node[node]['latitude']
@@ -80,9 +86,6 @@ class BadNeighbours(BaseEstimator):
 		for edge in edgelist:
 			start = edge[0]
 			to = edge[1]
-			# edge_weight = OG[start][to]['weight']
-			#edge_weight = self.OG[to][start]['weight']
-			#sum_edge_weight += float(edge_weight)
 			try:
 				edge_weight = self.OG[to][start]['weight']
 				sum_edge_weight += float(edge_weight)
@@ -147,8 +150,7 @@ class BadNeighbours(BaseEstimator):
 	
 	def __second_order_bad_neighbour(self):  
 		
-		for node in self.OG.nodes():
-			
+		for node in self.OG.nodes():	
 			#calculate the weighted sum of "bad neighbour in" score
 			bfs_edge_list = list(nx.bfs_edges(self.OG, node))
 			sumedgein = self.__get_sum_of_edge_in(bfs_edge_list)
@@ -179,6 +181,10 @@ class BadNeighbours(BaseEstimator):
 			self.OG.node[node]['2nd_bad_neighbour_out'] = total_out_pressure
 
 	def __clean_bni(self,score, source, target):
+		'''
+		This method removes the contribution of the source node to the target node's BNI 
+		when calculating BN2I.
+		'''
 		def get_distance(source, target):
 			x = self.OG.node[source]['longitude'] - self.OG.node[target]['longitude']
 			y = self.OG.node[source]['latitude'] - self.OG.node[target]['latitude']
@@ -193,10 +199,7 @@ class BadNeighbours(BaseEstimator):
 		return correct
 
 
-
-
-
-class HitsChange(BaseEstimator):
+class HitsChange(BaseEstimator): #might just throw this aside???
 	'''
 	Only includes change in hub and authority score (represents flow rate)
 	'''
@@ -204,14 +207,13 @@ class HitsChange(BaseEstimator):
 	def __init__(self, normal ,weekend):
 		self.OG = normal
 		self.WOG = weekend
+		self.__link_analysis()
+		self.__set_weekend_change()
 
 	def fit(self, X=None, y=None):
 		return self
 
 	def transform(self, X=None):
-		self.__link_analysis()
-		self.__set_weekend_change()
-
 		featurelist = []
 
 		for node in self.OG.nodes():
@@ -279,38 +281,29 @@ class GeospatialEffect(BaseEstimator):
 		return nx.to_numpy_matrix(dist_graph, weight = 'weight')
 
 
-#G, SG, BH, OG = get_graphs()
 class BasicFeatureBuilder():
 	def __init__(self, maingraph, originalgraph, breedinghabitat):
 		self.G = maingraph
 		self.OG = originalgraph
 		self.BH = breedinghabitat
-		self.__generate_binary()
+		#self.__generate_binary()
 		self.__build()
 
 
 	def export_gexf(self, filename):
 		nx.write_gexf(self.OG, filename)
 
-
-
 	def __build(self):
 		self.__centrality_analysis()
 		self.__link_analysis()
 		self.__bh_proximity_density()
-		#self.__bad_neighbour()
-		#self.__second_order_bad_neighbour()
-		#add in weekday-weekend H change & A change -> gives insights to the nature of the place (residential, work)
+		
 		
 	def fit(self, X, y=None):
 		return self
 
 	def transform(self, X):
-		
-		#self.__generate_tier()
-
 		x_list = []
-		dist_list = []
 		for area in self.OG.nodes():
 			x_list.append((self.OG.node[area]['eigen_centrality'],\
 						self.OG.node[area]['betweenness_centrality'],\
@@ -320,21 +313,11 @@ class BasicFeatureBuilder():
 						self.OG.node[area]['population'],\
 						self.OG.node[area]['popdensity'],\
 						self.OG.node[area]['bh_density'],\
-						self.OG.node[area]['inverse_dist']))
-						# can remove from here on aft OOP-ing
-						#self.OG.node[area]['bad_neighbour_in'],\
-						#self.OG.node[area]['bad_neighbour_out'],\
-						#self.OG.node[area]['2nd_bad_neighbour_in'],\
-						#self.OG.node[area]['2nd_bad_neighbour_out'],\
-						#self.OG.node[area]['hub_change'],\
-						#self.OG.node[area]['aut_change']))
+						self.OG.node[area]['inverse_dist'],\
+						self.OG.node[area]['bh_count']
+						))
 
 		X = np.array(x_list)
-		#X = self.dl
-		#X = np.hstack((x1, self.dl))
-		
-		
-
 		return X
 
 	def get_y(self):
@@ -343,44 +326,6 @@ class BasicFeatureBuilder():
 			y_list.append(self.OG.node[area]['active_hotspot'])
 		y = np.array(y_list)
 		return y
-
-	def get_features_wo_change(self):
-		self.__generate_binary()
-		#self.__generate_tier()
-
-		x_list = []
-		dist_list = []
-		for area in self.OG.nodes():
-			x_list.append((self.OG.node[area]['eigen_centrality'],\
-						self.OG.node[area]['betweenness_centrality'],\
-						self.OG.node[area]['pagerank'],\
-						self.OG.node[area]['hub'],\
-						self.OG.node[area]['authority'],\
-						self.OG.node[area]['population'],\
-						self.OG.node[area]['popdensity'],\
-						#self.OG.node[area]['bh_density'],\
-						#self.OG.node[area]['inverse_dist'],\
-						#can remove from here on aft OOP-ing 
-						#self.OG.node[area]['bad_neighbour_in'],\
-						#self.OG.node[area]['bad_neighbour_out'],\
-						#self.OG.node[area]['2nd_bad_neighbour_in'],\
-						#self.OG.node[area]['2nd_bad_neighbour_out']\
-						))
-
-		X = np.array(x_list)
-		
-		y_list = []
-		for area in self.OG.nodes():
-			y_list.append(self.OG.node[area]['active_hotspot'])
-		y = np.array(y_list)
-
-		return X, y
-
-	def set_weekend_change(self, weekend):
-		changelist = []
-		for node in self.OG.nodes():
-			self.OG.node[node]['hub_change']  = (weekend.node[node]['hub'] - self.OG.node[node]['hub']) / self.OG.node[node]['hub']
-			self.OG.node[node]['aut_change']  = (weekend.node[node]['authority'] - self.OG.node[node]['authority']) / self.OG.node[node]['authority']
 			
 	def __generate_binary(self):
 		for node in self.OG.nodes():
@@ -393,15 +338,6 @@ class BasicFeatureBuilder():
 			else:
 				self.OG.node[node]['passive_hotspot'] = 0
 				self.OG.node[node]['active_hotspot'] = 1
-
-	def __generate_tier(self):
-		for node in self.OG.nodes():
-			if self.OG.node[node]['weight'] == 0:
-				self.OG.node[node]['active_hotspot'] = 0
-			elif self.OG.node[node]['weight'] < 15 and self.OG.node[node]['weight'] != 0:
-				self.OG.node[node]['active_hotspot'] = 1
-			else:
-				self.OG.node[node]['active_hotspot'] = 2
 
 	def __centrality_analysis(self):
 		eigen_centrality = nx.eigenvector_centrality(self.OG, weight = 'weighted')
@@ -456,147 +392,227 @@ class BasicFeatureBuilder():
 			self.OG.node[node]['inverse_dist'] = math.exp(-distsum)
 
 
+class DeltaFeatureBuilder():
+	'''
+	This class builds the main features AND labels for predicting change in dengue case numbers.
 
+	labels : uses the difference in #cases (stored in the first graph)
 
+	features: subtracts end feature value from start feature value 
 
-	def __get_sum_of_edge_in(self, edgelist):
-		sum_edge_weight = 0.0
-		for edge in edgelist:
-			start = edge[0]
-			to = edge[1]
-			# edge_weight = OG[start][to]['weight']
-			#edge_weight = self.OG[to][start]['weight']
-			#sum_edge_weight += float(edge_weight)
-			try:
-				edge_weight = self.OG[to][start]['weight']
-				sum_edge_weight += float(edge_weight)
-			except:
-				sum_edge_weight += 0
-		return sum_edge_weight
+	Users will be able to use X day's of change to forecase the change in Y day's time
 
-	def __get_sum_of_edge_out(self, edgelist):
-		sum_edge_weight = 0.0
-		for edge in edgelist:
-			sum_edge_weight += float(self.OG[edge[0]][edge[1]]['weight'])
-		return sum_edge_weight
+	'''
 
-	def __bad_neighbour(self):
-		'''
-		pressure felt by receiving high volume of flow from active hotspots
-		is the summation of product of weighted hotspot cases and bhpdi
-		'''
+	def __init__(self, graphlist, change, ahead, pred_movement):
+		self.inputlist = graphlist
+		self.graphlist = self.__build(graphlist, change, 1)
+		self.change = change
+		self.ahead = ahead
+		self.pred_move = pred_movement
 
-		def get_distance(edge):
-			x = self.OG.node[edge[0]]['longitude'] - self.OG.node[edge[1]]['longitude']
-			y = self.OG.node[edge[0]]['latitude'] - self.OG.node[edge[1]]['latitude']
-			return math.hypot(x,y) * 111.2
+	def __build(self, graphlist, change, ahead):
+		newlist=[]
+		i = 0
+		while (i+change) < (len(graphlist) - ahead): 
+			start = graphlist[i][1]
+			end = graphlist[i+change][1]
 
-		for node in self.OG.nodes():
-			# generate breadth-first-search edge list 
-			bfs_edge_list = list(nx.bfs_edges(self.OG, node))
-			
-			# get sum of edge
-			sumedgein = self.__get_sum_of_edge_in(bfs_edge_list)
-			sumedgeout = self.__get_sum_of_edge_out(bfs_edge_list)
-
-			#store sumedge data
-			self.OG.node[node]['sum_edge_in'] = sumedgein
-			self.OG.node[node]['sum_edge_out'] = sumedgeout
-
-			total_in_pressure = 0.0
-			total_out_pressure = 0.0
-			
-			for edge in bfs_edge_list:
-				node_to_node_pressure = 0.0
-				if edge[0] in node:
-					# take data
-					try:
-						in_path_weight = self.OG[edge[1]][node]['weight'] / sumedgein
-						cases = self.OG.node[edge[1]]['normweightmax']  # should we be using this?
-						dist = get_distance(edge)
-						popden = self.OG.node[edge[1]]['popdensity']
-						node_to_node_pressure = in_path_weight * cases * math.exp(-dist)
-					except:
-						node_to_node_pressure = 0
-						
-					out_path_weight = self.OG[node][edge[1]]['weight'] / sumedgeout
-					bhpdi = self.OG.node[edge[1]]['BHPDI']
-					out_pressure = out_path_weight * math.exp(bhpdi)
-
-				total_in_pressure += node_to_node_pressure
-				total_out_pressure += out_pressure
-
-			self.OG.node[node]['bad_neighbour_in'] = total_in_pressure
-			self.OG.node[node]['bad_neighbour_out'] = total_out_pressure
-	
-	def __second_order_bad_neighbour(self):  
-		
-		for node in self.OG.nodes():
-			
-			#calculate the weighted sum of "bad neighbour in" score
-			bfs_edge_list = list(nx.bfs_edges(self.OG, node))
-			sumedgein = self.__get_sum_of_edge_in(bfs_edge_list)
-			sumedgeout = self.__get_sum_of_edge_out(bfs_edge_list)
-			total_in_pressure = 0.0
-			total_out_pressure = 0.0
-
-			for edge in bfs_edge_list:
-				# weight * bni-score 
-				# ignore if from node
-				try:
-					# put a test here??
-					bni_score = self.OG.node[edge[1]]['bad_neighbour_in']
-					in_weight = self.OG[edge[1]][node]['weight'] / sumedgein
-					# get correct sumedge (bfs tree again)
-					bni_score = self.__clean_bni(bni_score, node, edge[1])
-					total_in_pressure += in_weight * bni_score
-					
-
-					bno_score = self.OG.node[edge[1]]['bad_neighbour_out']
-					out_weight = self.OG[node][edge[1]]['weight'] / sumedgeout
-					total_out_pressure += out_weight * bno_score
-				except:
-					total_out_pressure += 0
-				
-
-			self.OG.node[node]['2nd_bad_neighbour_in'] = total_in_pressure
-			self.OG.node[node]['2nd_bad_neighbour_out'] = total_out_pressure
-
-	def __clean_bni(self,score, source, target):
-		def get_distance(source, target):
-			x = self.OG.node[source]['longitude'] - self.OG.node[target]['longitude']
-			y = self.OG.node[source]['latitude'] - self.OG.node[target]['latitude']
-			return math.hypot(x,y) * 111.2
-		
-		edge = self.OG[source][target]['weight']
-		# Original formula node_to_node_pressure = in_path_weight * cases * math.exp(-dist)
-		dist = get_distance(source, target)
-		target_sum_edge_in = self.OG.node[target]['sum_edge_in']
-		source_contribution =  (edge/target_sum_edge_in) * self.OG.node[source]['normweightmax'] * math.exp(-dist)
-		correct = score - source_contribution
-		return correct
-
-
-
-
-	def __distance_to_all(self):
-		def get_distance(source, target):
-			x = self.OG.node[source]['longitude'] - self.OG.node[target]['longitude']
-			y = self.OG.node[source]['latitude'] - self.OG.node[target]['latitude']
-			return math.hypot(x,y) * 111.2
-		
-		dist_graph = nx.Graph()
-		for source in self.OG.nodes():
-			#self.dist_graph.add_node(source)
-			dist = 0.0
-			for target in self.OG.nodes():
-				if source is not target:
-					dist = get_distance(source, target)
-					dist_graph.add_edge(source,target,weight= 1.0/dist)
+			for node in start.nodes():
+				start.node[node]['delta_BNI'] = end.node[node]['bad_neighbour_in'] - start.node[node]['bad_neighbour_in']
+				start.node[node]['delta_BNO'] = end.node[node]['bad_neighbour_out'] - start.node[node]['bad_neighbour_out']
+				start.node[node]['delta_BN2I'] = end.node[node]['2nd_bad_neighbour_in'] - start.node[node]['2nd_bad_neighbour_in']
+				start.node[node]['delta_BN2O'] = end.node[node]['2nd_bad_neighbour_out'] - start.node[node]['2nd_bad_neighbour_out']
+				start.node[node]['delta_EC'] = end.node[node]['eigen_centrality'] - start.node[node]['eigen_centrality']
+				start.node[node]['delta_BC'] = end.node[node]['betweenness_centrality'] - start.node[node]['betweenness_centrality']
+				start.node[node]['delta_pagerank'] = end.node[node]['pagerank'] - start.node[node]['pagerank']
+				start.node[node]['delta_hub'] = end.node[node]['hub'] - start.node[node]['hub']
+				start.node[node]['delta_authority'] = end.node[node]['authority'] - start.node[node]['authority']
+				start.node[node]['delta_bh_density'] = end.node[node]['bh_density'] - start.node[node]['bh_density']
+				start.node[node]['delta_bh_count'] = end.node[node]['bh_count'] - start.node[node]['bh_count']
+				start.node[node]['delta_inverse_dist'] = end.node[node]['inverse_dist'] - start.node[node]['inverse_dist']
+				start.node[node]['cases'] = end.node[node]['weight'] # not sure if supposed to be like this?? (predict from the last day to next day)
+				if self.pred_move:
+					start.node[node]['delta_cases'] = graphlist[i+change+ahead][1].node[node]['weight'] - end.node[node]['weight'] #test this tmr
 				else:
-					dist_graph.add_edge(source,target, weight = 0.0)
-		return nx.to_numpy_matrix(dist_graph, weight = 'weight')
+					start.node[node]['delta_cases'] = graphlist[i+change+ahead][1].node[node]['weight']
+				
+			i+=1
+			newlist.append(start)
+			# contains graphs with relevant changes (n - number of days ahead) days worth of graph
+		return newlist
+
+	def fit(self, X, y=None):
+		return self
+
+	def transform(self, X):
+		x_list = []
+
+		for i in range(len(self.graphlist)):
+			temp = self.graphlist[i]
+			for node in temp.nodes():
+				x_list.append((temp.node[node]['delta_BNI'],\
+								temp.node[node]['delta_BNO'],\
+								temp.node[node]['delta_BN2I'],\
+								temp.node[node]['delta_BN2O'],\
+								temp.node[node]['delta_EC'],\
+								temp.node[node]['delta_BC'],\
+								temp.node[node]['delta_pagerank'],\
+								temp.node[node]['delta_hub'],\
+								temp.node[node]['delta_authority'],\
+								temp.node[node]['delta_bh_density'],\
+								temp.node[node]['delta_bh_count'],\
+								temp.node[node]['delta_inverse_dist']\
+								#temp.node[node]['cases']
+								))
+
+		X = np.array(x_list)
+		return X
+
+
+	def get_y(self):
+		'''
+		Creates labels based on change in number of cases
+		current plan : increase (1) or not (0)
+		'''
+		y_list = []
 		
+		i=0
+		while i < len(self.graphlist):
+			temp = self.graphlist[i]
+			for node in temp.nodes():
+				if temp.node[node]['delta_cases'] > 0:
+					y_list.append(1)
+				#elif temp.node[node]['delta_cases'] < 0:
+					#y_list.append(2)
+				else:
+					y_list.append(0)
+			i+=1
+
+		y = np.array(y_list)
+		return y
+
+
+
+
+class DailyChange():
+	'''
+	day on day changes
+
+	key terms:
+	study period - number of days change u want to observe
+	change = study period - 1
+	ahead - number of days ahead to predict
+	number of obs set = N - (study period + ahead) + 1
+		e.g. 7 days of data, but with 3 days study period to predict 1 day ahead
+		1  2  3  4  5  6  7
+		x  x  X     p
+		   x  x  X     p
+		      x  x  X     p
+		      	 
+      	number of obs set = 7 - (3 + 2) + 1
+
+	'''
+	def __init__(self, graphlist, change, ahead):
+		# graphlist contains only OG
+		self.change = change
+		self.ahead = ahead
+		self.graphlist = graphlist
+		self.newlist = self.calculate_change(graphlist)
+
+
+	def calculate_change(self, graphlist):
+		'''
+		generate the change for everyday and store in the next day. e.g. Tues-Wed change is stored in Wed
+
+		returns list of graph with extra node attributes (change from the day before), EXCEPT first graph
+		'''
+		list_= []
+		for i, graphtup in enumerate(graphlist):
+			graph = graphtup[1]
+			if i: #not the first day and not 
+				for node in graph.nodes():
+					graph.node[node]['dc_BNI'] = graph.node[node]['bad_neighbour_in'] - graphlist[i-1][1].node[node]['bad_neighbour_in']
+					graph.node[node]['dc_BNO'] = graph.node[node]['bad_neighbour_out'] - graphlist[i-1][1].node[node]['bad_neighbour_out']
+					graph.node[node]['dc_BN2I'] = graph.node[node]['2nd_bad_neighbour_in'] - graphlist[i-1][1].node[node]['2nd_bad_neighbour_in']
+					graph.node[node]['dc_BN2O'] = graph.node[node]['2nd_bad_neighbour_out'] - graphlist[i-1][1].node[node]['2nd_bad_neighbour_out']
+					graph.node[node]['dc_EC'] = graph.node[node]['eigen_centrality'] - graphlist[i-1][1].node[node]['eigen_centrality']
+					graph.node[node]['dc_BC'] = graph.node[node]['betweenness_centrality'] - graphlist[i-1][1].node[node]['betweenness_centrality']
+					graph.node[node]['dc_PR'] = graph.node[node]['pagerank'] - graphlist[i-1][1].node[node]['pagerank']
+					graph.node[node]['dc_hub'] = graph.node[node]['hub'] - graphlist[i-1][1].node[node]['hub']
+					graph.node[node]['dc_aut'] = graph.node[node]['authority'] - graphlist[i-1][1].node[node]['authority']
+					graph.node[node]['dc_bh_den'] = graph.node[node]['bh_density'] - graphlist[i-1][1].node[node]['bh_density']
+					graph.node[node]['dc_bh_count'] = graph.node[node]['bh_count'] - graphlist[i-1][1].node[node]['bh_count']
+					graph.node[node]['dc_inverse_dist'] = graph.node[node]['inverse_dist'] - graphlist[i-1][1].node[node]['inverse_dist']
+					graph.node[node]['dc_case'] = graph.node[node]['weight'] - graphlist[i-1][1].node[node]['weight']
+				list_.append(graph)
+		return list_
+
+	def get_feat(self):
+		change = self.change
+		ahead = self.ahead
+		graphlist = self.newlist
+		'''
+		gets features for the day on day change in the study period
+		stores features under last day of study period
+
+		e.g. 3 day period for 7 day Data (c represents dc values while C represents the day 
+			which stores the data for all change in study period)
+		3 day study period means change = 2 
+		1 2 3 4 5 6 7
+		  c C  
+		  	c C
+		  	  c C
+		  	    c C
+		  	      c C
+
+		'''
+
+		#put graphlist data into list, hstack the list then vstack the days
+
+		number_of_sets = len(graphlist) - change - ahead + 1  #IMPT formula
+		feature=[]
+		feat=[]
+		for i in range(number_of_sets):
+			# each day, collect set n hstack
+			periodlist = []
+			for j in range(change):
+				daylist=[]
+				for node in graphlist[i+j].nodes():
+					temp = graphlist[i+j]
+					daylist.append((temp.node[node]['dc_BNI'],\
+									temp.node[node]['dc_BNO'],\
+									temp.node[node]['dc_BN2I'],\
+									temp.node[node]['dc_BN2O'],\
+									temp.node[node]['dc_EC'],\
+									temp.node[node]['dc_BC'],\
+									temp.node[node]['dc_PR'],\
+									temp.node[node]['dc_hub'],\
+									temp.node[node]['dc_aut'],\
+									temp.node[node]['dc_bh_den'],\
+									temp.node[node]['dc_bh_count'],\
+									temp.node[node]['dc_inverse_dist'],\
+									temp.node[node]['dc_case']
+									))
+				periodlist.append(daylist)
+
+			feat=np.hstack(periodlist)
+			feature.append(feat)
+
+		feature=np.vstack(feature)
+		print feature
+		print feature.shape
+
+		return feature
+
+
+class MovingAverage():
+	def __init__(self, graphlist, daycount):
+		self.graphlist = graphlist
+		self.day = daycount
+
+
+
 
 
 
@@ -629,49 +645,4 @@ if __name__ == '__main__':
 	print F
 	print len(F)
 	print F.shape()
-	
-
-
-
-	
-
-
-
-	'''
-	
-	
-	FB = BasicFeatureBuilder(G, OG, BH)
-	FB2 = BasicFeatureBuilder(WG,WOG, WBH)
-
-	FB.set_weekend_change(FB2.OG)
-	X, y = FB.get_features()
-
-	print len(X)
-	'''
-	'''
-	X1, y1 = FB2.get_features()
-	
-	changelist = []
-	for node in FB.OG.nodes():
-		hubdiff = FB2.OG.node[node]['hub'] - FB.OG.node[node]['hub']
-		autdiff = FB2.OG.node[node]['authority'] - FB.OG.node[node]['authority']
-		changelist.append((node,hubdiff, autdiff))
-	
-	df = pd.DataFrame(changelist)
-	
-
-	edgechangelist = []
-	for n, nbrs in OG.adjacency_iter():
-		for nbr, eattr in nbrs.items():
-			change = 0.0
-			try:
-				change = WOG[n][nbr]['weight'] - OG[n][nbr]['weight']
-			except:
-				pass
-			edgechangelist.append((n, nbr, change))
-
-	df2 = pd.DataFrame(edgechangelist)
-	print df2.sort_values(2)
-	'''
-	#print df
 	

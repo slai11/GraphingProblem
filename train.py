@@ -1,4 +1,4 @@
-	# _*_ coding: utf-8 _*_
+# _*_ coding: utf-8 _*_
 
 import numpy as np
 import matplotlib.pyplot as plt
@@ -13,16 +13,15 @@ from sklearn.ensemble import ExtraTreesClassifier
 from model import *
 from features import *
 import warnings
-
-
-
-from sklearn.feature_selection import SelectFromModel
 from sklearn.svm import LinearSVC
+
+from util import *
+
 warnings.filterwarnings("ignore")
 
 
 
-def apply_model(X, y):
+def apply_model(X, y, score='f1'):
 	clf1 = dummy()
 	clf2 = log_reg_model()
 	clf3 = linear_svc_model()
@@ -30,25 +29,28 @@ def apply_model(X, y):
 	clf5 = random_forest_model()
 	clf6 = extra_trees_model()
 	clf7 = k_nearest_model()
-	clf8 = gradient_boost_model()
+	#clf8 = gradient_boost_model()
 
 	model_name = ["Dummy", "LogisticRegression", "LinearSVC", "SVC w rbf",\
-					"RandomForestClassifier", "ExtraTreesClassifier", "KNearestClassifier",\
-					"GradientBoostingClassifier"]
+					"RandomForestClassifier", "ExtraTreesClassifier", "KNearestClassifier"]
+					#"GradientBoostingClassifier"]
 
-	model = [clf1, clf2, clf3, clf4 ,clf5, clf6, clf7, clf8]
+	model = [clf1, clf2, clf3, clf4 ,clf5, clf6, clf7]
 	print "===================================================="
 	for i, clf in enumerate(model): # use f1_macro scoring method for optimal performance (dummy estimator will have a 0.00 score)
-		scores = cross_validation.cross_val_score(clf, X, y, cv = 4, scoring = "f1_macro", n_jobs = -1)
+		scores = cross_validation.cross_val_score(clf, X, y, cv = 5, scoring = score, n_jobs = -1)
 		print model_name[i]
 		print "CV score(f1_macro): %0.4f (+/- %0.2f)" % (scores.mean(), scores.std() * 2)
+		print scores
 		
 		X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=10)
 		clf.fit(X_train, y_train)
 		y_pred = clf.predict(X_test)
 		print "Classification Report:"
 		print metrics.classification_report(y_test, y_pred)
+		print f1_score(y_test, y_pred, average=None)
 		cm = confusion_matrix(y_test, y_pred)
+		
 		print "Confusion Matrix:"
 		print cm
 		print " "
@@ -57,11 +59,11 @@ def apply_model(X, y):
 
 		#print scores
 
-def search_grid():
+def search_grid(X, y):
 	model = gradient_boost_model()
 	
 	X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=10)
-	param_grid = dict(select__percentile=np.arange(1,90,5), gb__loss=['deviance', 'exponential'], gb__learning_rate = (2.0**np.arange(-10,10,2)), gb__max_depth= np.arange(1,20,2), gb__max_features=[None, "auto", "sqrt", "log2"], gb__n_estimators=np.arange(1,50,1), gb__subsample=[0.8])
+	param_grid = dict(select__percentile=np.arange(1,99,1), gb__loss=['deviance', 'exponential'], gb__learning_rate = (2.0**np.arange(-10,10,4)), gb__max_depth= np.arange(1,20,2), gb__max_features=[None, "auto", "sqrt", "log2"])
 
 	#dict(select__percentile=np.arange(10,99,10), extra__n_estimators=np.arange(1,100,10), extra__max_features=[None, 'auto', 'sqrt', 'log2'])
 	#dict(select__percentile=np.arange(10,99,10), randf__max_features=["auto", "log2", None], randf__n_estimators=np.arange(1,100,10), randf__min_samples_split=np.arange(1,100,10), randf__max_depth=[None, 1, 10, 20, 30])
@@ -70,7 +72,7 @@ def search_grid():
 	#dict(select__percentile=np.arange(1,99,1), linsvc__C=(2.0**np.arange(-10,20,4)), linsvc__penalty=['l1','l2'], linsvc__tol=[1e-8, 1e-4, 1e-2, 1e-1])
 	#dict(select__percentile=np.arange(10,99,10), randf__max_features=["auto", "log2", None], randf__n_estimators=np.arange(1,100,10), randf__min_samples_split=np.arange(1,100,10), randf__max_depth=[None, 1, 10, 20, 30])
 	#dict(select__percentile=np.arange(1,99,1), logre__penalty=['l1', 'l2'], logre__C = (2.0**np.arange(-10, 20, 4)), logre__tol=[1e-8, 1e-4, 1e-1])
-	grid = GridSearchCV(model, cv=4, param_grid=param_grid, scoring='f1_macro', n_jobs=-1, verbose=4)
+	grid = GridSearchCV(model, cv=5, param_grid=param_grid, scoring='f1_macro', n_jobs=-1, verbose=4)
 	grid.fit(X,y)
 
 	for i in grid.grid_scores_:
@@ -111,61 +113,24 @@ def plot_confusion_matrix(cm, y, title='Confusion matrix', cmap=plt.cm.Blues):
     plt.xlabel('Predicted label')
 
 def build_X_y():
-	network_data = pd.read_csv("Data/network_20160511.csv")
-	wkend_network_data = pd.read_csv("Data/Original/20160514_network.csv")
-	subzone_data = pd.read_csv("Data/Processed/subzonedatav5.csv")
-	GG = GraphGenerator(network_data, subzone_data)
-	GG2 = GraphGenerator(wkend_network_data, subzone_data)
-	G, OG, BH = GG.get_graphs()
-	WG, WOG, WBH = GG2.get_graphs()
-	FB = BasicFeatureBuilder(G, OG, BH)
-	FB2 = BasicFeatureBuilder(WG,WOG, WBH)
-	FB.set_weekend_change(FB2.OG)
-	X, y = FB.get_features()
-
-
-	FB.export_gexf("projectgraphv1.gexf")
+	list_ = ["20160523", "20160524", "20160525", "20160527", "20160531", "20160601", "20160602"]
+	
+	X, y = load_multiple_data(list_, delta=False, pred_movement=True)
 
 	return X, y
 
-#def collate_results():
-	# runs test using various random states and collate test scores
+
 
 if __name__ == '__main__':
-	#X, y = build_X_y()
-	#df = pd.DataFrame(X)
-	#print df
-	#df.to_csv("hello.csv")
+	X, y = build_X_y()
+	#np.savetxt("features6.csv", X, delimiter=',')
+	#np.savetxt("label6.csv", y, delimiter=',')
 
-	#apply_model(X,y)
+	#X = np.genfromtxt('features.csv', delimiter=',')
+	#y = np.genfromtxt('label.csv', delimiter=',')
 
-	clf = svc_model()
-	X_train, X_test, y_train, y_test = train_test_split(clf[0], clf[1], test_size=0.2, random_state=10)
-	clf[2].fit(X_train, y_train)
-	y_pred = clf[2].predict(X_test)
-	
-	print y_pred
-	print y_test
 
-	target_names = ['passive', 'active']
-	print classification_report(y_test, y_pred, target_names=target_names)
-	#search_grid()
+	#apply_model(X,y,"f1_macro")
+	search_grid(X, y)
 	#feature_rank(X, y)
 
-
-	'''
-	target_names = ['passive', 'low', 'medium', 'high']
-	#
-
-	
-
-	
-	cm = confusion_matrix(y_test, pred)
-	print cm
-	np.set_printoptions(precision=2)
-	plot_confusion_matrix(cm, y)
-	plt.show()
-
-	X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=10)
-	print metrics.classification_report(y_true, y_pred)
-	'''

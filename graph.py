@@ -16,24 +16,30 @@ wkend_network_data = pd.read_csv("Data/Original/20160514_network.csv")
 subzone_data = pd.read_csv("Data/Processed/subzonedatav5.csv")
 
 class GraphGenerator():
-	def __init__(self, network, nodes):
+	def __init__(self, nodes, network, bh=None):
 		self.graph = nx.DiGraph()
 		self.networkfile = network
 		self.nodefile = nodes
+		self.bhfile = bh
 
 	def get_graphs(self):
 		self.make_graph()
 
-		# add breeding habitat data
+		# add breeding habitat data # IMPT
+		'''
 		breedinghabitat = pd.read_csv("Data/Processed/breedinghabitat.csv")
 		lon = breedinghabitat['longitude']
 		lat = breedinghabitat['latitude']
+		'''
+
+		lon = self.bhfile['Lon']
+		lat = self.bhfile['Lat']
 
 		BH = nx.Graph()
 		original = nx.DiGraph(self.graph)
 		for i in range(len(lon)):
 			self.graph.add_node(i, longitude = float(lon[i]), latitude = float(lat[i]),\
-								weight=0.0, normweightmax=0.0, normweightsum=0.0, type=float(1),\
+								weight=0.0, normweightmax=0.0, type=float(1),\
 								area = float(0.5), population = float(1), popdensity = float(1),\
 								hotspot = 0)
 			BH.add_node(i, longitude = float(lon[i]), latitude = float(lat[i]))
@@ -45,27 +51,29 @@ class GraphGenerator():
 		
 		self.networkfile['Weight'] = self.networkfile['Weight'].astype(float)
 
-		self.networkfile['normweightbymax'] = ((self.networkfile['Weight']) - min(self.networkfile['Weight'])) /\
-											(max(self.networkfile['Weight']) - min(self.networkfile['Weight']))
+		self.networkfile['normweightbymax'] = (((self.networkfile['Weight']) - min(self.networkfile['Weight'])) /\
+											(max(self.networkfile['Weight']) - min(self.networkfile['Weight'])))
 		
 		subset = self.networkfile[["Source", "Target", "normweightbymax"]] # no longer using weight
 		edge_list = [tuple(x) for x in subset.values]
 		self.graph.add_weighted_edges_from(edge_list)
 
 
-		subset = self.nodefile["subzone"]
-		weight_set = self.nodefile["cases"]
-		normweight_set = self.nodefile["normalize by sum"]
-		normmaxweight_set = self.nodefile["normalize by max"]
-		lon_set = self.nodefile["lon"]
-		lat_set = self.nodefile["lat"]
-		area_set = self.nodefile["area"]
-		pop_set = self.nodefile["population"]
-		popdense_set = self.nodefile["pop_density"]
+		subset = self.nodefile["Subzone"]
+		weight_set = self.nodefile["Cases"]
+		#normweight_set = self.nodefile["normalize by sum"]
+		normmaxweight_set = self.nodefile["Cases_Norm_Max"]
+		lon_set = self.nodefile["Lon"]
+		lat_set = self.nodefile["Lat"]
+		area_set = self.nodefile["Area"]
+		pop_set = self.nodefile["Population"]
+		popdense_set = self.nodefile["Pop_density"]
+		bh_count_set = self.nodefile["BH_count"]
+		
 		
 		for i, subzone in enumerate(subset):
 			self.graph.add_node(subzone, weight = float(weight_set[i]), \
-						normweightsum = float(normweight_set[i]),\
+						#normweightsum = float(normweight_set[i]),\
 						normweightmax = float(normmaxweight_set[i]), \
 						longitude = float(lon_set[i]),\
 						latitude = float(lat_set[i]),\
@@ -73,6 +81,7 @@ class GraphGenerator():
 						area = float(area_set[i]),\
 						population = float(pop_set[i]),\
 						popdensity = float(popdense_set[i]),\
+						bh_count = float(bh_count_set[i]),\
 						hotspot = 1)
 
 		# prune graph with zero degree centrality
@@ -80,7 +89,6 @@ class GraphGenerator():
 		for node in self.graph.nodes():
 			if deg[node] == 0:
 				self.graph.remove_node(node)
-
 
 
 
