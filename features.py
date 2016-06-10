@@ -17,22 +17,23 @@ class BadNeighbours(BaseEstimator):
 	OUT: weighted sum of the breedinghabitat-proximity divded by density for neighbouring nodes (weighted by outflow)
 	"""
 
-	def __init__(self, originalgraph, breedinghabitat, second_degree=True):
+	def __init__(self, originalgraph, breedinghabitat, tobuild=True ,second_degree=True):
 		self.second_degree = second_degree
 		self.OG = originalgraph
 		self.BH = breedinghabitat
 
 		#self.__bh_proximity_density()
-		self.__bad_neighbour()
-		if self.second_degree:
-			self.__second_order_bad_neighbour()
+		if tobuild:
+			self.__bad_neighbour()
+			if self.second_degree:
+				self.__second_order_bad_neighbour()
 
 	def fit(self, X, y=None):
 		return self
 
 	def transform(self, X):
-		self.__bh_proximity_density()
-		self.__bad_neighbour()
+		#self.__bh_proximity_density()
+		#fromself.__bad_neighbour()
 		# returns a numpy array 
 		featurelist = []
 
@@ -40,8 +41,8 @@ class BadNeighbours(BaseEstimator):
 			for node in self.OG.nodes():
 				featurelist.append((self.OG.node[node]['bad_neighbour_in'],\
 									self.OG.node[node]['bad_neighbour_out'],\
-									self.OG.node[node]['2nd_bad_neighbour_in'],\
-									self.OG.node[node]['2nd_bad_neighbour_out']))
+									self.OG.node[node]['bad_neighbour_in2'],\
+									self.OG.node[node]['bad_neighbour_out2']))
 		else:
 			for node in self.OG.nodes():
 				featurelist.append((self.OG.node[node]['bad_neighbour_in'],\
@@ -177,8 +178,8 @@ class BadNeighbours(BaseEstimator):
 					total_out_pressure += 0
 				
 
-			self.OG.node[node]['2nd_bad_neighbour_in'] = total_in_pressure
-			self.OG.node[node]['2nd_bad_neighbour_out'] = total_out_pressure
+			self.OG.node[node]['bad_neighbour_in2'] = total_in_pressure
+			self.OG.node[node]['bad_neighbour_out2'] = total_out_pressure
 
 	def __clean_bni(self,score, source, target):
 		'''
@@ -282,12 +283,13 @@ class GeospatialEffect(BaseEstimator):
 
 
 class BasicFeatureBuilder():
-	def __init__(self, maingraph, originalgraph, breedinghabitat):
+	def __init__(self, maingraph, originalgraph, breedinghabitat, build=True):
 		self.G = maingraph
 		self.OG = originalgraph
 		self.BH = breedinghabitat
 		#self.__generate_binary()
-		self.__build()
+		if build:
+			self.__build()
 
 
 	def export_gexf(self, filename):
@@ -340,8 +342,8 @@ class BasicFeatureBuilder():
 				self.OG.node[node]['active_hotspot'] = 1
 
 	def __centrality_analysis(self):
-		eigen_centrality = nx.eigenvector_centrality(self.OG, weight = 'weighted')
-		btw_centrality = nx.betweenness_centrality(self.OG, weight = 'weight')
+		eigen_centrality = nx.eigenvector_centrality(self.OG, weight = 'normweightbymax')
+		btw_centrality = nx.betweenness_centrality(self.OG, weight = 'normweightbymax')
 		for node in self.OG.nodes():
 			self.OG.node[node]['eigen_centrality'] = eigen_centrality[node]
 			self.OG.node[node]['betweenness_centrality'] = btw_centrality[node]
@@ -406,12 +408,12 @@ class DeltaFeatureBuilder():
 
 	def __init__(self, graphlist, change, ahead, pred_movement):
 		self.inputlist = graphlist
-		self.graphlist = self.__build(graphlist, change, 1)
+		self.graphlist = self.__build(graphlist, change, ahead, pred_movement)
 		self.change = change
 		self.ahead = ahead
 		self.pred_move = pred_movement
 
-	def __build(self, graphlist, change, ahead):
+	def __build(self, graphlist, change, ahead, pred_move):
 		newlist=[]
 		i = 0
 		while (i+change) < (len(graphlist) - ahead): 
@@ -421,8 +423,8 @@ class DeltaFeatureBuilder():
 			for node in start.nodes():
 				start.node[node]['delta_BNI'] = end.node[node]['bad_neighbour_in'] - start.node[node]['bad_neighbour_in']
 				start.node[node]['delta_BNO'] = end.node[node]['bad_neighbour_out'] - start.node[node]['bad_neighbour_out']
-				start.node[node]['delta_BN2I'] = end.node[node]['2nd_bad_neighbour_in'] - start.node[node]['2nd_bad_neighbour_in']
-				start.node[node]['delta_BN2O'] = end.node[node]['2nd_bad_neighbour_out'] - start.node[node]['2nd_bad_neighbour_out']
+				start.node[node]['delta_BN2I'] = end.node[node]['bad_neighbour_in2'] - start.node[node]['bad_neighbour_in2']
+				start.node[node]['delta_BN2O'] = end.node[node]['bad_neighbour_out2'] - start.node[node]['bad_neighbour_out2']
 				start.node[node]['delta_EC'] = end.node[node]['eigen_centrality'] - start.node[node]['eigen_centrality']
 				start.node[node]['delta_BC'] = end.node[node]['betweenness_centrality'] - start.node[node]['betweenness_centrality']
 				start.node[node]['delta_pagerank'] = end.node[node]['pagerank'] - start.node[node]['pagerank']
@@ -432,7 +434,7 @@ class DeltaFeatureBuilder():
 				start.node[node]['delta_bh_count'] = end.node[node]['bh_count'] - start.node[node]['bh_count']
 				start.node[node]['delta_inverse_dist'] = end.node[node]['inverse_dist'] - start.node[node]['inverse_dist']
 				start.node[node]['cases'] = end.node[node]['weight'] # not sure if supposed to be like this?? (predict from the last day to next day)
-				if self.pred_move:
+				if pred_move:
 					start.node[node]['delta_cases'] = graphlist[i+change+ahead][1].node[node]['weight'] - end.node[node]['weight'] #test this tmr
 				else:
 					start.node[node]['delta_cases'] = graphlist[i+change+ahead][1].node[node]['weight']
@@ -473,10 +475,13 @@ class DeltaFeatureBuilder():
 	def get_y(self):
 		'''
 		Creates labels based on change in number of cases
-		current plan : increase (1) or not (0)
+		
+		'delta cases' depends on the boolean pred_movement
+		true:    represents net change
+		false:	 represents status
 		'''
 		y_list = []
-		
+		'''
 		i=0
 		while i < len(self.graphlist):
 			temp = self.graphlist[i]
@@ -488,7 +493,13 @@ class DeltaFeatureBuilder():
 				else:
 					y_list.append(0)
 			i+=1
-
+		'''
+		for temp in self.graphlist:
+			for node in temp.nodes():
+				if temp.node[node]['delta_cases'] > 0:
+					y_list.append(1)
+				else:
+					y_list.append(0)
 		y = np.array(y_list)
 		return y
 
@@ -534,8 +545,8 @@ class DailyChange():
 				for node in graph.nodes():
 					graph.node[node]['dc_BNI'] = graph.node[node]['bad_neighbour_in'] - graphlist[i-1][1].node[node]['bad_neighbour_in']
 					graph.node[node]['dc_BNO'] = graph.node[node]['bad_neighbour_out'] - graphlist[i-1][1].node[node]['bad_neighbour_out']
-					graph.node[node]['dc_BN2I'] = graph.node[node]['2nd_bad_neighbour_in'] - graphlist[i-1][1].node[node]['2nd_bad_neighbour_in']
-					graph.node[node]['dc_BN2O'] = graph.node[node]['2nd_bad_neighbour_out'] - graphlist[i-1][1].node[node]['2nd_bad_neighbour_out']
+					graph.node[node]['dc_BN2I'] = graph.node[node]['bad_neighbour_in2'] - graphlist[i-1][1].node[node]['bad_neighbour_in2']
+					graph.node[node]['dc_BN2O'] = graph.node[node]['bad_neighbour_out2'] - graphlist[i-1][1].node[node]['bad_neighbour_out2']
 					graph.node[node]['dc_EC'] = graph.node[node]['eigen_centrality'] - graphlist[i-1][1].node[node]['eigen_centrality']
 					graph.node[node]['dc_BC'] = graph.node[node]['betweenness_centrality'] - graphlist[i-1][1].node[node]['betweenness_centrality']
 					graph.node[node]['dc_PR'] = graph.node[node]['pagerank'] - graphlist[i-1][1].node[node]['pagerank']
@@ -600,7 +611,7 @@ class DailyChange():
 			feature.append(feat)
 
 		feature=np.vstack(feature)
-		print feature
+		
 		print feature.shape
 
 		return feature

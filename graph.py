@@ -94,15 +94,62 @@ class GraphGenerator():
 
 
 
+class FastGraphGenerator():
+	def __init__(self, nodes):
+		self.graph = nx.Graph()
+		self.nodefile = nodes #dataframe
+		self.get_graph()
 
 
+	def get_graph(self):
+		subset = self.nodefile["Subzone"]
+		weight_set = self.nodefile["weight"]	
+		normmaxweight_set = self.nodefile["Cases_Norm_Max"]
+		lon_set = self.nodefile["Lon"]
+		lat_set = self.nodefile["Lat"]
+		area_set = self.nodefile["Area"]
+		pop_set = self.nodefile["Population"]
+		popdense_set = self.nodefile["Pop_density"]
+		bh_count_set = self.nodefile["BH_count"]
+		eigen_centrality = self.nodefile["EC"]
+		betweenness_centrality = self.nodefile["BC"]
+		pagerank = self.nodefile["PR"]
+		hub =self.nodefile["hub"]
+		authority=self.nodefile["aut"]
+		bh_density=self.nodefile["bh_density"]
+		inverse_dist=self.nodefile["inverse_dist"]
+		bad_neighbour_in=self.nodefile["bni"]
+		bad_neighbour_out=self.nodefile["bno"]
+		bn2i=self.nodefile["bn2i"]
+		bn2o=self.nodefile["bn2o"]
 
+		graph = nx.Graph()
+		for i, subzone in enumerate(subset):
+			self.graph.add_node(subzone, weight = float(weight_set[i]), \
+						normweightmax = float(normmaxweight_set[i]), \
+						longitude = float(lon_set[i]),\
+						latitude = float(lat_set[i]),\
+						type = float(5 + 10*normmaxweight_set[i]),\
+						area = float(area_set[i]),\
+						population = float(pop_set[i]),\
+						popdensity = float(popdense_set[i]),\
+						bh_count = float(bh_count_set[i]),\
+						hotspot = 1,\
+						hub=hub[i],\
+						authority=authority[i],\
+						bh_density=bh_density[i],\
+						inverse_dist=inverse_dist[i],\
+						bad_neighbour_in=bad_neighbour_in[i],\
+						bad_neighbour_out=bad_neighbour_out[i], \
+						bad_neighbour_in2=bn2i[i],\
+						bad_neighbour_out2=bn2o[i],\
+						eigen_centrality=eigen_centrality[i],\
+						betweenness_centrality=betweenness_centrality[i],\
+						pagerank=pagerank[i])
 
+		# prune graph with zero degree centrality
 
-
-
-
-
+		return self.graph
 
 
 
