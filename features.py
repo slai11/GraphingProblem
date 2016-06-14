@@ -15,6 +15,8 @@ class BadNeighbours(BaseEstimator):
 	Bad Neighbour calculates the 2 variations of effects which a neighbouring node can have on a node. 
 	IN : weighted sum of the active cases and exp(-dist) for neighbouring nodes (weighted by inflow)
 	OUT: weighted sum of the breedinghabitat-proximity divded by density for neighbouring nodes (weighted by outflow)
+
+	Returns a np.array of bni, bno, bn2i, bn2o variables
 	"""
 
 	def __init__(self, originalgraph, breedinghabitat, tobuild=True ,second_degree=True):
@@ -281,8 +283,51 @@ class GeospatialEffect(BaseEstimator):
 					dist_graph.add_edge(source,target, weight = 0.0)
 		return nx.to_numpy_matrix(dist_graph, weight = 'weight')
 
+class RegionEncoding():
+
+	"""
+	This class will encode the region as dummy variables.
+
+	Returns np array of dummy variables
+	"""
+	def __init__(self, graph):
+		self.OG = graph
+
+	def fit(self, X, y=None):
+		return self
+
+	def transform(self, X):
+		return self.one_hot_encode(self.OG)
+
+
+	def one_hot_encode(self, graph):
+		# generate the array/data frame first
+		# encode using ext library
+		templist=[]
+		for node in graph.nodes():
+			templist.append((graph.node[node]['region'], graph.node[node]['planning_area']))
+		
+		arealist = pd.DataFrame(templist, columns=['region','planning_area'])
+
+		region_dummy = pd.get_dummies(arealist['region'], prefix='region', drop_first=True)
+		pa_dummy = pd.get_dummies(arealist['planning_area'], prefix='pa', drop_first=True)
+
+		arealist.drop(['region'], axis=1, inplace=True)
+		arealist = arealist.join(region_dummy)
+		arealist.drop(['planning_area'], axis=1, inplace=True)
+		
+		return np.array(arealist)
+
+
 
 class BasicFeatureBuilder():
+
+	"""
+	This class builds the basic features of the graph if the graph does not have max_iter
+
+	Returns np array of basic features
+	"""
+	
 	def __init__(self, maingraph, originalgraph, breedinghabitat, build=True):
 		self.G = maingraph
 		self.OG = originalgraph
@@ -496,14 +541,15 @@ class DeltaFeatureBuilder():
 		'''
 		for temp in self.graphlist:
 			for node in temp.nodes():
+				#y_list.append(temp.node[node]['delta_cases'])
+				
 				if temp.node[node]['delta_cases'] > 0:
 					y_list.append(1)
 				else:
 					y_list.append(0)
+				
 		y = np.array(y_list)
 		return y
-
-
 
 
 class DailyChange():

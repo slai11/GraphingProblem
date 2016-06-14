@@ -9,12 +9,21 @@ from SVY21 import *
 from coordinatescrape import *
 
 """
-Extract subzone ID, central coordinate and area
-make a FIND NEAREST SUBZONE function
+This file contains the classes related to opening shapefiles
+- subzone shapefiles
+- breeding habitat list
+- dengue cases list
 """
 
 
 class BasicExtractor(object):
+	'''
+	Superclass containing utility methods for finding:
+	1. midpoint
+	2. area of shape
+	3. check if point is inside a larger area
+	4. collates repeated list, summing its components
+	'''
 	def __init__(self):
 		self.x = 10
 
@@ -60,6 +69,14 @@ class BasicExtractor(object):
 			dist_b = self.dist(b, c)
 			return (dist_c**2 - dist_a**2 - dist_b**2) / (-2.0 * dist_a * dist_b)
 
+		def is_within():
+			pointslon = [point[0]for point in points]
+			pointslat = [point[1]for point in points]
+			if ( min(pointslon)< lon < max(pointslon)) and (min(pointslat)< lat <max(pointslat)):
+				return True
+			else:
+				return False
+
 		N = len(points)
 		C = (lon, lat)
 		total_angle = 0
@@ -73,7 +90,7 @@ class BasicExtractor(object):
 				angle = math.acos(cos_theta)
 			total_angle += angle
 		
-		if total_angle > 6.28: # 6.28319:
+		if total_angle > 6.28 and is_within():  # extra layer of check, midpoint must be within boundary# 6.28319:
 			return True
 		else:
 			return False
@@ -89,11 +106,22 @@ class BasicExtractor(object):
 		return caselist
 
 class SubzoneShapeExtractor(BasicExtractor):
-	def __init__(self, subzone):
-		self.subzone = subzone
-		self.list_ = self.open_shape(subzone)
+	"""
+	This class opens a subzone shapefile and finds the following attributes
+	1. longitude
+	2. latitude
+	3. area
+	4. region it belongs to
+	5. planning area it belongs to
 
-	def open_shape(self, filename): #
+	main public method returns list of tuples with attributes
+	"""
+	def __init__(self, subzone, planning_area, region):
+		# add some sort of boolean to know which resolution to open
+		self.subzone = subzone
+		self.list_ = self.open_shape(subzone, planning_area, region)
+
+	def open_shape(self, filename, planning_area_file, region_file): #
 		# only opens the subzone shapefile with lon-lat data included
 		sf = shapefile.Reader(filename)
 		shapeRec = sf.shapeRecords()
@@ -103,11 +131,35 @@ class SubzoneShapeExtractor(BasicExtractor):
 			lon, lat = super(SubzoneShapeExtractor,self).get_midpoint(points)
 			area = super(SubzoneShapeExtractor, self).get_area(points)
 			subzone_ID = shapeRec[i].record[1]
-			extract.append((subzone_ID, float(lon), float(lat), area)) 
+			planning_area = self.get_planning_area(lon, lat, planning_area_file)
+			region = self.get_region(lon, lat, region_file)
+
+			extract.append((subzone_ID, float(lon), float(lat), area, planning_area, region))
+		
 		return extract
+
+	def get_planning_area(self, lon, lat, areafile):
+		sf = shapefile.Reader(areafile)
+		area = sf.shapeRecords()
+		for i in range(len(area)):
+			if super(SubzoneShapeExtractor, self).is_in_area(lon, lat, area[i].shape.points):
+				return area[i].record[1]
+
+	def get_region(self, lon, lat, regionfile):
+		sf = shapefile.Reader(regionfile)
+		region = sf.shapeRecords()
+		for i in range(len(region)):
+			if super(SubzoneShapeExtractor, self).is_in_area(lon, lat, region[i].shape.points):
+				return region[i].record[1]
+
 
 
 class BreedingHabitatExtractor(BasicExtractor):
+
+	"""
+	This class collates a list of breeding habitats in all 5 regions and collates
+	list of subzone with number of breeding habitat and coordinates
+	"""
 
 	def __init__(self, breedinghabitat, shape):
 		self.bh = breedinghabitat
@@ -149,8 +201,8 @@ class BreedingHabitatExtractor(BasicExtractor):
 
 class DengueCaseExtractor(BasicExtractor):
 	'''
-	takes in a list of case files + shapefile
-	outputs the subzone, with number of cases
+	This class takes in a list of case files + shapefile outputs 
+	the subzone, with number of cases
 	'''
 	def __init__(self, cases, shape):
 		self.cases = cases
@@ -218,117 +270,6 @@ class DengueCaseExtractor(BasicExtractor):
 
 
 
-def load_cluster_data(filename, subzonefile):
-	'''
-	Opens ONE cluster shapefile and calculates list of cluster with their case number
-
-	@returns list of subzone with # of cases
-	'''
-
-	sf = shapefile.Reader(filename)
-	sub = shapefile.Reader(subzonefile)
-	subzoneshapes = sub.shapeRecords()
-	shapeRec = sf.shapeRecords()
-	extract = []
-	
-	for i in range(len(shapeRec)):
-		parent = ""
-		points = shapeRec[i].shape.points
-		cases = shapeRec[i].record[2] #tentative number
-		
-		lon, lat = get_midpoint(points)
-		for j in range(len(subzoneshapes)):
-			if is_in_area(lon, lat, subzoneshapes[j].shape.points):
-				parent = subzoneshapes[j].record[1]
-				break
-				
-		print parent + " " + str(cases)
-		extract.append((parent, cases))
-	
-	return collate_cases(extract) #list (use numpy instead?)
-	
-	'''
-	target_lon, target_lat = get_midpoint(subzoneshapes[j].shape.points)
-	distance = dist((lon, lat), (target_lon, target_lat))
-	if not j:
-		nearest = 1000
-	(distance < nearest) and 
-	nearest = distance
-	'''
-
-def collate_cases(caselist):
-	newlist = {}
-	for case, number in caselist:
-		newlist[case] = 0
-	for case, number in caselist:
-		newlist[case] += number
-	caselist = []
-	caselist = [(k, v) for k, v in newlist.iteritems()]
-	return caselist
-
-def dist(A, B):
-	x = A[0] - B[0]
-	y = A[1] - B[1]
-	return math.hypot(x,y)
-
-def get_midpoint(points):
-	#get max and min of both lat and long
-	lon = [point[0]for point in points]
-	lat = [point[1]for point in points]
-	lon = (max(lon) + min(lon)) / 2
-	lat = (max(lat) + min(lat)) / 2
-
-	if lon > 200:
-		cv = SVY21()
-		lat, lon = cv.computeLatLon(lat, lon)
-
-	return lon, lat
-
-def get_area(points):
-	# area of singapore is 719.1
-	# 1 degree = 111.2km
-	# 1 degree^2 = 12365.44km2
-
-	# implementation of Green's Theorem to calculate area in polygon
-	deg_to_km_constant = 12365.44
-	total = 0.0
-	N = len(points)
-	for i in range(N):
-		v1 = points[i]
-		v2 = points[(i+1) % N]
-		total += v1[0]*v2[1] - v1[1]*v2[0]
-	return abs(total/2) * deg_to_km_constant	
-
-def is_in_area(lon, lat, points):
-	#check sum of angles == 360
-	def dist(A, B):
-		x = A[0] - B[0]
-		y = A[1] - B[1]
-		return math.hypot(x,y)
-
-	def get_cos_theta(a, b, c):
-		dist_c = dist(a, b)
-		dist_a = dist(a, c)
-		dist_b = dist(b, c)
-		return (dist_c**2 - dist_a**2 - dist_b**2) / (-2.0 * dist_a * dist_b)
-
-	N = len(points)
-	C = (lon, lat)
-	total_angle = 0
-	for i in range(N):
-		v1 = points[i]
-		v2 = points[(i+1) % N]
-		cos_theta = get_cos_theta(v1, v2, C)
-		if cos_theta >= 1:
-			angle = math.acos(1)
-		else:
-			angle = math.acos(cos_theta)
-		total_angle += angle
-	
-	if total_angle > 6.28: # 6.28319:
-		return True
-	else:
-		return False
 
 if __name__ == '__main__':
 	
@@ -552,4 +493,117 @@ def is_in_area(lon, lat, points):
 		return True
 	else:
 		return False
+
+def load_cluster_data(filename, subzonefile):
+	'''
+	Opens ONE cluster shapefile and calculates list of cluster with their case number
+
+	@returns list of subzone with # of cases
+	'''
+
+	sf = shapefile.Reader(filename)
+	sub = shapefile.Reader(subzonefile)
+	subzoneshapes = sub.shapeRecords()
+	shapeRec = sf.shapeRecords()
+	extract = []
+	
+	for i in range(len(shapeRec)):
+		parent = ""
+		points = shapeRec[i].shape.points
+		cases = shapeRec[i].record[2] #tentative number
+		
+		lon, lat = get_midpoint(points)
+		for j in range(len(subzoneshapes)):
+			if is_in_area(lon, lat, subzoneshapes[j].shape.points):
+				parent = subzoneshapes[j].record[1]
+				break
+				
+		print parent + " " + str(cases)
+		extract.append((parent, cases))
+	
+	return collate_cases(extract) #list (use numpy instead?)
+	
+	'''
+	target_lon, target_lat = get_midpoint(subzoneshapes[j].shape.points)
+	distance = dist((lon, lat), (target_lon, target_lat))
+	if not j:
+		nearest = 1000
+	(distance < nearest) and 
+	nearest = distance
+	'''
+
+def collate_cases(caselist):
+	newlist = {}
+	for case, number in caselist:
+		newlist[case] = 0
+	for case, number in caselist:
+		newlist[case] += number
+	caselist = []
+	caselist = [(k, v) for k, v in newlist.iteritems()]
+	return caselist
+
+def dist(A, B):
+	x = A[0] - B[0]
+	y = A[1] - B[1]
+	return math.hypot(x,y)
+
+def get_midpoint(points):
+	#get max and min of both lat and long
+	lon = [point[0]for point in points]
+	lat = [point[1]for point in points]
+	lon = (max(lon) + min(lon)) / 2
+	lat = (max(lat) + min(lat)) / 2
+
+	if lon > 200:
+		cv = SVY21()
+		lat, lon = cv.computeLatLon(lat, lon)
+
+	return lon, lat
+
+def get_area(points):
+	# area of singapore is 719.1
+	# 1 degree = 111.2km
+	# 1 degree^2 = 12365.44km2
+
+	# implementation of Green's Theorem to calculate area in polygon
+	deg_to_km_constant = 12365.44
+	total = 0.0
+	N = len(points)
+	for i in range(N):
+		v1 = points[i]
+		v2 = points[(i+1) % N]
+		total += v1[0]*v2[1] - v1[1]*v2[0]
+	return abs(total/2) * deg_to_km_constant	
+
+def is_in_area(lon, lat, points):
+	#check sum of angles == 360
+	def dist(A, B):
+		x = A[0] - B[0]
+		y = A[1] - B[1]
+		return math.hypot(x,y)
+
+	def get_cos_theta(a, b, c):
+		dist_c = dist(a, b)
+		dist_a = dist(a, c)
+		dist_b = dist(b, c)
+		return (dist_c**2 - dist_a**2 - dist_b**2) / (-2.0 * dist_a * dist_b)
+
+	N = len(points)
+	C = (lon, lat)
+	total_angle = 0
+	for i in range(N):
+		v1 = points[i]
+		v2 = points[(i+1) % N]
+		cos_theta = get_cos_theta(v1, v2, C)
+		if cos_theta >= 1:
+			angle = math.acos(1)
+		else:
+			angle = math.acos(cos_theta)
+		total_angle += angle
+	
+	if total_angle > 6.28: # 6.28319:
+		return True
+	else:
+		return False
+
 """

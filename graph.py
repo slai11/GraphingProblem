@@ -4,7 +4,6 @@ import csv
 import numpy as np
 import pandas as pd
 import networkx as nx
-#import itertools
 import matplotlib.pyplot as plt
 from coordinatescrape import *
 from shape import *
@@ -61,13 +60,15 @@ class GraphGenerator():
 
 		subset = self.nodefile["Subzone"]
 		weight_set = self.nodefile["Cases"]
+		region = self.nodefile["Region"]
+		planning_area = self.nodefile["Planning_Area"]
 		#normweight_set = self.nodefile["normalize by sum"]
 		normmaxweight_set = self.nodefile["Cases_Norm_Max"]
 		lon_set = self.nodefile["Lon"]
 		lat_set = self.nodefile["Lat"]
 		area_set = self.nodefile["Area"]
-		pop_set = self.nodefile["Population"]
-		popdense_set = self.nodefile["Pop_density"]
+		#pop_set = self.nodefile["Population"]
+		#popdense_set = self.nodefile["Pop_density"]
 		bh_count_set = self.nodefile["BH_count"]
 		
 		
@@ -79,10 +80,12 @@ class GraphGenerator():
 						latitude = float(lat_set[i]),\
 						type = float(5 + 10*normmaxweight_set[i]),\
 						area = float(area_set[i]),\
-						population = float(pop_set[i]),\
-						popdensity = float(popdense_set[i]),\
+						#population = float(pop_set[i]),\
+						#popdensity = float(popdense_set[i]),\
 						bh_count = float(bh_count_set[i]),\
-						hotspot = 1)
+						hotspot = 1,\
+						planning_area=planning_area[i],\
+						region = region[i])
 
 		# prune graph with zero degree centrality
 		deg = nx.degree_centrality(self.graph)
@@ -122,6 +125,8 @@ class FastGraphGenerator():
 		bad_neighbour_out=self.nodefile["bno"]
 		bn2i=self.nodefile["bn2i"]
 		bn2o=self.nodefile["bn2o"]
+		region=self.nodefile["region"]
+		planning_area=self.nodefile["planning_area"]
 
 		graph = nx.Graph()
 		for i, subzone in enumerate(subset):
@@ -135,17 +140,19 @@ class FastGraphGenerator():
 						popdensity = float(popdense_set[i]),\
 						bh_count = float(bh_count_set[i]),\
 						hotspot = 1,\
-						hub=hub[i],\
-						authority=authority[i],\
-						bh_density=bh_density[i],\
-						inverse_dist=inverse_dist[i],\
-						bad_neighbour_in=bad_neighbour_in[i],\
-						bad_neighbour_out=bad_neighbour_out[i], \
-						bad_neighbour_in2=bn2i[i],\
-						bad_neighbour_out2=bn2o[i],\
-						eigen_centrality=eigen_centrality[i],\
-						betweenness_centrality=betweenness_centrality[i],\
-						pagerank=pagerank[i])
+						hub=float(hub[i]),\
+						authority=float(authority[i]),\
+						bh_density=float(bh_density[i]),\
+						inverse_dist=float(inverse_dist[i]),\
+						bad_neighbour_in=float(bad_neighbour_in[i]),\
+						bad_neighbour_out= float(bad_neighbour_out[i]), \
+						bad_neighbour_in2 = float(bn2i[i]),\
+						bad_neighbour_out2 = float(bn2o[i]),\
+						eigen_centrality = float(eigen_centrality[i]),\
+						betweenness_centrality = float(betweenness_centrality[i]),\
+						pagerank = float(pagerank[i]),\
+						region = region[i],\
+						planning_area= planning_area[i])
 
 		# prune graph with zero degree centrality
 

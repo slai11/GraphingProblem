@@ -17,6 +17,9 @@ from sklearn.dummy import DummyClassifier
 
 
 from graph import *
+
+
+
 ############
 # Movement #
 ############
@@ -68,7 +71,7 @@ def random_forest_model():
 	rf = RandomForestClassifier(class_weight='balanced', max_depth=30, max_features='auto', min_samples_split=81,n_estimators=21)#gridsearched
 	select = SelectPercentile(score_func=chi2, percentile=80)#gridsearched
 
-	rf_status = RandomForestClassifier(class_weight='balanced', max_depth=None, max_features=None, min_samples_split=1,n_estimators=91)#gridsearched
+	rf_status = RandomForestClassifier(class_weight='balanced', max_depth=None, max_features=None, min_samples_split=1,n_estimators=91, criterion='entropy')#gridsearched
 	select_status = SelectPercentile(score_func=chi2, percentile=10)#gridsearched
 
 	scaler = MinMaxScaler()
@@ -109,17 +112,18 @@ def gradient_boost_model():
 def ada_boost_model():
 	select = SelectPercentile(score_func=chi2, percentile=90)#gridsearched
 	scaler = MinMaxScaler()
-	clf=RandomForestClassifier(class_weight='balanced', max_depth=30, max_features='auto', min_samples_split=81,n_estimators=21)#gridsearched
+	#clf=RandomForestClassifier(class_weight='balanced', max_depth=30, max_features='auto', min_samples_split=81,n_estimators=21)#gridsearched
+	clf = RandomForestClassifier(class_weight='balanced', max_depth=None, max_features=None, min_samples_split=1,n_estimators=91, criterion='entropy')#gridsearched
 	ada = AdaBoostClassifier(clf)
 	#pipeline = Pipeline([('scale', scaler), ('select', select), ('ada', ada)])
 	return ada
 
 def xgboost_model():
 	xgboost = xgb.XGBClassifier(gamma=0.1, max_depth=7, subsample=2, colsample_bytree=0.9)
-	xgboost_status = xgb.XGBClassifier(gamma=0.5, max_depth=16, subsample=1, colsample_bytree=1)
-	
+	xgboost_status = xgb.XGBClassifier(n_estimators =90,reg_lambda=0.011, gamma=0.5, max_depth=16, subsample=1, colsample_bytree=1)
+	tempxgboost = xgb.XGBClassifier(gamma=0, max_depth=16, subsample=0.85, colsample_bytree=0.7, scale_pos_weight=1, min_child_weight=1, reg_alpha=1e-5, n_estimators=37)
 	scaler = MinMaxScaler()
-	pipeline1 = Pipeline([('scale', scaler), ('xgb', xgboost_status)])
+	pipeline1 = Pipeline([('scale', scaler), ('xgb', tempxgboost)])
 	pipeline2 = Pipeline([('scale', scaler), ('xgb', xgboost)])
 	return (pipeline1, pipeline2)
 	
@@ -144,7 +148,8 @@ def voting_ensemble():
 	return (vote1, vote2)
 
 def bag_model():
-	clf = random_forest_model()[0]
+	clf = k_nearest_model()[0]
 	bag = BaggingClassifier(clf, max_samples=0.5, max_features=0.1, n_estimators=5)
 	return bag
+
 
