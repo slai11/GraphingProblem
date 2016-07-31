@@ -15,14 +15,31 @@ wkend_network_data = pd.read_csv("Data/Original/20160514_network.csv")
 subzone_data = pd.read_csv("Data/Processed/subzonedatav5.csv")
 
 class GraphGenerator():
-	def __init__(self, nodes, network, bh=None):
+	"""GraphGenerator creates the graphs for future feature building as well as creation of gexf files.
+
+	Parameters
+	----------
+	nodes : Pandas DataFrame
+		node data frame containing basic details
+
+	network : Pandas DataFrame
+		network data frame, containing node-to-node traffic
+
+	bh : Pandas DataFrame
+		breeding habitat data frame, longitude and latitude of breeding habitats
+
+	finer : boolean
+		indicate resolution of subzone
+	"""
+	def __init__(self, nodes, network, bh=None, finer = True):
 		self.graph = nx.DiGraph()
 		self.networkfile = network
 		self.nodefile = nodes
 		self.bhfile = bh
+		self.finer=finer
 
 	def get_graphs(self):
-		self.make_graph()
+		self.make_graph(self.finer)
 
 		# add breeding habitat data # IMPT
 		'''
@@ -41,15 +58,18 @@ class GraphGenerator():
 								weight=0.0, normweightmax=0.0, type=float(1),\
 								area = float(0.5), population = float(1), popdensity = float(1),\
 								hotspot = 0)
+
 			BH.add_node(i, longitude = float(lon[i]), latitude = float(lat[i]))
 
 		return self.graph, original, BH
 
-	def make_graph(self):
+	def make_graph(self, finer):
+
+		# remove self-loops
 		self.networkfile = self.networkfile.drop(self.networkfile[self.networkfile.Source == self.networkfile.Target].index)
 		
+		# normalize edge weight before inserting edges 
 		self.networkfile['Weight'] = self.networkfile['Weight'].astype(float)
-
 		self.networkfile['normweightbymax'] = (((self.networkfile['Weight']) - min(self.networkfile['Weight'])) /\
 											(max(self.networkfile['Weight']) - min(self.networkfile['Weight'])))
 		
@@ -57,19 +77,24 @@ class GraphGenerator():
 		edge_list = [tuple(x) for x in subset.values]
 		self.graph.add_weighted_edges_from(edge_list)
 
-
+		# preparing node attributes
 		subset = self.nodefile["Subzone"]
 		weight_set = self.nodefile["Cases"]
 		region = self.nodefile["Region"]
 		planning_area = self.nodefile["Planning_Area"]
-		#normweight_set = self.nodefile["normalize by sum"]
 		normmaxweight_set = self.nodefile["Cases_Norm_Max"]
 		lon_set = self.nodefile["Lon"]
 		lat_set = self.nodefile["Lat"]
 		area_set = self.nodefile["Area"]
-		#pop_set = self.nodefile["Population"]
-		#popdense_set = self.nodefile["Pop_density"]
 		bh_count_set = self.nodefile["BH_count"]
+
+		if finer:
+			# dummy data -> not touched 
+			pop_set = self.nodefile["Cases"]
+			popdense_set = self.nodefile["Cases"]
+		else:
+			pop_set = self.nodefile["Population"]
+			popdense_set = self.nodefile["Pop_density"]
 		
 		
 		for i, subzone in enumerate(subset):
@@ -80,8 +105,8 @@ class GraphGenerator():
 						latitude = float(lat_set[i]),\
 						type = float(5 + 10*normmaxweight_set[i]),\
 						area = float(area_set[i]),\
-						#population = float(pop_set[i]),\
-						#popdensity = float(popdense_set[i]),\
+						population = float(pop_set[i]),\
+						popdensity = float(popdense_set[i]),\
 						bh_count = float(bh_count_set[i]),\
 						hotspot = 1,\
 						planning_area=planning_area[i],\
@@ -98,21 +123,23 @@ class GraphGenerator():
 
 
 class FastGraphGenerator():
+	"""
+	Generates graph from csv with features already processed.
+	
+	"""
 	def __init__(self, nodes):
 		self.graph = nx.Graph()
 		self.nodefile = nodes #dataframe
-		self.get_graph()
+		
 
 
-	def get_graph(self):
+	def get_graph(self, finer):
 		subset = self.nodefile["Subzone"]
 		weight_set = self.nodefile["weight"]	
 		normmaxweight_set = self.nodefile["Cases_Norm_Max"]
 		lon_set = self.nodefile["Lon"]
 		lat_set = self.nodefile["Lat"]
 		area_set = self.nodefile["Area"]
-		pop_set = self.nodefile["Population"]
-		popdense_set = self.nodefile["Pop_density"]
 		bh_count_set = self.nodefile["BH_count"]
 		eigen_centrality = self.nodefile["EC"]
 		betweenness_centrality = self.nodefile["BC"]
@@ -127,6 +154,17 @@ class FastGraphGenerator():
 		bn2o=self.nodefile["bn2o"]
 		region=self.nodefile["region"]
 		planning_area=self.nodefile["planning_area"]
+		clustering = self.nodefile["clustering"]
+
+
+		# To add in population details for subzone graphs
+		if finer:
+			# dummy data -> not touched 
+			pop_set = self.nodefile["weight"]
+			popdense_set = self.nodefile["weight"]
+		else:
+			pop_set = self.nodefile["Population"]
+			popdense_set = self.nodefile["Pop_density"]
 
 		graph = nx.Graph()
 		for i, subzone in enumerate(subset):
@@ -152,9 +190,9 @@ class FastGraphGenerator():
 						betweenness_centrality = float(betweenness_centrality[i]),\
 						pagerank = float(pagerank[i]),\
 						region = region[i],\
-						planning_area= planning_area[i])
+						planning_area= planning_area[i],\
+						clustering = float(clustering[i]))
 
-		# prune graph with zero degree centrality
 
 		return self.graph
 
@@ -316,7 +354,6 @@ def get_graphs(feature = "weight"):
 	return DG, subDG, BH, originalDG
 
 
-
 if __name__ == '__main__':
-	make_graph(subzone_data,wkend_network_data)
+	print "nothing"
 

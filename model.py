@@ -1,9 +1,4 @@
 # _*_ coding: utf-8 _*_
-import csv
-import numpy as np
-import matplotlib.pyplot as plt
-import networkx as nx
-import pandas as pd
 import xgboost as xgb
 from sklearn.preprocessing import MinMaxScaler, scale
 from sklearn.neighbors import KNeighborsClassifier
@@ -16,13 +11,6 @@ from sklearn.feature_selection import SelectPercentile, chi2
 from sklearn.dummy import DummyClassifier
 
 
-from graph import *
-
-
-
-############
-# Movement #
-############
 def dummy():
 	scaler = MinMaxScaler()
 	du = DummyClassifier(strategy='most_frequent', random_state=0)
@@ -123,9 +111,12 @@ def xgboost_model():
 	xgboost_status = xgb.XGBClassifier(n_estimators =90,reg_lambda=0.011, gamma=0.5, max_depth=16, subsample=1, colsample_bytree=1)
 	tempxgboost = xgb.XGBClassifier(gamma=0, max_depth=16, subsample=0.85, colsample_bytree=0.7, scale_pos_weight=1, min_child_weight=1, reg_alpha=1e-5, n_estimators=37)
 	scaler = MinMaxScaler()
+
+	xgboostfiner = xgb.XGBClassifier()
 	pipeline1 = Pipeline([('scale', scaler), ('xgb', tempxgboost)])
 	pipeline2 = Pipeline([('scale', scaler), ('xgb', xgboost)])
-	return (pipeline1, pipeline2)
+	pipeline3 = Pipeline([('scale', scaler), ('xgb', xgboostfiner)])
+	return (pipeline1, pipeline2, pipeline3)
 	
 
 def voting_ensemble():

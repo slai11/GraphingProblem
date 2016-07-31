@@ -11,12 +11,24 @@ from graph import *
 
 
 class BadNeighbours(BaseEstimator):
-	"""
-	Bad Neighbour calculates the 2 variations of effects which a neighbouring node can have on a node. 
+	"""Bad Neighbour calculates the 2 variations of effects which a neighbouring node can have on a node. 
 	IN : weighted sum of the active cases and exp(-dist) for neighbouring nodes (weighted by inflow)
 	OUT: weighted sum of the breedinghabitat-proximity divded by density for neighbouring nodes (weighted by outflow)
-
 	Returns a np.array of bni, bno, bn2i, bn2o variables
+
+	Parameters
+	----------
+	originalgraph : networkx DiGraph
+		contains subzone nodes with basic features
+
+	breedinghabitat : networkx Graph
+		contains breeding habitats only
+	
+	tobuild : boolean
+		determine if bad-neighbour features will be computed again
+	
+	second_degree : boolean
+		determine if 2nd degree BN features will be computed again
 	"""
 
 	def __init__(self, originalgraph, breedinghabitat, tobuild=True ,second_degree=True):
@@ -34,6 +46,18 @@ class BadNeighbours(BaseEstimator):
 		return self
 
 	def transform(self, X):
+		"""Creates numpy array of selected attributes (tobuild and second_degree)
+
+		Parameters
+		----------
+		X : list
+			empty list -> required in order to use sklearn.FeatureUnion's api
+		
+		Returns
+		-------
+		featurelist : np array
+			n-by-4 np.array containing the 4 BN features
+		"""
 		#self.__bh_proximity_density()
 		#fromself.__bad_neighbour()
 		# returns a numpy array 
@@ -103,10 +127,10 @@ class BadNeighbours(BaseEstimator):
 		return sum_edge_weight
 
 	def __bad_neighbour(self):
-		'''
-		pressure felt by receiving high volume of flow from active hotspots
+		"""
+		Pressure felt by receiving high volume of flow from active hotspots
 		is the summation of product of weighted hotspot cases and bhpdi
-		'''
+		"""
 
 		def get_distance(edge):
 			x = self.OG.node[edge[0]]['longitude'] - self.OG.node[edge[1]]['longitude']
@@ -138,10 +162,12 @@ class BadNeighbours(BaseEstimator):
 						dist = get_distance(edge)
 						popden = self.OG.node[edge[1]]['popdensity']
 						node_to_node_pressure = in_path_weight * cases * math.exp(-dist)
+						out_path_weight = self.OG[node][edge[1]]['weight'] / sumedgeout
 					except:
 						node_to_node_pressure = 0
+						out_path_weight = 0
 						
-					out_path_weight = self.OG[node][edge[1]]['weight'] / sumedgeout
+					
 					bhpdi = self.OG.node[edge[1]]['BHPDI']
 					out_pressure = out_path_weight * math.exp(bhpdi)
 
@@ -184,10 +210,10 @@ class BadNeighbours(BaseEstimator):
 			self.OG.node[node]['bad_neighbour_out2'] = total_out_pressure
 
 	def __clean_bni(self,score, source, target):
-		'''
+		"""
 		This method removes the contribution of the source node to the target node's BNI 
 		when calculating BN2I.
-		'''
+		"""
 		def get_distance(source, target):
 			x = self.OG.node[source]['longitude'] - self.OG.node[target]['longitude']
 			y = self.OG.node[source]['latitude'] - self.OG.node[target]['latitude']
@@ -203,9 +229,9 @@ class BadNeighbours(BaseEstimator):
 
 
 class HitsChange(BaseEstimator): #might just throw this aside???
-	'''
+	"""
 	Only includes change in hub and authority score (represents flow rate)
-	'''
+	"""
 
 	def __init__(self, normal ,weekend):
 		self.OG = normal
@@ -254,10 +280,10 @@ class HitsChange(BaseEstimator): #might just throw this aside???
 			self.OG.node[node]['aut_change']  = (self.WOG.node[node]['authority'] - self.OG.node[node]['authority']) / self.OG.node[node]['authority']
 
 
-class GeospatialEffect(BaseEstimator):
-	'''
+class GeospatialEffect(BaseEstimator): # NOT USED
+	"""
 	n x n matrix of distance for each node to every other node
-	'''
+	"""
 
 	def __init__(self, graph):
 		self.OG = graph
@@ -284,11 +310,17 @@ class GeospatialEffect(BaseEstimator):
 		return nx.to_numpy_matrix(dist_graph, weight = 'weight')
 
 class RegionEncoding():
+	"""This class will encode the region as dummy variables.
 
-	"""
-	This class will encode the region as dummy variables.
+	Parameters
+	----------
+	graph : networkx DiGraph
+		original graph
 
-	Returns np array of dummy variables
+	Returns
+	-------
+	arealist : numpy array
+		n-by-4 np.array of 1s and 0s, representing categorical variables
 	"""
 	def __init__(self, graph):
 		self.OG = graph
@@ -319,50 +351,90 @@ class RegionEncoding():
 		return np.array(arealist)
 
 
-
 class BasicFeatureBuilder():
 
-	"""
-	This class builds the basic features of the graph if the graph does not have max_iter
+	"""This class builds the basic features of the graph if the graph does not have max_iter
 
-	Returns np array of basic features
+	Parameters
+	----------
+	originalgraph : networkx DiGraph
+		contains subzone nodes with basic features
+
+	breedinghabitat : networkx Graph
+		contains breeding habitats only
+	
+	tobuild : boolean
+		determine if basic features will be computed again
+	
+	finer : boolean
+		determine if finer resolution is used and population related 
+		features will not be built/called
+
+	Returns
+	--------
+	basic_feat : np array
+		basic features array
 	"""
 	
-	def __init__(self, maingraph, originalgraph, breedinghabitat, build=True):
+	def __init__(self, maingraph, originalgraph, breedinghabitat, build=True, finer=True):
 		self.G = maingraph
 		self.OG = originalgraph
 		self.BH = breedinghabitat
+		self.finer = finer
 		#self.__generate_binary()
 		if build:
 			self.__build()
 
 
 	def export_gexf(self, filename):
+		""" Creates gexf file of networkx graph
+
+		Parameters
+		----------
+		filename : string 
+			desired filepath for graph to be stored
+		"""
 		nx.write_gexf(self.OG, filename)
 
 	def __build(self):
+		print "centrality now"
 		self.__centrality_analysis()
+		print "link analysis now"
 		self.__link_analysis()
+		print "bh now"
 		self.__bh_proximity_density()
+		self.__clustering()
 		
 		
 	def fit(self, X, y=None):
 		return self
 
 	def transform(self, X):
+
 		x_list = []
-		for area in self.OG.nodes():
-			x_list.append((self.OG.node[area]['eigen_centrality'],\
-						self.OG.node[area]['betweenness_centrality'],\
-						self.OG.node[area]['pagerank'],\
-						self.OG.node[area]['hub'],\
-						self.OG.node[area]['authority'],\
-						self.OG.node[area]['population'],\
-						self.OG.node[area]['popdensity'],\
-						self.OG.node[area]['bh_density'],\
-						self.OG.node[area]['inverse_dist'],\
-						self.OG.node[area]['bh_count']
-						))
+		if not self.finer:
+			for area in self.OG.nodes():
+				x_list.append((self.OG.node[area]['eigen_centrality'],\
+							self.OG.node[area]['betweenness_centrality'],\
+							self.OG.node[area]['pagerank'],\
+							self.OG.node[area]['hub'],\
+							self.OG.node[area]['authority'],\
+							self.OG.node[area]['population'],\
+							self.OG.node[area]['popdensity'],\
+							self.OG.node[area]['bh_density'],\
+							self.OG.node[area]['inverse_dist'],\
+							self.OG.node[area]['bh_count'], self.OG.node[area]['clustering']))
+		else:
+			for area in self.OG.nodes():
+				x_list.append((self.OG.node[area]['eigen_centrality'],\
+							self.OG.node[area]['betweenness_centrality'],\
+							self.OG.node[area]['pagerank'],\
+							self.OG.node[area]['hub'],\
+							self.OG.node[area]['authority'],\
+							self.OG.node[area]['bh_density'],\
+							self.OG.node[area]['inverse_dist'],\
+							self.OG.node[area]['bh_count'], self.OG.node[area]['clustering']))
+
 
 		X = np.array(x_list)
 		return X
@@ -393,6 +465,16 @@ class BasicFeatureBuilder():
 			self.OG.node[node]['eigen_centrality'] = eigen_centrality[node]
 			self.OG.node[node]['betweenness_centrality'] = btw_centrality[node]
 
+	def __clustering(self):
+		print "start clustering"
+		G = self.OG.to_undirected()
+		dic = nx.clustering(G, weight="normweightbymax")
+		#dic2 = nx.square_clustering(G)
+		for node in self.OG.nodes():
+			self.OG.node[node]['clustering'] = dic[node]
+			#self.OG.node[node]['sq_clustering'] = dic2[node]
+		print "end clustering"
+
 	def __link_analysis(self):
 		nstart = {}
 		for name in nx.nodes(self.OG):
@@ -419,15 +501,15 @@ class BasicFeatureBuilder():
 			bh_list = sorted(bh_list)
 			
 			# density portion 
-			density = 0 # breeding grounds within 2km radius
+			density = 0 # breeding grounds within 2.5km radius
 			for distance in bh_list:
-				if distance < 2:
+				if distance < 2.5:
 					density += 1
 			
 			# proximity component - average dist of 10 nearest bh
 			distsum = 0.0
 			for i, distance in enumerate(bh_list):
-				while i < 10:
+				while i < 10: 		#variable
 					distsum += distance
 					i += 1
 			distsum = distsum / 10
@@ -440,7 +522,7 @@ class BasicFeatureBuilder():
 
 
 class DeltaFeatureBuilder():
-	'''
+	"""
 	This class builds the main features AND labels for predicting change in dengue case numbers.
 
 	labels : uses the difference in #cases (stored in the first graph)
@@ -449,7 +531,21 @@ class DeltaFeatureBuilder():
 
 	Users will be able to use X day's of change to forecase the change in Y day's time
 
-	'''
+	Parameters
+	----------
+	graphlist : list of networkx DiGraph
+  		graphs in order of dates
+
+	change : int
+		number of days changes
+
+	ahead : int
+ 		number of days ahead to predict
+
+	pred_movement : boolean 
+		to determine type of labels to generate (movement or status)
+		movement if true.
+	"""
 
 	def __init__(self, graphlist, change, ahead, pred_movement):
 		self.inputlist = graphlist
@@ -509,8 +605,7 @@ class DeltaFeatureBuilder():
 								temp.node[node]['delta_authority'],\
 								temp.node[node]['delta_bh_density'],\
 								temp.node[node]['delta_bh_count'],\
-								temp.node[node]['delta_inverse_dist']\
-								#temp.node[node]['cases']
+								temp.node[node]['delta_inverse_dist']
 								))
 
 		X = np.array(x_list)
@@ -518,27 +613,14 @@ class DeltaFeatureBuilder():
 
 
 	def get_y(self):
-		'''
-		Creates labels based on change in number of cases
+		"""Creates labels based on change in number of cases
 		
 		'delta cases' depends on the boolean pred_movement
 		true:    represents net change
 		false:	 represents status
-		'''
+		"""
 		y_list = []
-		'''
-		i=0
-		while i < len(self.graphlist):
-			temp = self.graphlist[i]
-			for node in temp.nodes():
-				if temp.node[node]['delta_cases'] > 0:
-					y_list.append(1)
-				#elif temp.node[node]['delta_cases'] < 0:
-					#y_list.append(2)
-				else:
-					y_list.append(0)
-			i+=1
-		'''
+
 		for temp in self.graphlist:
 			for node in temp.nodes():
 				#y_list.append(temp.node[node]['delta_cases'])
@@ -553,8 +635,7 @@ class DeltaFeatureBuilder():
 
 
 class DailyChange():
-	'''
-	day on day changes
+	"""Day on day changes
 
 	key terms:
 	study period - number of days change u want to observe
@@ -569,7 +650,17 @@ class DailyChange():
 		      	 
       	number of obs set = 7 - (3 + 2) + 1
 
-	'''
+    Parameters
+    ----------
+  	graphlist : list of networkx DiGraph
+  		original graphs
+	
+	change : int
+		number of days changes
+	
+	ahead : int
+		number of days ahead to predict
+	"""
 	def __init__(self, graphlist, change, ahead):
 		# graphlist contains only OG
 		self.change = change
@@ -606,10 +697,8 @@ class DailyChange():
 		return list_
 
 	def get_feat(self):
-		change = self.change
-		ahead = self.ahead
-		graphlist = self.newlist
-		'''
+		
+		"""
 		gets features for the day on day change in the study period
 		stores features under last day of study period
 
@@ -623,7 +712,10 @@ class DailyChange():
 		  	    c C
 		  	      c C
 
-		'''
+		"""
+		change = self.change
+		ahead = self.ahead
+		graphlist = self.newlist
 
 		#put graphlist data into list, hstack the list then vstack the days
 
@@ -658,19 +750,7 @@ class DailyChange():
 
 		feature=np.vstack(feature)
 		
-		print feature.shape
-
 		return feature
-
-
-class MovingAverage():
-	def __init__(self, graphlist, daycount):
-		self.graphlist = graphlist
-		self.day = daycount
-
-
-
-
 
 
 

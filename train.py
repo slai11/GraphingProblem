@@ -1,5 +1,5 @@
 # _*_ coding: utf-8 _*_
-
+import xgboost as xgb
 import numpy as np
 import matplotlib.pyplot as plt
 from scipy import stats
@@ -7,24 +7,18 @@ from sklearn import metrics, cross_validation
 from sklearn.pipeline import Pipeline
 from sklearn.grid_search import GridSearchCV, RandomizedSearchCV
 from sklearn.cross_validation import train_test_split
-from sklearn.metrics import classification_report, confusion_matrix, make_scorer, f1_score
-from sklearn.preprocessing import MinMaxScaler
+from sklearn.metrics import classification_report, confusion_matrix, make_scorer, f1_score, precision_recall_curve, average_precision_score
+from sklearn.preprocessing import MinMaxScaler, label_binarize
 from sklearn.ensemble import ExtraTreesClassifier
-from model import *
-from features import *
-import warnings
 from sklearn.svm import LinearSVC
-
-from sklearn.metrics import precision_recall_curve
-from sklearn.metrics import average_precision_score
-from sklearn.cross_validation import train_test_split
-from sklearn.preprocessing import label_binarize
 from sklearn.multiclass import OneVsRestClassifier
-import xgboost as xgb
 
+from stack import Ensemble
+from model import *
 from util import *
-
+import warnings
 warnings.filterwarnings("ignore")
+
 
 
 
@@ -44,13 +38,15 @@ def apply_model(X, y, score='f1', ensemble=True, predmove=True):
 	clf9 = gradient_boost_model()[use]
 	clf10 = xgboost_model()[use]
 	clf11 = bag_model()
-	#clf12 = ada_boost_model()[use]
+	clf12 = ada_boost_model()
+	
+	
 
 	model_name = ["Dummy", "LogisticRegression", "LinearSVC", "SVC w rbf",\
 					"RandomForestClassifier", "ExtraTreesClassifier", "KNearestClassifier", "Voting Classifier",\
-					"GradientBoostingClassifier", "XGBoost", "Bagging"]#, "ada"]
+					"GradientBoostingClassifier", "XGBoost"]#, "Bagging"]#, "ada"]
 	if ensemble:
-		model = [clf1, clf2, clf3, clf4 ,clf5, clf6, clf7, clf8, clf9, clf10, clf11]#, clf12]
+		model = [clf1, clf2, clf3, clf4 ,clf5, clf6, clf7, clf8, clf9, clf10]#, clf11]#, clf12]
 	else:
 		model = [clf1, clf2, clf3, clf4 ,clf5, clf6, clf7]
 	
@@ -105,10 +101,10 @@ def get_model_score(X, y, score='f1', pred='status'):
 	
 
 def search_grid(X, y):
-	model = xgboost_model()[0]
+	model = xgboost_model()[2]
 	
 	X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=10)
-	param_grid = dict(xgb__num_round=np.arange(1,100,5), xgb__max_depth=np.arange(5,20,1))
+	param_grid = dict(xgb__max_depth=np.arange(1,20,1), xgb__n_estimators=np.arange(1, 200, 1))
 
 	#dict(xgb__max_depth=np.arange(1,20,1), xgb__gamma=np.arange(0,10,1), xgb__eta=np.arange(0.01, 1, 0.05), xgb__max_delta_step=np.arange(0,100,1))
 	#dict(select__percentile=np.arange(1,99,10), svc__kernel=['rbf'], svc__gamma=np.arange(0,10,1), svc__C = (2.0**np.arange(-10, 10, 4)), svc__tol=[1e-8, 1e-4, 1e-1])
@@ -119,7 +115,7 @@ def search_grid(X, y):
 	#dict(select__percentile=np.arange(1,99,10), linsvc__C=(2.0**np.arange(-10,10,4)), linsvc__penalty=['l1','l2'], linsvc__tol=[1e-8, 1e-4, 1e-2, 1e-1])
 	#dict(select__percentile=np.arange(10,99,10), randf__max_features=["auto", "log2", None], randf__n_estimators=np.arange(1,100,10), randf__min_samples_split=np.arange(1,100,10), randf__max_depth=[None, 1, 10, 20, 30])
 	#dict(select__percentile=np.arange(1,99,10), logre__penalty=['l1', 'l2'], logre__C = (2.0**np.arange(-10, 20, 4)), logre__tol=[1e-8, 1e-4, 1e-1])
-	grid = GridSearchCV(model, cv=5, param_grid=param_grid, scoring='f1', n_jobs=-1, verbose=4)
+	grid = GridSearchCV(model, cv=5, param_grid=param_grid, scoring='f1_macro', n_jobs=-1, verbose=4)
 	grid.fit(X,y)
 
 	for i in grid.grid_scores_:
@@ -258,25 +254,51 @@ def check_ahead_period():
 
 
 
-def build_X_y(list_, study_period=3, ahead=1, delta=False, pred_movement=True):
-	X, y = load_multiple_data(list_, study_period, ahead, delta, pred_movement)
+def build_X_y(list_, study_period=3, ahead=1, delta=False, pred_movement=True, daily=True):
+	X, y = load_multiple_data(list_, study_period, ahead, delta, pred_movement, daily, finer_subzone=False)
 	return X, y
+
+def run_stack(X, y):
+	use=0
+	clf4 = rbf_svc_model()[use]
+	clf5 = random_forest_model()[use]
+	clf6 = extra_trees_model()[use]
+	clf7 = k_nearest_model()[use]
+	clf10 = xgboost_model()[use]
+
+	clf = xgb.XGBClassifier()
+	model = [clf5, clf6, clf4, clf10]
+	
+	EM = Ensemble(4, clf, model)
+	X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=10)
+	y_pred = EM.fit_predict(X_train,y_train, X_test)
+
+	print "Stacking Ensemble"
+
+	print metrics.classification_report(y_test, y_pred)
+	print f1_score(y_test, y_pred, average='macro')
+	cm = confusion_matrix(y_test, y_pred)
+	
+	print "Confusion Matrix:"
+	print cm
 
 
 if __name__ == '__main__':
+	#--Values to Change--#
 	
 	list_ = ["20160523", "20160524", "20160525", "20160527", "20160531", "20160601", "20160602"]
 	
 	predmove = False
-	X, y = build_X_y(list_, study_period=3, ahead=2, delta=True, pred_movement=predmove) # basic + daily
 
-	#X = np.genfromtxt('featuresWdelta.csv', delimiter=',')
-	#y = np.genfromtxt('labelStatus.csv', delimiter=',')
+	### to predict ahead using one day of data, set study_period to 2 and ahead to 1
+	X, y = build_X_y(list_, study_period=3, ahead=1, delta=False, pred_movement=predmove, daily = False) # basic + daily
 
 
-	#apply_model(X,y,"f1_macro", ensemble=True,predmove=predmove)
+	apply_model(X,y,"f1_macro", ensemble=True,predmove=predmove)
 	#plot_pr_auc(X, y, log_reg_model(), "log reg")
-
-	search_grid(X, y)
+	#search_grid(X, y)
 	#feature_rank(X, y)
-
+	run_stack(X, y)
+	
+	
+	
